@@ -13,6 +13,18 @@
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 
+  <style>
+    /* 幅が狭いとき dropdown-menu を幅いっぱいにするスタイルです。 */
+    @media (max-width: 600px) {
+      /* .position-static 付与と同効果です。 */
+      li.dropdown { position: static!important; }
+      /* .w-100 付与と同効果です。 */
+      div.dropdown-menu { width: 99%!important; }
+    }
+    /* 平時の幅です。 */
+    div.dropdown-menu { width: 20rem; }
+  </style>
+
   <title>Hello, world!</title>
 </head>
 
@@ -25,8 +37,7 @@
     </a>
 
     <!--
-      TODO: ドロップダウンメニュー、スマホサイズでは max 幅に。
-      NOTE: ここに li.dropdown position-static と div.dropdown-menu w-100 で dropdown-menu が幅いっぱいになる。
+      NOTE: li.dropdown position-static と div.dropdown-menu w-100 で dropdown-menu が幅いっぱいになります。
       NOTE: しかし常時幅いっぱいにしたいわけではない。スマホサイズでのみいっぱいにしたいのだ。
     -->
     <div class="collapse navbar-collapse">
@@ -38,8 +49,11 @@
           </button>
           <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="#"><i class="fas fa-tablet fa-fw"></i> マイページ</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #FF5454;"></i> アラート</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #D49E43;"></i> 承認依頼</a>
           </div>
         </li>
@@ -49,7 +63,7 @@
             <i class="fas fa-user-tie fa-fw"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-right">
-            <div class="card text-center" style="width: 20rem; border: 0;">
+            <div class="card text-center border-0">
               <div class="card-body">
                 <div class="card-text"><i class="fas fa-user-tie fa-fw"></i></div>
                 <div class="card-text">榊原よし子</div>
