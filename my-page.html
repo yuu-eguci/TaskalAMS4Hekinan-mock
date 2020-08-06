@@ -95,10 +95,9 @@
     <div class="row">
       <div class="col-sm-8">
         <div class="card text-center mb-3">
-          <!-- TODO: リンク化。 -->
-          <div class="card-header">今月の勤怠 <small class="text-muted">()内は前月</small></div>
+          <div class="card-header font-weight-bold">今月の勤怠 <small class="text-muted">()内は前月</small></div>
           <div class="card-body p-1">
-            <div class="card-group">
+            <div class="card-group mb-3">
               <div class="card mb-0">
                 <div class="card-body p-0">
                   <p class="card-text bg-light">出勤日</p>
@@ -118,13 +117,17 @@
                 </div>
               </div>
             </div>
+            <a href="#" class="btn btn-sm btn-outline-dark btn-block">
+              <i class="fas fa-edit fa-fw"></i>
+              勤怠編集
+            </a>
           </div>
         </div>
 
         <!-- NOTE: 勤怠シフトは、 PC では縦向き、スマホでは横向きのほうが見やすいかと思い、2通り用意しています。 -->
         <!-- スマホ(狭いとき)。 d-sm-none により、 sm 以下で表示します。 -->
         <div class="card text-center d-sm-none mb-3">
-          <div class="card-header">勤怠シフト</div>
+          <div class="card-header font-weight-bold">勤怠シフト</div>
           <div class="card-body p-1">
             <table class="table table-sm table-bordered mb-0">
               <tbody>
@@ -141,7 +144,7 @@
         </div>
         <!-- PC(広いとき)。 d-none d-sm-block により、 sm 以上で表示します。 -->
         <div class="card text-center d-none d-sm-block mb-3">
-          <div class="card-header">勤怠シフト</div>
+          <div class="card-header font-weight-bold">勤怠シフト</div>
           <div class="card-body p-1">
             <table class="table table-sm table-bordered mb-0">
               <thead>
@@ -156,7 +159,7 @@
         </div>
 
         <div class="card text-center mb-3">
-          <div class="card-header">年休取得状況</small></div>
+          <div class="card-header font-weight-bold">年休取得状況</small></div>
           <div class="card-body p-1">
             <div class="card-group">
               <div class="card mb-0">
@@ -183,32 +186,32 @@
       </div>
       <div class="col-sm-4">
         <div class="card text-center mb-3">
-          <div class="card-header">申請一覧</div>
+          <div class="card-header font-weight-bold">申請一覧</div>
           <div class="card-body p-1">
             <table class="table table-sm table-bordered">
               <tbody>
                 <tr>
-                  <th class="bg-light">時間外承認待ち</th>
+                  <td class="bg-light">時間外承認待ち</td>
                   <td>
-                    <a href="#" class="btn btn-sm btn-outline-dark btn-block">2 件</a>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">2 件</a>
                   </td>
                 </tr>
                 <tr>
-                  <th class="bg-light">休暇承認待ち</th>
+                  <td class="bg-light">休暇承認待ち</td>
                   <td>
-                    <a href="#" class="btn btn-sm btn-outline-dark btn-block">5 件</a>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">5 件</a>
                   </td>
                 </tr>
                 <tr>
-                  <th class="bg-light">承認</th>
+                  <td class="bg-light">承認</td>
                   <td>
-                    <a href="#" class="btn btn-sm btn-outline-dark btn-block">申請一覧</a>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">申請一覧</a>
                   </td>
                 </tr>
                 <tr>
-                  <th class="bg-light">未承認</th>
+                  <td class="bg-light">未承認</td>
                   <td>
-                    <a href="#" class="btn btn-sm btn-outline-dark btn-block">5 件</a>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">5 件</a>
                   </td>
                 </tr>
               </tbody>
@@ -221,20 +224,20 @@
         </div>
 
         <div class="card text-center mb-3">
-          <div class="card-header">通知一覧</div>
+          <div class="card-header font-weight-bold">通知一覧</div>
           <div class="card-body p-1">
             <table class="table table-sm table-bordered">
               <tbody>
                 <tr>
-                  <th class="bg-light">打刻漏れ</th>
+                  <td class="bg-light">打刻漏れ</td>
                   <td>
-                    <a href="#" class="btn btn-sm btn-outline-dark btn-block">2 件</a>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">2 件</a>
                   </td>
                 </tr>
                 <tr>
-                  <th class="bg-light">時間外・年休消化</th>
+                  <td class="bg-light">時間外・年休消化</td>
                   <td>
-                    <a href="#" class="btn btn-sm btn-outline-dark btn-block">3 件</a>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">3 件</a>
                   </td>
                 </tr>
               </tbody>
