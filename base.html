@@ -14,15 +14,27 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 
   <style>
-    /* 幅が狭いとき dropdown-menu を幅いっぱいにするスタイルです。 */
-    @media (max-width: 600px) {
+    /*
+      幅が狭いとき dropdown-menu を幅いっぱいにするスタイルです。
+      NOTE: 576px は bootstrap の sm の幅。
+    */
+    @media (max-width: 576px) {
+
       /* .position-static 付与と同効果です。 */
-      li.dropdown { position: static!important; }
+      li.dropdown {
+        position: static !important;
+      }
+
       /* .w-100 付与と同効果です。 */
-      div.dropdown-menu { width: 99%!important; }
+      div.dropdown-menu {
+        width: 99% !important;
+      }
     }
+
     /* 平時の幅です。 */
-    div.dropdown-menu { width: 20rem; }
+    div.dropdown-menu {
+      width: 20rem;
+    }
   </style>
 
   <title>Hello, world!</title>
