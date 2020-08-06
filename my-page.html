@@ -122,7 +122,7 @@
 
         <!-- NOTE: 勤怠シフトは、 PC では縦向き、スマホでは横向きのほうが見やすいかと思い、2通り用意しています。 -->
         <!-- スマホ(狭いとき)。 d-sm-none により、 sm 以下で表示します。 -->
-        <div class="card text-center d-sm-none">
+        <div class="card text-center d-sm-none mb-3">
           <div class="card-header">勤怠シフト</div>
           <div class="card-body p-1">
             <table class="table table-sm table-bordered mb-0">
@@ -139,7 +139,7 @@
           </div>
         </div>
         <!-- PC(広いとき)。 d-none d-sm-block により、 sm 以上で表示します。 -->
-        <div class="card text-center d-none d-sm-block">
+        <div class="card text-center d-none d-sm-block mb-3">
           <div class="card-header">勤怠シフト</div>
           <div class="card-body p-1">
             <table class="table table-sm table-bordered mb-0">
@@ -151,6 +151,32 @@
                 <tr><td>A</td><td>A</td><td>B</td><td>B</td><td>C</td><td>休</td><td>法</td></tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <div class="card text-center mb-3">
+          <div class="card-header">年休取得状況</small></div>
+          <div class="card-body p-1">
+            <div class="card-group">
+              <div class="card mb-0">
+                <div class="card-body p-0">
+                  <p class="card-text bg-light">付与</p>
+                  <h5 class="card-title">320 h <small class="text-muted">(40 日)</small></h5>
+                </div>
+              </div>
+              <div class="card mb-0">
+                <div class="card-body p-0">
+                  <p class="card-text bg-light">取得</p>
+                  <h5 class="card-title">18 h <small class="text-muted">(2 日 2 h)</small></h5>
+                </div>
+              </div>
+              <div class="card mb-0">
+                <div class="card-body p-0">
+                  <p class="card-text bg-light">残</p>
+                  <h5 class="card-title">302 h <small class="text-muted">(37 日 6 h)</small></h5>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
