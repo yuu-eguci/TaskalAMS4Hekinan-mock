@@ -95,7 +95,10 @@
     <div class="row">
       <div class="col-sm-8">
         <div class="card text-center mb-3">
-          <div class="card-header font-weight-bold">今月の勤怠 <small class="text-muted">()内は前月</small></div>
+          <div class="card-header font-weight-bold">
+            今月の勤怠
+            <small class="text-muted">()内は前月</small>
+          </div>
           <div class="card-body p-1">
             <div class="card-group mb-3">
               <div class="card mb-0">
@@ -127,7 +130,10 @@
         <!-- NOTE: 勤怠シフトは、 PC では縦向き、スマホでは横向きのほうが見やすいかと思い、2通り用意しています。 -->
         <!-- スマホ(狭いとき)。 d-sm-none により、 sm 以下で表示します。 -->
         <div class="card text-center d-sm-none mb-3">
-          <div class="card-header font-weight-bold">勤怠シフト</div>
+          <div class="card-header font-weight-bold">
+            勤怠シフト
+            <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="コンテンツの説明をここに記述できます。"></i>
+          </div>
           <div class="card-body p-1">
             <table class="table table-sm table-bordered mb-0">
               <tbody>
@@ -273,4 +279,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
     integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
     crossorigin="anonymous"></script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
 </body>
