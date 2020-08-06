@@ -94,7 +94,7 @@
 
     <div class="row">
       <div class="col-sm-8">
-        <div class="card text-center">
+        <div class="card text-center mb-3">
           <div class="card-header">今月の勤怠 <small class="text-muted">()内は前月</small></div>
           <div class="card-body p-1">
             <div class="card-group">
@@ -117,6 +117,40 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- NOTE: 勤怠シフトは、 PC では縦向き、スマホでは横向きのほうが見やすいかと思い、2通り用意しています。 -->
+        <!-- スマホ(狭いとき)。 d-sm-none により、 sm 以下で表示します。 -->
+        <div class="card text-center d-sm-none">
+          <div class="card-header">勤怠シフト</div>
+          <div class="card-body p-1">
+            <table class="table table-sm table-bordered mb-0">
+              <tbody>
+                <tr><th class="bg-light">11</th><th class="bg-light">月</th><td>A</td></tr>
+                <tr><th class="bg-light">12</th><th class="bg-light">火</th><td>A</td></tr>
+                <tr><th class="bg-light">13</th><th class="bg-light">水</th><td>B</td></tr>
+                <tr><th class="bg-light">14</th><th class="bg-light">木</th><td>B</td></tr>
+                <tr><th class="bg-light">15</th><th class="bg-light">金</th><td>C</td></tr>
+                <tr><th class="bg-light">16</th><th class="" style="background-color: #8cb0d1;">土</th><td>休</td></tr>
+                <tr><th class="bg-light">17</th><th class="" style="background-color: #fb8f8f;">日</th><td>法</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- PC(広いとき)。 d-none d-sm-block により、 sm 以上で表示します。 -->
+        <div class="card text-center d-none d-sm-block">
+          <div class="card-header">勤怠シフト</div>
+          <div class="card-body p-1">
+            <table class="table table-sm table-bordered mb-0">
+              <thead>
+                <tr class="bg-light"><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th></tr>
+                <tr class="bg-light"><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th style="background-color: #8cb0d1;">土</th><th style="background-color: #fb8f8f;">日</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A</td><td>A</td><td>B</td><td>B</td><td>C</td><td>休</td><td>法</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
