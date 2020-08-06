@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+    integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+
+  <style>
+    /*
+      幅が狭いとき dropdown-menu を幅いっぱいにするスタイルです。
+      NOTE: 576px は bootstrap の sm の幅。
+    */
+    @media (max-width: 576px) {
+
+      /* .position-static 付与と同効果です。 */
+      li.dropdown {
+        position: static !important;
+      }
+
+      /* .w-100 付与と同効果です。 */
+      div.dropdown-menu {
+        width: 99% !important;
+      }
+    }
+
+    /* 平時の幅です。 */
+    div.dropdown-menu {
+      width: 20rem;
+    }
+  </style>
+
+  <title>Hello, world!</title>
+</head>
+
+<body style="padding-top: 4.5rem;">
+  <!-- navbar-expand によりつねに collapse のメニューを開きます。 -->
+  <nav class="navbar fixed-top navbar-dark bg-dark navbar-expand">
+    <a class="navbar-brand" href="#">
+      <img src="icon50x50.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+      <small>Taskal 勤怠管理</small>
+    </a>
+
+    <!--
+      NOTE: li.dropdown position-static と div.dropdown-menu w-100 で dropdown-menu が幅いっぱいになります。
+      NOTE: しかし常時幅いっぱいにしたいわけではない。スマホサイズでのみいっぱいにしたいのだ。
+    -->
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <button type="button" class="btn btn-outline-light" data-toggle="dropdown" data-display="static"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bars fa-fw"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#"><i class="fas fa-tablet fa-fw"></i> マイページ</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #FF5454;"></i> アラート</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #D49E43;"></i> 承認依頼</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown ml-1">
+          <button type="button" class="btn btn-outline-light" data-toggle="dropdown" data-display="static"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-tie fa-fw"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="card text-center border-0">
+              <div class="card-body">
+                <div class="card-text"><i class="fas fa-user-tie fa-fw"></i></div>
+                <div class="card-text">榊原よし子</div>
+                <div class="card-text text-muted"><small>yoshiko-sakakibara@example.com</small></div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-envelope fa-fw"></i> メール設定</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main role="main" class="container">
+
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card text-center mb-3">
+          <div class="card-header font-weight-bold">
+            今月の勤怠
+            <small class="text-muted">()内は前月</small>
+          </div>
+          <div class="card-body p-1">
+            <!-- NOTE: 他の箇所の margin-bottom:16px に合わせるため mb 等使わず style で指定しています。 -->
+            <div class="card-group" style="margin-bottom: 12px;">
+              <div class="card mb-1">
+                <div class="card-body p-0">
+                  <p class="card-text bg-light">出勤日</p>
+                  <h5 class="card-title">13日 <small class="text-muted">(20 日)</small></h5>
+                </div>
+              </div>
+              <div class="card mb-1">
+                <div class="card-body p-0">
+                  <p class="card-text bg-light">時間外</p>
+                  <h5 class="card-title">10.00 <small class="text-muted">(20.00)</small></h5>
+                </div>
+              </div>
+              <div class="card mb-1">
+                <div class="card-body p-0">
+                  <p class="card-text bg-light">休暇時間</p>
+                  <h5 class="card-title">18 h <small class="text-muted">(4 h)</small></h5>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="btn btn-sm btn-outline-dark btn-block">
+              <i class="fas fa-edit fa-fw"></i>
+              今月の勤怠を編集
+            </a>
+          </div>
+        </div>
+
+        <!-- NOTE: 勤怠シフトは、 PC では縦向き、スマホでは横向きのほうが見やすいかと思い、2通り用意しています。 -->
+        <!-- スマホ(狭いとき)。 d-sm-none により、 sm 以下で表示します。 -->
+        <div class="card text-center d-sm-none mb-3">
+          <div class="card-header font-weight-bold">
+            勤怠シフト
+            <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="コンテンツの説明をここに記述できます。"></i>
+          </div>
+          <div class="card-body p-1">
+            <table class="table table-sm table-bordered mb-0">
+              <tbody>
+                <tr><th class="bg-light">11</th><th class="bg-light">月</th><td>A</td></tr>
+                <tr><th class="bg-light">12</th><th class="bg-light">火</th><td>A</td></tr>
+                <tr><th class="bg-light">13</th><th class="bg-light">水</th><td>B</td></tr>
+                <tr><th class="bg-light">14</th><th class="bg-light">木</th><td>B</td></tr>
+                <tr><th class="bg-light">15</th><th class="bg-light">金</th><td>C</td></tr>
+                <tr><th class="bg-light">16</th><th class="" style="background-color: #8cb0d1;">土</th><td>休</td></tr>
+                <tr><th class="bg-light">17</th><th class="" style="background-color: #fb8f8f;">日</th><td>法</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- PC(広いとき)。 d-none d-sm-block により、 sm 以上で表示します。 -->
+        <div class="card text-center d-none d-sm-block mb-3">
+          <div class="card-header font-weight-bold">勤怠シフト</div>
+          <div class="card-body p-1">
+            <table class="table table-sm table-bordered mb-0">
+              <thead>
+                <tr class="bg-light"><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th></tr>
+                <tr class="bg-light"><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th style="background-color: #8cb0d1;">土</th><th style="background-color: #fb8f8f;">日</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>A</td><td>A</td><td>B</td><td>B</td><td>C</td><td>休</td><td>法</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card text-center mb-3">
+          <div class="card-header font-weight-bold">年休取得状況</small></div>
+          <div class="card-body p-1">
+            <div class="card-group">
+              <div class="card mb-1">
+                <div class="card-body p-0">
+                  <p class="card-text bg-light">付与</p>
+                  <h5 class="card-title">320 h <small class="text-muted">(40 日)</small></h5>
+                </div>
+              </div>
+              <div class="card mb-1">
+                <div class="card-body p-0">
+                  <p class="card-text bg-light">取得</p>
+                  <h5 class="card-title">18 h <small class="text-muted">(2 日 2 h)</small></h5>
+                </div>
+              </div>
+              <div class="card mb-1">
+                <div class="card-body p-0">
+                  <p class="card-text bg-light">残</p>
+                  <h5 class="card-title">302 h <small class="text-muted">(37 日 6 h)</small></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card text-center mb-3">
+          <div class="card-header font-weight-bold">申請一覧</div>
+          <div class="card-body p-1">
+            <table class="table table-sm table-bordered">
+              <tbody>
+                <tr>
+                  <td class="bg-light">時間外承認待ち</td>
+                  <td>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">2 件</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="bg-light">休暇承認待ち</td>
+                  <td>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">5 件</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="bg-light">承認</td>
+                  <td>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">申請一覧</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="bg-light">未承認</td>
+                  <td>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">5 件</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <a href="#" class="btn btn-sm btn-outline-dark btn-block">
+              <i class="fas fa-plus fa-fw"></i>
+              新規申請
+            </a>
+          </div>
+        </div>
+
+        <div class="card text-center mb-3">
+          <div class="card-header font-weight-bold">通知一覧</div>
+          <div class="card-body p-1">
+            <table class="table table-sm table-bordered">
+              <tbody>
+                <tr>
+                  <td class="bg-light">打刻漏れ</td>
+                  <td>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">2 件</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="bg-light">時間外・年休消化</td>
+                  <td>
+                    <a href="#" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">3 件</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <a href="#" class="btn btn-sm btn-outline-dark btn-block">
+              <i class="fas fa-envelope fa-fw"></i>
+              メールアドレス設定
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+      <div class="row">
+        <div class="col-12">
+          <img class="mb-2" src="icon50x50.png" alt="" width="24" height="24">
+          Taskal 勤怠管理
+          <small class="d-block mb-3 text-muted">© 2019-2020</small>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+    integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+    crossorigin="anonymous"></script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+</body>

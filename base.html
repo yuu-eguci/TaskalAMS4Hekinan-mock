@@ -14,15 +14,27 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 
   <style>
-    /* 幅が狭いとき dropdown-menu を幅いっぱいにするスタイルです。 */
-    @media (max-width: 600px) {
+    /*
+      幅が狭いとき dropdown-menu を幅いっぱいにするスタイルです。
+      NOTE: 576px は bootstrap の sm の幅。
+    */
+    @media (max-width: 576px) {
+
       /* .position-static 付与と同効果です。 */
-      li.dropdown { position: static!important; }
+      li.dropdown {
+        position: static !important;
+      }
+
       /* .w-100 付与と同効果です。 */
-      div.dropdown-menu { width: 99%!important; }
+      div.dropdown-menu {
+        width: 99% !important;
+      }
     }
+
     /* 平時の幅です。 */
-    div.dropdown-menu { width: 20rem; }
+    div.dropdown-menu {
+      width: 20rem;
+    }
   </style>
 
   <title>Hello, world!</title>
@@ -104,6 +116,16 @@
     <h1>23 Hello, world!<i class="fas fa-crow"></i></h1>
     <h1>24 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
     <h1>25 Hello, world!<i class="fas fa-feather"></i></h1>
+
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+      <div class="row">
+        <div class="col-12">
+          <img class="mb-2" src="icon50x50.png" alt="" width="24" height="24">
+          Taskal 勤怠管理
+          <small class="d-block mb-3 text-muted">© 2019-2020</small>
+        </div>
+      </div>
+    </footer>
   </main>
 
   <!-- Optional JavaScript -->
