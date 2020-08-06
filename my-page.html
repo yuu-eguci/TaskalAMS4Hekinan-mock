@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+    integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+
+  <style>
+    /* 幅が狭いとき dropdown-menu を幅いっぱいにするスタイルです。 */
+    @media (max-width: 600px) {
+
+      /* .position-static 付与と同効果です。 */
+      li.dropdown {
+        position: static !important;
+      }
+
+      /* .w-100 付与と同効果です。 */
+      div.dropdown-menu {
+        width: 99% !important;
+      }
+    }
+
+    /* 平時の幅です。 */
+    div.dropdown-menu {
+      width: 20rem;
+    }
+  </style>
+
+  <title>Hello, world!</title>
+</head>
+
+<body style="padding-top: 4.5rem;">
+  <!-- navbar-expand によりつねに collapse のメニューを開きます。 -->
+  <nav class="navbar fixed-top navbar-dark bg-dark navbar-expand">
+    <a class="navbar-brand" href="#">
+      <img src="icon50x50.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+      <small>Taskal 勤怠管理</small>
+    </a>
+
+    <!--
+      NOTE: li.dropdown position-static と div.dropdown-menu w-100 で dropdown-menu が幅いっぱいになります。
+      NOTE: しかし常時幅いっぱいにしたいわけではない。スマホサイズでのみいっぱいにしたいのだ。
+    -->
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <button type="button" class="btn btn-outline-light" data-toggle="dropdown" data-display="static"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bars fa-fw"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#"><i class="fas fa-tablet fa-fw"></i> マイページ</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #FF5454;"></i> アラート</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #D49E43;"></i> 承認依頼</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown ml-1">
+          <button type="button" class="btn btn-outline-light" data-toggle="dropdown" data-display="static"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-tie fa-fw"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="card text-center border-0">
+              <div class="card-body">
+                <div class="card-text"><i class="fas fa-user-tie fa-fw"></i></div>
+                <div class="card-text">榊原よし子</div>
+                <div class="card-text text-muted"><small>yoshiko-sakakibara@example.com</small></div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-envelope fa-fw"></i> メール設定</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main role="main" class="container">
+    <h1>1 Hello, world!<i class="fas fa-dove"></i></h1>
+    <h1>2 Hello, world!<i class="fas fa-feather-alt"></i></h1>
+    <h1>3 Hello, world!<i class="fas fa-crow"></i></h1>
+    <h1>4 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
+    <h1>5 Hello, world!<i class="fas fa-feather"></i></h1>
+    <h1>6 Hello, world!<i class="fas fa-dove"></i></h1>
+    <h1>7 Hello, world!<i class="fas fa-feather-alt"></i></h1>
+    <h1>8 Hello, world!<i class="fas fa-crow"></i></h1>
+    <h1>9 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
+    <h1>10 Hello, world!<i class="fas fa-feather"></i></h1>
+    <h1>11 Hello, world!<i class="fas fa-dove"></i></h1>
+    <h1>12 Hello, world!<i class="fas fa-feather-alt"></i></h1>
+    <h1>13 Hello, world!<i class="fas fa-crow"></i></h1>
+    <h1>14 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
+    <h1>15 Hello, world!<i class="fas fa-feather"></i></h1>
+    <h1>16 Hello, world!<i class="fas fa-dove"></i></h1>
+    <h1>17 Hello, world!<i class="fas fa-feather-alt"></i></h1>
+    <h1>18 Hello, world!<i class="fas fa-crow"></i></h1>
+    <h1>19 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
+    <h1>20 Hello, world!<i class="fas fa-feather"></i></h1>
+    <h1>21 Hello, world!<i class="fas fa-dove"></i></h1>
+    <h1>22 Hello, world!<i class="fas fa-feather-alt"></i></h1>
+    <h1>23 Hello, world!<i class="fas fa-crow"></i></h1>
+    <h1>24 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
+    <h1>25 Hello, world!<i class="fas fa-feather"></i></h1>
+  </main>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+    integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+    crossorigin="anonymous"></script>
+</body>
