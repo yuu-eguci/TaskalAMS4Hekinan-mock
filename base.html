@@ -17,11 +17,51 @@
 </head>
 
 <body style="padding-top: 4.5rem;">
-  <nav class="navbar fixed-top navbar-dark bg-dark">
+  <!-- navbar-expand によりつねに collapse のメニューを開きます。 -->
+  <nav class="navbar fixed-top navbar-dark bg-dark navbar-expand">
     <a class="navbar-brand" href="#">
       <img src="icon50x50.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
       <small>Taskal 勤怠管理</small>
     </a>
+
+    <!--
+      TODO: ドロップダウンメニュー、スマホサイズでは max 幅に。
+      NOTE: ここに li.dropdown position-static と div.dropdown-menu w-100 で dropdown-menu が幅いっぱいになる。
+      NOTE: しかし常時幅いっぱいにしたいわけではない。スマホサイズでのみいっぱいにしたいのだ。
+    -->
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <button type="button" class="btn btn-outline-light" data-toggle="dropdown" data-display="static"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bars fa-fw"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#"><i class="fas fa-tablet fa-fw"></i> マイページ</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #FF5454;"></i> アラート</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請</a>
+            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #D49E43;"></i> 承認依頼</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown ml-1">
+          <button type="button" class="btn btn-outline-light" data-toggle="dropdown" data-display="static"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-tie fa-fw"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="card text-center" style="width: 20rem; border: 0;">
+              <div class="card-body">
+                <div class="card-text"><i class="fas fa-user-tie fa-fw"></i></div>
+                <div class="card-text">榊原よし子</div>
+                <div class="card-text text-muted"><small>yoshiko-sakakibara@example.com</small></div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"><i class="fas fa-envelope fa-fw"></i> メール設定</a>
+          </div>
+        </li>
+      </ul>
+    </div>
   </nav>
 
   <main role="main" class="container">
