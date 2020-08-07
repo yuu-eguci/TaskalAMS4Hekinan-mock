@@ -46,7 +46,6 @@
       overflow: hidden;
       text-overflow: ellipsis
     }
-
     .btn-with-icon :first-child {
       position: absolute;
       left: 0;
@@ -58,32 +57,104 @@
       text-align: center;
       border-right: 1px solid rgba(0,0,0,0.2);
     }
-
     .btn-with-icon.btn-sm {
       padding-left: 38px;
     }
-
     .btn-with-icon.btn-sm :first-child {
       line-height:28px;
       width:28px;
       font-size:1.4em;
     }
-
     .btn-rounded {
       border-radius: 17px;
     }
-
     .btn-rounded.btn-sm {
       border-radius: 15px;
     }
 
-    /* 別カラーのカードの定義です。 */
-    .card.card-default {
-      border-color: #bbbfc4!important;
-      /* border-width: 2px; */
+    /* light カラーテーマの定義です。 */
+    body.theme-light .navbar {
+      background-color: #fff;
+      border-bottom: 1px solid #dee2e6;
     }
-    .card.card.card-default .card-header {
-      background-color: #bbbfc4!important;
+    body.theme-light .navbar-brand {
+      color: #343a40;
+    }
+    body.theme-light .dropdown > button {
+      color: #343a40;
+      border-color: #343a40;
+    }
+    .theme-switch-light {
+      color: #343a40!important;
+    }
+
+    /* dark カラーテーマの定義です。 */
+    body.theme-dark .navbar {
+      background-color: #343a40;
+      border-bottom: 1px solid #dee2e6;
+    }
+    body.theme-dark .navbar-brand {
+      color: #c2c7d0;
+    }
+    body.theme-dark .dropdown > button {
+      color: #c2c7d0;
+      border-color: #c2c7d0;
+    }
+    body.theme-dark .card {
+      border-color: #343a40;
+    }
+    body.theme-dark .card .card-header {
+      color: #c2c7d0;
+      background-color: #343a40;
+    }
+    .theme-switch-dark {
+      color: #343a40!important;
+    }
+
+    /* lightblue カラーテーマの定義です。 */
+    body.theme-lightblue .navbar {
+      background-color: #3c8dbc;
+      border-bottom: 1px solid #c2c7d0;
+    }
+    body.theme-lightblue .navbar-brand {
+      color: #fff;
+    }
+    body.theme-lightblue .dropdown > button {
+      color: #fff;
+      border-color: #fff;
+    }
+    body.theme-lightblue .card {
+      border-color: #3c8dbc;
+    }
+    body.theme-lightblue .card .card-header {
+      color: #fff;
+      background-color: #3c8dbc;
+    }
+    .theme-switch-lightblue {
+      color: #3c8dbc!important;
+    }
+
+    /* teal カラーテーマの定義です。 */
+    body.theme-teal .navbar {
+      background-color: #20c997;
+      border-bottom: 1px solid #fff;
+    }
+    body.theme-teal .navbar-brand {
+      color: #fff;
+    }
+    body.theme-teal .dropdown > button {
+      color: #fff;
+      border-color: #fff;
+    }
+    body.theme-teal .card {
+      border-color: #20c997;
+    }
+    body.theme-teal .card .card-header {
+      color: #fff;
+      background-color: #20c997;
+    }
+    .theme-switch-teal {
+      color: #20c997!important;
     }
 
   </style>
@@ -91,9 +162,9 @@
   <title>Hello, world!</title>
 </head>
 
-<body style="padding-top: 4.5rem;">
+<body id="body" class="theme-light" style="padding-top: 4.5rem;">
   <!-- navbar-expand によりつねに collapse のメニューを開きます。 -->
-  <nav class="navbar fixed-top navbar-dark bg-dark navbar-expand">
+  <nav class="navbar fixed-top navbar-expand">
     <a class="navbar-brand" href="#">
       <img src="icon50x50.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
       <small>Taskal 勤怠管理</small>
@@ -106,7 +177,7 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-          <button type="button" class="btn btn-outline-light" data-toggle="dropdown" data-display="static"
+          <button type="button" class="btn" data-toggle="dropdown" data-display="static"
             aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bars fa-fw"></i>
           </button>
@@ -121,7 +192,7 @@
           </div>
         </li>
         <li class="nav-item dropdown ml-1">
-          <button type="button" class="btn btn-outline-light" data-toggle="dropdown" data-display="static"
+          <button type="button" class="btn" data-toggle="dropdown" data-display="static"
             aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user-tie fa-fw"></i>
           </button>
@@ -135,6 +206,21 @@
             </div>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#"><i class="fas fa-envelope fa-fw"></i> メールアドレス設定</a>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item text-right">
+              <button type="button" class="btn btn-outline-light theme-switch-light" onclick="setColorTheme('theme-light');">
+                <i class="far fa-circle fa-fw"></i>
+              </button>
+              <button type="button" class="btn btn-outline-light theme-switch-dark" onclick="setColorTheme('theme-dark');">
+                <i class="fas fa-circle fa-fw"></i>
+              </button>
+              <button type="button" class="btn btn-outline-light theme-switch-lightblue" onclick="setColorTheme('theme-lightblue');">
+                <i class="fas fa-circle fa-fw"></i>
+              </button>
+              <button type="button" class="btn btn-outline-light theme-switch-teal" onclick="setColorTheme('theme-teal');">
+                <i class="fas fa-circle fa-fw"></i>
+              </button>
+            </div>
           </div>
         </li>
       </ul>
@@ -145,30 +231,29 @@
 
     <div class="row">
       <div class="col-sm-8">
-        <div class="card card-default text-center mb-3">
+        <div class="card text-center mb-3">
           <div class="card-header font-weight-bold">
             今月の勤怠
             <small>()内は前月</small>
           </div>
           <div class="card-body p-1">
-            <!-- NOTE: 他の箇所の margin-bottom:16px に合わせるため mb 等使わず style で指定しています。 -->
-            <div class="card-group" style="margin-bottom: 12px;">
-              <div class="card mb-1">
-                <div class="card-body p-0">
-                  <p class="card-text bg-light">出勤日</p>
-                  <h5 class="card-title">13日 <small class="text-muted">(20 日)</small></h5>
+            <div class="row" style="margin-bottom: 16px;">
+              <div class="col-sm-4">
+                <div class="alert alert-secondary mb-1 p-0">
+                  <p class="mb-0">出勤日数</p>
+                  <h5 class="alert-heading">13日 <small class="text-muted">(20 日)</small></h5>
                 </div>
               </div>
-              <div class="card mb-1">
-                <div class="card-body p-0">
-                  <p class="card-text bg-light">時間外</p>
-                  <h5 class="card-title">10.00 <small class="text-muted">(20.00)</small></h5>
+              <div class="col-sm-4">
+                <div class="alert alert-secondary mb-1 p-0">
+                  <p class="mb-0">時間外</p>
+                  <h5 class="alert-heading">10.00 <small class="text-muted">(20.00)</small></h5>
                 </div>
               </div>
-              <div class="card mb-1">
-                <div class="card-body p-0">
-                  <p class="card-text bg-light">休暇時間</p>
-                  <h5 class="card-title">18 h <small class="text-muted">(4 h)</small></h5>
+              <div class="col-sm-4">
+                <div class="alert alert-secondary mb-1 p-0">
+                  <p class="mb-0">休暇時間</p>
+                  <h5 class="alert-heading">18 h <small class="text-muted">(4 h)</small></h5>
                 </div>
               </div>
             </div>
@@ -178,7 +263,7 @@
           </div>
         </div>
 
-        <div class="card card-default text-center mb-3">
+        <div class="card text-center mb-3">
           <div class="card-header font-weight-bold">
             勤怠シフト
             <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="コンテンツの説明をここに記述できます。"></i>
@@ -212,26 +297,26 @@
           </div>
         </div>
 
-        <div class="card card-default text-center mb-3">
+        <div class="card text-center mb-3">
           <div class="card-header font-weight-bold">年休取得状況</small></div>
           <div class="card-body p-1">
-            <div class="card-group">
-              <div class="card mb-1">
-                <div class="card-body p-0">
-                  <p class="card-text bg-light">付与</p>
-                  <h5 class="card-title">320 h <small class="text-muted">(40 日)</small></h5>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="alert alert-secondary mb-1 p-0">
+                  <p class="mb-0">付与</p>
+                  <h5 class="alert-heading">320 h <small class="text-muted">(40 日)</small></h5>
                 </div>
               </div>
-              <div class="card mb-1">
-                <div class="card-body p-0">
-                  <p class="card-text bg-light">取得</p>
-                  <h5 class="card-title">18 h <small class="text-muted">(2 日 2 h)</small></h5>
+              <div class="col-sm-4">
+                <div class="alert alert-secondary mb-1 p-0">
+                  <p class="mb-0">取得</p>
+                  <h5 class="alert-heading">18 h <small class="text-muted">(2 日 2 h)</small></h5>
                 </div>
               </div>
-              <div class="card mb-1">
-                <div class="card-body p-0">
-                  <p class="card-text bg-light">残</p>
-                  <h5 class="card-title">302 h <small class="text-muted">(37 日 6 h)</small></h5>
+              <div class="col-sm-4">
+                <div class="alert alert-secondary mb-1 p-0">
+                  <p class="mb-0">残</p>
+                  <h5 class="alert-heading">302 h <small class="text-muted">(37 日 6 h)</small></h5>
                 </div>
               </div>
             </div>
@@ -239,7 +324,7 @@
         </div>
       </div>
       <div class="col-sm-4">
-        <div class="card card-default text-center mb-3">
+        <div class="card text-center mb-3">
           <div class="card-header font-weight-bold">
             申請一覧
             <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="承認待ちと未承認の違いがわかりません。"></i>
@@ -288,7 +373,7 @@
           </div>
         </div>
 
-        <div class="card card-default text-center mb-3">
+        <div class="card text-center mb-3">
           <div class="card-header font-weight-bold">通知一覧</div>
           <div class="card-body p-1">
             <table class="table table-sm table-bordered">
@@ -341,7 +426,26 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
     integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
     crossorigin="anonymous"></script>
+  <!-- js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script>
+    // body 要素にカラーテーマのクラスをセットします。
+    // NOTE: file:/// 環境ではテスト不可。
+    const setColorTheme = function (themeName) {
+      const body = document.getElementById('body');
+      for (const className of body.classList) {
+        if (className.startsWith('theme-')) {
+          body.classList.remove(className);
+        }
+      }
+      body.classList.add(themeName);
+      Cookies.set('color-theme', themeName);
+    };
+    // 保存されているカラーテーマを優先してセットします。
+    const savedColorTheme = Cookies.get('color-theme');
+    console.info({ savedColorTheme });
+    setColorTheme(savedColorTheme ? savedColorTheme : 'theme-light');
+
     $(function () {
       $('[data-toggle="tooltip"]').tooltip();
     });
