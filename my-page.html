@@ -106,6 +106,13 @@
       color: #c2c7d0;
       background-color: #343a40;
     }
+    body.theme-dark .modal-dialog {
+      border-color: #343a40;
+    }
+    body.theme-dark .modal-header {
+      color: #c2c7d0;
+      background-color: #343a40;
+    }
     .theme-switch-dark {
       color: #343a40!important;
     }
@@ -129,6 +136,13 @@
       color: #fff;
       background-color: #3c8dbc;
     }
+    body.theme-lightblue .modal-dialog {
+      border-color: #3c8dbc;
+    }
+    body.theme-lightblue .modal-header {
+      color: #fff;
+      background-color: #3c8dbc;
+    }
     .theme-switch-lightblue {
       color: #3c8dbc!important;
     }
@@ -149,6 +163,13 @@
       border-color: #20c997;
     }
     body.theme-teal .card .card-header {
+      color: #fff;
+      background-color: #20c997;
+    }
+    body.theme-teal .modal-dialog {
+      border-color: #20c997;
+    }
+    body.theme-teal .modal-header {
       color: #fff;
       background-color: #20c997;
     }
@@ -204,7 +225,7 @@
               </div>
             </div>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-envelope fa-fw"></i> メールアドレス設定</a>
+            <a class="dropdown-item" onclick="$('#modal-mail-config').modal('toggle');"><i class="fas fa-envelope fa-fw"></i> メールアドレス設定</a>
             <div class="dropdown-divider"></div>
             <div class="dropdown-item text-right">
               <button type="button" class="btn btn-outline-light theme-switch-light" onclick="setColorTheme('theme-light');">
@@ -395,9 +416,9 @@
                 </tr>
               </tbody>
             </table>
-            <a class="btn btn-with-icon btn-sm btn-block btn-success btn-click-to-disable">
+            <button class="btn btn-with-icon btn-sm btn-block btn-success btn-click-to-disable" onclick="$('#modal-mail-config').modal('toggle');">
               <i class="fas fa-envelope fa-fw border-right"></i> メールアドレス設定
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -412,6 +433,27 @@
         </div>
       </div>
     </footer>
+
+    <div id="modal-mail-config" class="modal fade" tabindex="-1">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">メールアドレス設定</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- Optional JavaScript -->
