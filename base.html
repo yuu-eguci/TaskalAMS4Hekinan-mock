@@ -46,6 +46,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .btn-with-icon :first-child {
       position: absolute;
       left: 0;
@@ -56,17 +57,21 @@
       font-size: 1.6em;
       text-align: center;
     }
+
     .btn-with-icon.btn-sm {
       padding-left: 38px;
     }
+
     .btn-with-icon.btn-sm :first-child {
-      line-height:28px;
-      width:28px;
-      font-size:1.4em;
+      line-height: 28px;
+      width: 28px;
+      font-size: 1.4em;
     }
+
     .btn-rounded {
       border-radius: 17px;
     }
+
     .btn-rounded.btn-sm {
       border-radius: 15px;
     }
@@ -76,15 +81,18 @@
       background-color: #fff;
       border-bottom: 1px solid #dee2e6;
     }
+
     body.theme-light .navbar-brand {
       color: #343a40;
     }
-    body.theme-light .dropdown > button {
+
+    body.theme-light .dropdown>button {
       color: #343a40;
       border-color: #343a40;
     }
+
     .theme-switch-light {
-      color: #343a40!important;
+      color: #343a40 !important;
     }
 
     /* dark カラーテーマの定義です。 */
@@ -92,29 +100,36 @@
       background-color: #343a40;
       border-bottom: 1px solid #dee2e6;
     }
+
     body.theme-dark .navbar-brand {
       color: #c2c7d0;
     }
-    body.theme-dark .dropdown > button {
+
+    body.theme-dark .dropdown>button {
       color: #c2c7d0;
       border-color: #c2c7d0;
     }
+
     body.theme-dark .card {
       border-color: #343a40;
     }
+
     body.theme-dark .card .card-header {
       color: #c2c7d0;
       background-color: #343a40;
     }
+
     body.theme-dark .modal-dialog {
       border-color: #343a40;
     }
+
     body.theme-dark .modal-header {
       color: #c2c7d0;
       background-color: #343a40;
     }
+
     .theme-switch-dark {
-      color: #343a40!important;
+      color: #343a40 !important;
     }
 
     /* lightblue カラーテーマの定義です。 */
@@ -122,29 +137,36 @@
       background-color: #3c8dbc;
       border-bottom: 1px solid #c2c7d0;
     }
+
     body.theme-lightblue .navbar-brand {
       color: #fff;
     }
-    body.theme-lightblue .dropdown > button {
+
+    body.theme-lightblue .dropdown>button {
       color: #fff;
       border-color: #fff;
     }
+
     body.theme-lightblue .card {
       border-color: #3c8dbc;
     }
+
     body.theme-lightblue .card .card-header {
       color: #fff;
       background-color: #3c8dbc;
     }
+
     body.theme-lightblue .modal-dialog {
       border-color: #3c8dbc;
     }
+
     body.theme-lightblue .modal-header {
       color: #fff;
       background-color: #3c8dbc;
     }
+
     .theme-switch-lightblue {
-      color: #3c8dbc!important;
+      color: #3c8dbc !important;
     }
 
     /* teal カラーテーマの定義です。 */
@@ -152,31 +174,37 @@
       background-color: #20c997;
       border-bottom: 1px solid #fff;
     }
+
     body.theme-teal .navbar-brand {
       color: #fff;
     }
-    body.theme-teal .dropdown > button {
+
+    body.theme-teal .dropdown>button {
       color: #fff;
       border-color: #fff;
     }
+
     body.theme-teal .card {
       border-color: #20c997;
     }
+
     body.theme-teal .card .card-header {
       color: #fff;
       background-color: #20c997;
     }
+
     body.theme-teal .modal-dialog {
       border-color: #20c997;
     }
+
     body.theme-teal .modal-header {
       color: #fff;
       background-color: #20c997;
     }
-    .theme-switch-teal {
-      color: #20c997!important;
-    }
 
+    .theme-switch-teal {
+      color: #20c997 !important;
+    }
   </style>
 
   <title>Hello, world!</title>
@@ -197,23 +225,34 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-          <button type="button" class="btn" data-toggle="dropdown" data-display="static"
-            aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="btn" data-toggle="dropdown" data-display="static" aria-haspopup="true"
+            aria-expanded="false">
             <i class="fas fa-bars fa-fw"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="my-page.html"><i class="fas fa-tablet fa-fw"></i> マイページ</a>
+            <a class="dropdown-item" href="my-page.html">
+              <i class="fas fa-tablet fa-fw"></i> マイページ
+            </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #FF5454;"></i> アラート</a>
+            <a class="dropdown-item" href="alert.html">
+              <i class="fas fa-bell fa-fw" style="color: #FF5454;"></i> アラート
+              <span class="badge text-light badge-pill float-right" style="background-color: #FF5454;">14</span>
+            </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請</a>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請
+              <span class="badge text-light badge-pill float-right" style="background-color: #4F96D7;">2</span>
+            </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #D49E43;"></i> 承認依頼</a>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-bell fa-fw" style="color: #D49E43;"></i> 承認依頼
+              <span class="badge text-light badge-pill float-right" style="background-color: #D49E43;">4</span>
+            </a>
           </div>
         </li>
         <li class="nav-item dropdown ml-1">
-          <button type="button" class="btn" data-toggle="dropdown" data-display="static"
-            aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="btn" data-toggle="dropdown" data-display="static" aria-haspopup="true"
+            aria-expanded="false">
             <i class="fas fa-user-tie fa-fw"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-right">
@@ -225,19 +264,24 @@
               </div>
             </div>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" onclick="$('#modal-mail-config').modal('toggle');"><i class="fas fa-envelope fa-fw"></i> メールアドレス設定</a>
+            <a class="dropdown-item" onclick="$('#modal-mail-config').modal('toggle');"><i
+                class="fas fa-envelope fa-fw"></i> メールアドレス設定</a>
             <div class="dropdown-divider"></div>
             <div class="dropdown-item text-right">
-              <button type="button" class="btn btn-outline-light theme-switch-light" onclick="setColorTheme('theme-light');">
+              <button type="button" class="btn btn-outline-light theme-switch-light"
+                onclick="setColorTheme('theme-light');">
                 <i class="far fa-circle fa-fw"></i>
               </button>
-              <button type="button" class="btn btn-outline-light theme-switch-dark" onclick="setColorTheme('theme-dark');">
+              <button type="button" class="btn btn-outline-light theme-switch-dark"
+                onclick="setColorTheme('theme-dark');">
                 <i class="fas fa-circle fa-fw"></i>
               </button>
-              <button type="button" class="btn btn-outline-light theme-switch-lightblue" onclick="setColorTheme('theme-lightblue');">
+              <button type="button" class="btn btn-outline-light theme-switch-lightblue"
+                onclick="setColorTheme('theme-lightblue');">
                 <i class="fas fa-circle fa-fw"></i>
               </button>
-              <button type="button" class="btn btn-outline-light theme-switch-teal" onclick="setColorTheme('theme-teal');">
+              <button type="button" class="btn btn-outline-light theme-switch-teal"
+                onclick="setColorTheme('theme-teal');">
                 <i class="fas fa-circle fa-fw"></i>
               </button>
             </div>
@@ -408,11 +452,13 @@
       $('.btn-click-to-disable').on('click', function() {
         // NOTE: モックなので、1秒くるくるしたあと disabled 解除とします。
         $(this).addClass('disabled');
+        $(this).prop('disabled', true);
         const originalIcon = $(this).children('i')[0];
         originalIcon.remove();
         $(this).prepend('<i class="fas fa-circle-notch fa-spin"></i>');
         setTimeout(() => {
           $(this).removeClass('disabled');
+          $(this).prop('disabled', false);
           const spinIcon = $(this).children('i')[0];
           spinIcon.remove();
           $(this).prepend(originalIcon);
