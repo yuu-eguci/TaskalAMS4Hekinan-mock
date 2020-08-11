@@ -239,8 +239,8 @@
               <span class="badge text-light badge-pill float-right" style="background-color: #FF5454;">14</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請
+            <a class="dropdown-item" href="application-list.html">
+              <i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請一覧
               <span class="badge text-light badge-pill float-right" style="background-color: #4F96D7;">2</span>
             </a>
             <div class="dropdown-divider"></div>
@@ -292,6 +292,99 @@
   </nav>
 
   <main role="main" class="container">
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="my-page.html">マイページ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">申請一覧</li>
+      </ol>
+    </nav>
+
+    <div class="card mb-3">
+      <div class="card-header font-weight-bold text-center" data-toggle="collapse" data-target="#search-form-body" aria-expanded="true">
+        <i class="fas fa-filter fa-fw"></i>
+        絞り込み
+      </div>
+      <div id="search-form-body" class="collapse show card-body">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>月度(～から)</label>
+              <div class="input-group input-group-sm mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-calendar-alt fa-fw"></i>
+                  </div>
+                </div>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label>月度(～まで)</label>
+              <div class="input-group input-group-sm mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-calendar-alt fa-fw"></i>
+                  </div>
+                </div>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>申請種別</label>
+              <div class="input-group input-group-sm mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-calendar-alt fa-fw"></i>
+                  </div>
+                </div>
+                <select class="form-control">
+                  <option>すべて表示</option>
+                  <option>休暇申請</option>
+                  <option>時間外申請</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label>承認状態</label>
+              <div class="input-group input-group-sm mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-calendar-alt fa-fw"></i>
+                  </div>
+                </div>
+                <select class="form-control">
+                  <option>すべて表示</option>
+                  <option>承認待ち</option>
+                  <option>承認</option>
+                  <option>却下</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <button class="btn btn-with-icon btn-sm btn-block btn-success btn-click-to-disable">
+                <i class="fas fa-search fa-fw border-right"></i> 検索
+              </button>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+            </div>
+            <div class="form-group col-md-4">
+              <button class="btn btn-with-icon btn-sm btn-block btn-danger btn-click-to-disable">
+                <i class="fas fa-times fa-fw border-right"></i> リセット
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
     <h1>1 Hello, world!<i class="fas fa-dove"></i></h1>
     <h1>2 Hello, world!<i class="fas fa-feather-alt"></i></h1>
     <h1>3 Hello, world!<i class="fas fa-crow"></i></h1>
