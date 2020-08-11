@@ -202,13 +202,24 @@
             <i class="fas fa-bars fa-fw"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="my-page.html"><i class="fas fa-tablet fa-fw"></i> マイページ</a>
+            <a class="dropdown-item" href="my-page.html">
+              <i class="fas fa-tablet fa-fw"></i> マイページ
+            </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #FF5454;"></i> アラート</a>
+            <a class="dropdown-item" href="alert.html">
+              <i class="fas fa-bell fa-fw" style="color: #FF5454;"></i> アラート
+              <span class="badge text-light badge-pill float-right" style="background-color: #FF5454;">14</span>
+            </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請</a>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請
+              <span class="badge text-light badge-pill float-right" style="background-color: #4F96D7;">2</span>
+            </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fas fa-bell fa-fw" style="color: #D49E43;"></i> 承認依頼</a>
+            <a class="dropdown-item" href="#">
+              <i class="fas fa-bell fa-fw" style="color: #D49E43;"></i> 承認依頼
+              <span class="badge text-light badge-pill float-right" style="background-color: #D49E43;">4</span>
+            </a>
           </div>
         </li>
         <li class="nav-item dropdown ml-1">
@@ -248,31 +259,97 @@
   </nav>
 
   <main role="main" class="container">
-    <h1>1 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>2 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>3 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>4 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>5 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>6 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>7 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>8 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>9 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>10 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>11 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>12 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>13 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>14 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>15 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>16 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>17 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>18 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>19 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>20 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>21 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>22 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>23 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>24 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>25 Hello, world!<i class="fas fa-feather"></i></h1>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="my-page.html">マイページ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">アラート</li>
+      </ol>
+    </nav>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card text-center mb-3">
+          <div class="card-header font-weight-bold">
+            打刻漏れ
+          </div>
+          <div class="card-body p-1">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="card border-warning mb-1">
+                  <div class="card-body p-3">
+                    <p class="card-text"><i class="fas fa-exclamation fa-fw"></i> 退勤打刻漏れがあります。</p>
+                    <p class="card-text text-muted">2020-08-11</p>
+                    <div class="btn-group btn-block">
+                      <button class="btn btn-with-icon btn-sm btn-success btn-click-to-disable">
+                        <i class="fas fa-check fa-fw border-right"></i> 確認
+                      </button>
+                      <button class="btn btn-with-icon btn-sm btn-secondary btn-click-to-disable" data-toggle="collapse"
+                        data-target="#alert-detail-1" aria-expanded="false">
+                        <i class="fas fa-search-plus fa-fw border-right"></i> 詳細
+                      </button>
+                    </div>
+                    <div id="alert-detail-1" class="collapse card border-secondary mt-3">
+                      <div class="card-body p-1"><small>いついつ何日に打刻漏れがあります。</small></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card border-warning mb-1">
+                  <div class="card-body p-3">
+                    <p class="card-text"><i class="fas fa-exclamation fa-fw"></i> 退勤打刻漏れがあります。</p>
+                    <p class="card-text text-muted">2020-08-11</p>
+                    <div class="btn-group btn-block">
+                      <button class="btn btn-with-icon btn-sm btn-success btn-click-to-disable">
+                        <i class="fas fa-check fa-fw border-right"></i> 確認
+                      </button>
+                      <button class="btn btn-with-icon btn-sm btn-secondary btn-click-to-disable" data-toggle="collapse"
+                        data-target="#alert-detail-2" aria-expanded="false">
+                        <i class="fas fa-search-plus fa-fw border-right"></i> 詳細
+                      </button>
+                    </div>
+                    <div id="alert-detail-2" class="collapse card border-secondary mt-3">
+                      <div class="card-body p-1"><small>いついつ何日に打刻漏れがあります。</small></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card border-warning mb-1">
+                  <div class="card-body p-3">
+                    <p class="card-text"><i class="fas fa-exclamation fa-fw"></i> 退勤打刻漏れがあります。</p>
+                    <p class="card-text text-muted">2020-08-11</p>
+                    <div class="btn-group btn-block">
+                      <button class="btn btn-with-icon btn-sm btn-success btn-click-to-disable">
+                        <i class="fas fa-check fa-fw border-right"></i> 確認
+                      </button>
+                      <button class="btn btn-with-icon btn-sm btn-secondary btn-click-to-disable" data-toggle="collapse"
+                        data-target="#alert-detail-3" aria-expanded="false">
+                        <i class="fas fa-search-plus fa-fw border-right"></i> 詳細
+                      </button>
+                    </div>
+                    <div id="alert-detail-3" class="collapse card border-secondary mt-3">
+                      <div class="card-body p-1"><small>いついつ何日に打刻漏れがあります。</small></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card text-center mb-3">
+          <div class="card-header font-weight-bold">
+            時間外・年休消化
+          </div>
+          <div class="card-body p-1">
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
       <div class="row">
@@ -408,11 +485,13 @@
       $('.btn-click-to-disable').on('click', function() {
         // NOTE: モックなので、1秒くるくるしたあと disabled 解除とします。
         $(this).addClass('disabled');
+        $(this).prop('disabled', true);
         const originalIcon = $(this).children('i')[0];
         originalIcon.remove();
         $(this).prepend('<i class="fas fa-circle-notch fa-spin"></i>');
         setTimeout(() => {
           $(this).removeClass('disabled');
+          $(this).prop('disabled', false);
           const spinIcon = $(this).children('i')[0];
           spinIcon.remove();
           $(this).prepend(originalIcon);
