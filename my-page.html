@@ -434,7 +434,9 @@
       </div>
     </footer>
 
-    <div id="modal-mail-config" class="modal fade" tabindex="-1">
+    <!-- NOTE: スマホで操作する際、 backdrop = クローズ だと誤クローズになるかと重い static にしています。 -->
+    <!-- TODO: 欄を増やしたり取り除いたりする処理は未実装。 -->
+    <div id="modal-mail-config" class="modal fade" data-backdrop="static" tabindex="-1">
       <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
@@ -444,11 +446,51 @@
             </button>
           </div>
           <div class="modal-body">
-            <p>Modal body text goes here.</p>
+            <form id="mail-addresses">
+              <div class="form-group">
+                <label>メールアドレス</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-danger" type="button">
+                      <i class="fas fa-times fa-fw"></i>
+                    </button>
+                  </div>
+                  <input type="email" class="form-control" aria-describedby="emailHelp">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-danger" type="button">
+                      <i class="fas fa-times fa-fw"></i>
+                    </button>
+                  </div>
+                  <input type="email" class="form-control" aria-describedby="emailHelp">
+                </div>
+              </div>
+            </form>
+            <div class="text-right">
+              <button class="btn btn-outline-success" type="button">
+                <i class="fas fa-plus fa-fw"></i>
+              </button>
+            </div>
+            <div class="card mt-3">
+              <div class="card-body">
+                <p class="card-text">メールアドレスを入力したら[テスト送信]ボタンをクリックして、メールが受信できることを確認してください。</p>
+                <p class="card-text">迷惑メール設定により受信できない場合は、メールアドレス「bkanrika@city.hekinan.lg.jp」からのメールを受信できるよう設定してください。</p>
+                <p class="card-text">受信設定しても受信できない場合は、管理課へお問い合わせください。</p>
+                <p class="card-text">迷惑メールの受信フォルダに振り分けられてしまう場合は、ご使用のメールサービスの設定方法に従い、迷惑メールとならないように設定してください。</p>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button class="btn btn-with-icon btn-sm btn-block btn-warning btn-click-to-disable">
+              <i class="fas fa-paper-plane fa-fw border-right"></i> テスト送信
+            </button>
+            <button class="btn btn-with-icon btn-sm btn-block btn-success btn-click-to-disable">
+              <i class="fas fa-save fa-fw border-right"></i> 保存
+            </button>
+            <button class="btn btn-with-icon btn-sm btn-block btn-secondary btn-click-to-disable" data-dismiss="modal">
+              <i class="fas fa-times fa-fw border-right"></i> キャンセル
+            </button>
           </div>
         </div>
       </div>
