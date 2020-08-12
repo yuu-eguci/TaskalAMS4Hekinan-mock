@@ -319,11 +319,10 @@
     </nav>
 
     <div class="card mb-3">
-      <div class="card-header p-1">
-        <a class="btn btn-light btn-block font-weight-bold text-center" data-toggle="collapse" data-target="#search-form-body" aria-expanded="true">
-          <i class="fas fa-filter fa-fw"></i>
-          絞り込み
-        </a>
+      <div class="card-header font-weight-bold text-center" data-toggle="collapse" data-target="#search-form-body"
+        aria-expanded="true">
+        <i class="fas fa-filter fa-fw"></i>
+        絞り込み
       </div>
       <div id="search-form-body" class="collapse show card-body">
         <form>
@@ -386,15 +385,15 @@
           </div>
           <div class="form-row">
             <div class="col-md-12">
-              <button class="btn btn-with-icon btn-sm btn-block btn-success btn-click-to-disable">
+              <button class="btn btn-with-icon btn-sm btn-block btn-primary btn-click-to-disable">
                 <i class="fas fa-search fa-fw border-right"></i> 検索
               </button>
             </div>
           </div>
           <div class="form-row mt-3">
-            <div class="col-md-8">
+            <div class="col-md-9">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <button class="btn btn-with-icon btn-sm btn-block btn-danger btn-click-to-disable">
                 <i class="fas fa-times fa-fw border-right"></i> リセット
               </button>
@@ -404,32 +403,177 @@
       </div>
     </div>
 
+    <div class="card">
+      <div class="card-body p-1">
+        <a class="btn btn-with-icon btn-sm btn-block btn-success btn-click-to-disable"
+          onclick="$('#modal-new-application').modal('toggle');">
+          <i class="fas fa-plus fa-fw border-right"></i> 新規申請を作成する
+        </a>
+        <div class="card-text mt-3">
+          6 件
+        </div>
 
-    <h1>1 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>2 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>3 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>4 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>5 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>6 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>7 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>8 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>9 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>10 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>11 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>12 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>13 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>14 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>15 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>16 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>17 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>18 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>19 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>20 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>21 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>22 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>23 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>24 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>25 Hello, world!<i class="fas fa-feather"></i></h1>
+        <div class="row mt-3">
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>有給申請</td></tr>
+                    <tr><th class="bg-light">申請日</th><td>2020-08-12</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者<br />(承認状態)</th><td>佐藤<br />(未承認)</td></tr>
+                  </tbody>
+                </table>
+                <div class="btn-group btn-block mt-1">
+                  <button class="btn btn-with-icon btn-sm btn-primary btn-click-to-disable">
+                    <i class="fas fa-check fa-fw border-right"></i> -
+                  </button>
+                  <button class="btn btn-with-icon btn-sm btn-secondary" data-toggle="collapse" data-target="#alert-detail-6"
+                    aria-expanded="false">
+                    <i class="fas fa-search-plus fa-fw border-right"></i> -
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>有給申請</td></tr>
+                    <tr><th class="bg-light">申請日</th><td>2020-08-12</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者<br />(承認状態)</th><td>佐藤<br />(未承認)</td></tr>
+                  </tbody>
+                </table>
+                <div class="btn-group btn-block mt-1">
+                  <button class="btn btn-with-icon btn-sm btn-primary btn-click-to-disable">
+                    <i class="fas fa-check fa-fw border-right"></i> -
+                  </button>
+                  <button class="btn btn-with-icon btn-sm btn-secondary" data-toggle="collapse" data-target="#alert-detail-6"
+                    aria-expanded="false">
+                    <i class="fas fa-search-plus fa-fw border-right"></i> -
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>有給申請</td></tr>
+                    <tr><th class="bg-light">申請日</th><td>2020-08-12</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者<br />(承認状態)</th><td>佐藤<br />(未承認)</td></tr>
+                  </tbody>
+                </table>
+                <div class="btn-group btn-block mt-1">
+                  <button class="btn btn-with-icon btn-sm btn-primary btn-click-to-disable">
+                    <i class="fas fa-check fa-fw border-right"></i> -
+                  </button>
+                  <button class="btn btn-with-icon btn-sm btn-secondary" data-toggle="collapse" data-target="#alert-detail-6"
+                    aria-expanded="false">
+                    <i class="fas fa-search-plus fa-fw border-right"></i> -
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>有給申請</td></tr>
+                    <tr><th class="bg-light">申請日</th><td>2020-08-12</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者<br />(承認状態)</th><td>佐藤<br />(未承認)</td></tr>
+                  </tbody>
+                </table>
+                <div class="btn-group btn-block mt-1">
+                  <button class="btn btn-with-icon btn-sm btn-primary btn-click-to-disable">
+                    <i class="fas fa-check fa-fw border-right"></i> -
+                  </button>
+                  <button class="btn btn-with-icon btn-sm btn-secondary" data-toggle="collapse" data-target="#alert-detail-6"
+                    aria-expanded="false">
+                    <i class="fas fa-search-plus fa-fw border-right"></i> -
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>有給申請</td></tr>
+                    <tr><th class="bg-light">申請日</th><td>2020-08-12</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者<br />(承認状態)</th><td>佐藤<br />(未承認)</td></tr>
+                  </tbody>
+                </table>
+                <div class="btn-group btn-block mt-1">
+                  <button class="btn btn-with-icon btn-sm btn-primary btn-click-to-disable">
+                    <i class="fas fa-check fa-fw border-right"></i> -
+                  </button>
+                  <button class="btn btn-with-icon btn-sm btn-secondary" data-toggle="collapse" data-target="#alert-detail-6"
+                    aria-expanded="false">
+                    <i class="fas fa-search-plus fa-fw border-right"></i> -
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>有給申請</td></tr>
+                    <tr><th class="bg-light">申請日</th><td>2020-08-12</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者<br />(承認状態)</th><td>佐藤<br />(未承認)</td></tr>
+                  </tbody>
+                </table>
+                <div class="btn-group btn-block mt-1">
+                  <button class="btn btn-with-icon btn-sm btn-primary btn-click-to-disable">
+                    <i class="fas fa-check fa-fw border-right"></i> -
+                  </button>
+                  <button class="btn btn-with-icon btn-sm btn-secondary" data-toggle="collapse" data-target="#alert-detail-6"
+                    aria-expanded="false">
+                    <i class="fas fa-search-plus fa-fw border-right"></i> -
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
       <div class="row">
