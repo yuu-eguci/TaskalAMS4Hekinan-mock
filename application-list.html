@@ -13,6 +13,12 @@
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 
+  <!-- bootstrap-datepicker -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+    crossorigin="anonymous" />
+
   <style>
     /*
       幅が狭いとき dropdown-menu を幅いっぱいにするスタイルです。
@@ -26,13 +32,14 @@
       }
 
       /* .w-100 付与と同効果です。 */
-      div.dropdown-menu {
+      nav div.dropdown-menu {
         width: 99% !important;
       }
     }
 
     /* 平時の幅です。 */
-    div.dropdown-menu {
+    /* NOTE: bootstrap-datepicker にも dropdown-menu が使われるため、 nav を指定しています。 */
+    nav div.dropdown-menu {
       width: 20rem;
     }
 
@@ -74,6 +81,17 @@
 
     .btn-rounded.btn-sm {
       border-radius: 15px;
+    }
+
+    /* datepicker の装飾を行うスタイルです。 */
+    .datepicker-days th.dow:first-child,
+    .datepicker-days td:first-child {
+      color: #f00;
+    }
+
+    .datepicker-days th.dow:last-child,
+    .datepicker-days td:last-child {
+      color: #00f;
     }
 
     /* light カラーテーマの定義です。 */
@@ -301,9 +319,11 @@
     </nav>
 
     <div class="card mb-3">
-      <div class="card-header font-weight-bold text-center" data-toggle="collapse" data-target="#search-form-body" aria-expanded="true">
-        <i class="fas fa-filter fa-fw"></i>
-        絞り込み
+      <div class="card-header p-1">
+        <a class="btn btn-light btn-block font-weight-bold text-center" data-toggle="collapse" data-target="#search-form-body" aria-expanded="true">
+          <i class="fas fa-filter fa-fw"></i>
+          絞り込み
+        </a>
       </div>
       <div id="search-form-body" class="collapse show card-body">
         <form>
@@ -316,7 +336,7 @@
                     <i class="fas fa-calendar-alt fa-fw"></i>
                   </div>
                 </div>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control my-datepicker">
               </div>
             </div>
             <div class="form-group col-md-4">
@@ -327,7 +347,7 @@
                     <i class="fas fa-calendar-alt fa-fw"></i>
                   </div>
                 </div>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control my-datepicker">
               </div>
             </div>
           </div>
@@ -365,16 +385,16 @@
             </div>
           </div>
           <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="col-md-12">
               <button class="btn btn-with-icon btn-sm btn-block btn-success btn-click-to-disable">
                 <i class="fas fa-search fa-fw border-right"></i> 検索
               </button>
             </div>
           </div>
-          <div class="form-row">
-            <div class="form-group col-md-8">
+          <div class="form-row mt-3">
+            <div class="col-md-8">
             </div>
-            <div class="form-group col-md-4">
+            <div class="col-md-4">
               <button class="btn btn-with-icon btn-sm btn-block btn-danger btn-click-to-disable">
                 <i class="fas fa-times fa-fw border-right"></i> リセット
               </button>
@@ -518,8 +538,18 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
     integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
     crossorigin="anonymous"></script>
+
   <!-- js-cookie -->
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+  <!-- bootstrap-datepicker -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+    integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ja.min.js"
+    integrity="sha512-zI0UB5DgB1Bvvrob7MyykjmbEI4e6Qkf5Aq+VJow4nwRZrL2hYKGqRf6zgH3oBQUpxPLcF2IH5PlKrW6O3y3Qw=="
+    crossorigin="anonymous"></script>
+
   <script>
     // body 要素にカラーテーマのクラスをセットします。
     // NOTE: file:/// 環境ではテスト不可。
@@ -556,6 +586,16 @@
           spinIcon.remove();
           $(this).prepend(originalIcon);
         }, 1000);
+      });
+
+      // datepicker 初期化です。
+      $('.my-datepicker').datepicker({
+        format: 'yyyy-mm',
+        language: 'ja',
+        autoclose: true,
+        todayHighlight: true,
+        minViewMode: 1,  // これで月選択になります。
+        orientation: 'bottom auto',  // NOTE: top に表示されると、 nav に隠される可能性があるため bottom にしています。
       });
     });
   </script>
