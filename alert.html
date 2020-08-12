@@ -13,6 +13,12 @@
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 
+  <!-- bootstrap-datepicker -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+    crossorigin="anonymous" />
+
   <style>
     /*
       幅が狭いとき dropdown-menu を幅いっぱいにするスタイルです。
@@ -26,13 +32,14 @@
       }
 
       /* .w-100 付与と同効果です。 */
-      div.dropdown-menu {
+      nav div.dropdown-menu {
         width: 99% !important;
       }
     }
 
     /* 平時の幅です。 */
-    div.dropdown-menu {
+    /* NOTE: bootstrap-datepicker にも dropdown-menu が使われるため、 nav を指定しています。 */
+    nav div.dropdown-menu {
       width: 20rem;
     }
 
@@ -46,6 +53,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .btn-with-icon :first-child {
       position: absolute;
       left: 0;
@@ -56,19 +64,34 @@
       font-size: 1.6em;
       text-align: center;
     }
+
     .btn-with-icon.btn-sm {
       padding-left: 38px;
     }
+
     .btn-with-icon.btn-sm :first-child {
-      line-height:28px;
-      width:28px;
-      font-size:1.4em;
+      line-height: 28px;
+      width: 28px;
+      font-size: 1.4em;
     }
+
     .btn-rounded {
       border-radius: 17px;
     }
+
     .btn-rounded.btn-sm {
       border-radius: 15px;
+    }
+
+    /* datepicker の装飾を行うスタイルです。 */
+    .datepicker-days th.dow:first-child,
+    .datepicker-days td:first-child {
+      color: #f00;
+    }
+
+    .datepicker-days th.dow:last-child,
+    .datepicker-days td:last-child {
+      color: #00f;
     }
 
     /* light カラーテーマの定義です。 */
@@ -76,15 +99,18 @@
       background-color: #fff;
       border-bottom: 1px solid #dee2e6;
     }
+
     body.theme-light .navbar-brand {
       color: #343a40;
     }
-    body.theme-light .dropdown > button {
+
+    body.theme-light .dropdown>button {
       color: #343a40;
       border-color: #343a40;
     }
+
     .theme-switch-light {
-      color: #343a40!important;
+      color: #343a40 !important;
     }
 
     /* dark カラーテーマの定義です。 */
@@ -92,29 +118,36 @@
       background-color: #343a40;
       border-bottom: 1px solid #dee2e6;
     }
+
     body.theme-dark .navbar-brand {
       color: #c2c7d0;
     }
-    body.theme-dark .dropdown > button {
+
+    body.theme-dark .dropdown>button {
       color: #c2c7d0;
       border-color: #c2c7d0;
     }
+
     body.theme-dark .card {
       border-color: #343a40;
     }
+
     body.theme-dark .card .card-header {
       color: #c2c7d0;
       background-color: #343a40;
     }
+
     body.theme-dark .modal-dialog {
       border-color: #343a40;
     }
+
     body.theme-dark .modal-header {
       color: #c2c7d0;
       background-color: #343a40;
     }
+
     .theme-switch-dark {
-      color: #343a40!important;
+      color: #343a40 !important;
     }
 
     /* lightblue カラーテーマの定義です。 */
@@ -122,29 +155,36 @@
       background-color: #3c8dbc;
       border-bottom: 1px solid #c2c7d0;
     }
+
     body.theme-lightblue .navbar-brand {
       color: #fff;
     }
-    body.theme-lightblue .dropdown > button {
+
+    body.theme-lightblue .dropdown>button {
       color: #fff;
       border-color: #fff;
     }
+
     body.theme-lightblue .card {
       border-color: #3c8dbc;
     }
+
     body.theme-lightblue .card .card-header {
       color: #fff;
       background-color: #3c8dbc;
     }
+
     body.theme-lightblue .modal-dialog {
       border-color: #3c8dbc;
     }
+
     body.theme-lightblue .modal-header {
       color: #fff;
       background-color: #3c8dbc;
     }
+
     .theme-switch-lightblue {
-      color: #3c8dbc!important;
+      color: #3c8dbc !important;
     }
 
     /* teal カラーテーマの定義です。 */
@@ -152,31 +192,37 @@
       background-color: #20c997;
       border-bottom: 1px solid #fff;
     }
+
     body.theme-teal .navbar-brand {
       color: #fff;
     }
-    body.theme-teal .dropdown > button {
+
+    body.theme-teal .dropdown>button {
       color: #fff;
       border-color: #fff;
     }
+
     body.theme-teal .card {
       border-color: #20c997;
     }
+
     body.theme-teal .card .card-header {
       color: #fff;
       background-color: #20c997;
     }
+
     body.theme-teal .modal-dialog {
       border-color: #20c997;
     }
+
     body.theme-teal .modal-header {
       color: #fff;
       background-color: #20c997;
     }
-    .theme-switch-teal {
-      color: #20c997!important;
-    }
 
+    .theme-switch-teal {
+      color: #20c997 !important;
+    }
   </style>
 
   <title>Hello, world!</title>
@@ -197,8 +243,8 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-          <button type="button" class="btn" data-toggle="dropdown" data-display="static"
-            aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="btn" data-toggle="dropdown" data-display="static" aria-haspopup="true"
+            aria-expanded="false">
             <i class="fas fa-bars fa-fw"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-right">
@@ -211,8 +257,8 @@
               <span class="badge text-light badge-pill float-right" style="background-color: #FF5454;">14</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">
-              <i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請
+            <a class="dropdown-item" href="application-list.html">
+              <i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請一覧
               <span class="badge text-light badge-pill float-right" style="background-color: #4F96D7;">2</span>
             </a>
             <div class="dropdown-divider"></div>
@@ -223,8 +269,8 @@
           </div>
         </li>
         <li class="nav-item dropdown ml-1">
-          <button type="button" class="btn" data-toggle="dropdown" data-display="static"
-            aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="btn" data-toggle="dropdown" data-display="static" aria-haspopup="true"
+            aria-expanded="false">
             <i class="fas fa-user-tie fa-fw"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-right">
@@ -236,19 +282,24 @@
               </div>
             </div>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" onclick="$('#modal-mail-config').modal('toggle');"><i class="fas fa-envelope fa-fw"></i> メールアドレス設定</a>
+            <a class="dropdown-item" onclick="$('#modal-mail-config').modal('toggle');"><i
+                class="fas fa-envelope fa-fw"></i> メールアドレス設定</a>
             <div class="dropdown-divider"></div>
             <div class="dropdown-item text-right">
-              <button type="button" class="btn btn-outline-light theme-switch-light" onclick="setColorTheme('theme-light');">
+              <button type="button" class="btn btn-outline-light theme-switch-light"
+                onclick="setColorTheme('theme-light');">
                 <i class="far fa-circle fa-fw"></i>
               </button>
-              <button type="button" class="btn btn-outline-light theme-switch-dark" onclick="setColorTheme('theme-dark');">
+              <button type="button" class="btn btn-outline-light theme-switch-dark"
+                onclick="setColorTheme('theme-dark');">
                 <i class="fas fa-circle fa-fw"></i>
               </button>
-              <button type="button" class="btn btn-outline-light theme-switch-lightblue" onclick="setColorTheme('theme-lightblue');">
+              <button type="button" class="btn btn-outline-light theme-switch-lightblue"
+                onclick="setColorTheme('theme-lightblue');">
                 <i class="fas fa-circle fa-fw"></i>
               </button>
-              <button type="button" class="btn btn-outline-light theme-switch-teal" onclick="setColorTheme('theme-teal');">
+              <button type="button" class="btn btn-outline-light theme-switch-teal"
+                onclick="setColorTheme('theme-teal');">
                 <i class="fas fa-circle fa-fw"></i>
               </button>
             </div>
@@ -520,8 +571,18 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
     integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
     crossorigin="anonymous"></script>
+
   <!-- js-cookie -->
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+  <!-- bootstrap-datepicker -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+    integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ja.min.js"
+    integrity="sha512-zI0UB5DgB1Bvvrob7MyykjmbEI4e6Qkf5Aq+VJow4nwRZrL2hYKGqRf6zgH3oBQUpxPLcF2IH5PlKrW6O3y3Qw=="
+    crossorigin="anonymous"></script>
+
   <script>
     // body 要素にカラーテーマのクラスをセットします。
     // NOTE: file:/// 環境ではテスト不可。
@@ -558,6 +619,16 @@
           spinIcon.remove();
           $(this).prepend(originalIcon);
         }, 1000);
+      });
+
+      // datepicker 初期化です。
+      $('.my-datepicker').datepicker({
+        format: 'yyyy-mm',
+        language: 'ja',
+        autoclose: true,
+        todayHighlight: true,
+        minViewMode: 1,  // これで月選択になります。
+        orientation: 'bottom auto',  // NOTE: top に表示されると、 nav に隠される可能性があるため bottom にしています。
       });
     });
   </script>
