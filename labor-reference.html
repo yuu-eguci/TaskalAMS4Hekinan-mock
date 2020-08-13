@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+    integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+
+  <!-- bootstrap-datepicker -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+    crossorigin="anonymous" />
+
+  <style>
+    /*
+      幅が狭いとき dropdown-menu を幅いっぱいにするスタイルです。
+      NOTE: 576px は bootstrap の sm の幅。
+    */
+    @media (max-width: 576px) {
+
+      /* .position-static 付与と同効果です。 */
+      li.dropdown {
+        position: static !important;
+      }
+
+      /* .w-100 付与と同効果です。 */
+      nav div.dropdown-menu {
+        width: 99% !important;
+      }
+    }
+
+    /* 平時の幅です。 */
+    /* NOTE: bootstrap-datepicker にも dropdown-menu が使われるため、 nav を指定しています。 */
+    nav div.dropdown-menu {
+      width: 20rem;
+    }
+
+    /*
+      アイコン付ボタンデザインのスタイルです。
+     */
+    .btn-with-icon {
+      position: relative;
+      padding-left: 44px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-with-icon :first-child {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 32px;
+      line-height: 34px;
+      font-size: 1.6em;
+      text-align: center;
+    }
+
+    .btn-with-icon.btn-sm {
+      padding-left: 38px;
+    }
+
+    .btn-with-icon.btn-sm :first-child {
+      line-height: 28px;
+      width: 28px;
+      font-size: 1.4em;
+    }
+
+    .btn-rounded {
+      border-radius: 17px;
+    }
+
+    .btn-rounded.btn-sm {
+      border-radius: 15px;
+    }
+
+    /* datepicker の装飾を行うスタイルです。 */
+    .datepicker-days th.dow:first-child,
+    .datepicker-days td:first-child {
+      color: #f00;
+    }
+
+    .datepicker-days th.dow:last-child,
+    .datepicker-days td:last-child {
+      color: #00f;
+    }
+
+    /* light カラーテーマの定義です。 */
+    body.theme-light .navbar {
+      background-color: #fff;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    body.theme-light .navbar-brand {
+      color: #343a40;
+    }
+
+    body.theme-light .dropdown>button {
+      color: #343a40;
+      border-color: #343a40;
+    }
+
+    .theme-switch-light {
+      color: #343a40 !important;
+    }
+
+    /* dark カラーテーマの定義です。 */
+    body.theme-dark .navbar {
+      background-color: #343a40;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    body.theme-dark .navbar-brand {
+      color: #c2c7d0;
+    }
+
+    body.theme-dark .dropdown>button {
+      color: #c2c7d0;
+      border-color: #c2c7d0;
+    }
+
+    body.theme-dark .card {
+      border-color: #343a40;
+    }
+
+    body.theme-dark .card .card-header {
+      color: #c2c7d0;
+      background-color: #343a40;
+    }
+
+    body.theme-dark .modal-dialog {
+      border-color: #343a40;
+    }
+
+    body.theme-dark .modal-header {
+      color: #c2c7d0;
+      background-color: #343a40;
+    }
+
+    .theme-switch-dark {
+      color: #343a40 !important;
+    }
+
+    /* lightblue カラーテーマの定義です。 */
+    body.theme-lightblue .navbar {
+      background-color: #3c8dbc;
+      border-bottom: 1px solid #c2c7d0;
+    }
+
+    body.theme-lightblue .navbar-brand {
+      color: #fff;
+    }
+
+    body.theme-lightblue .dropdown>button {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    body.theme-lightblue .card {
+      border-color: #3c8dbc;
+    }
+
+    body.theme-lightblue .card .card-header {
+      color: #fff;
+      background-color: #3c8dbc;
+    }
+
+    body.theme-lightblue .modal-dialog {
+      border-color: #3c8dbc;
+    }
+
+    body.theme-lightblue .modal-header {
+      color: #fff;
+      background-color: #3c8dbc;
+    }
+
+    .theme-switch-lightblue {
+      color: #3c8dbc !important;
+    }
+
+    /* teal カラーテーマの定義です。 */
+    body.theme-teal .navbar {
+      background-color: #20c997;
+      border-bottom: 1px solid #fff;
+    }
+
+    body.theme-teal .navbar-brand {
+      color: #fff;
+    }
+
+    body.theme-teal .dropdown>button {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    body.theme-teal .card {
+      border-color: #20c997;
+    }
+
+    body.theme-teal .card .card-header {
+      color: #fff;
+      background-color: #20c997;
+    }
+
+    body.theme-teal .modal-dialog {
+      border-color: #20c997;
+    }
+
+    body.theme-teal .modal-header {
+      color: #fff;
+      background-color: #20c997;
+    }
+
+    .theme-switch-teal {
+      color: #20c997 !important;
+    }
+  </style>
+
+  <title>Hello, world!</title>
+</head>
+
+<body id="body" class="theme-light" style="padding-top: 4.5rem;">
+  <!-- navbar-expand によりつねに collapse のメニューを開きます。 -->
+  <nav class="navbar fixed-top navbar-expand">
+    <a class="navbar-brand" href="#">
+      <img src="icon50x50.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+      <small>Taskal 勤怠管理</small>
+    </a>
+
+    <!--
+      NOTE: li.dropdown position-static と div.dropdown-menu w-100 で dropdown-menu が幅いっぱいになります。
+      NOTE: しかし常時幅いっぱいにしたいわけではない。スマホサイズでのみいっぱいにしたいのだ。
+    -->
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <button type="button" class="btn" data-toggle="dropdown" data-display="static" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-bars fa-fw"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="my-page.html">
+              <i class="fas fa-tablet fa-fw"></i> マイページ
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="alert.html">
+              <i class="fas fa-bell fa-fw" style="color: #FF5454;"></i> アラート
+              <span class="badge text-light badge-pill float-right" style="background-color: #FF5454;">14</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="application-list.html">
+              <i class="fas fa-bell fa-fw" style="color: #4F96D7;"></i> 申請一覧
+              <span class="badge text-light badge-pill float-right" style="background-color: #4F96D7;">2</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="approval-list.html">
+              <i class="fas fa-bell fa-fw" style="color: #D49E43;"></i> 承認依頼
+              <span class="badge text-light badge-pill float-right" style="background-color: #D49E43;">4</span>
+            </a>
+          </div>
+        </li>
+        <li class="nav-item dropdown ml-1">
+          <button type="button" class="btn" data-toggle="dropdown" data-display="static" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-user-tie fa-fw"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="card text-center border-0">
+              <div class="card-body">
+                <div class="card-text"><i class="fas fa-user-tie fa-fw"></i></div>
+                <div class="card-text">榊原よし子</div>
+                <div class="card-text text-muted"><small>yoshiko-sakakibara@example.com</small></div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" onclick="$('#modal-mail-config').modal('toggle');"><i
+                class="fas fa-envelope fa-fw"></i> メールアドレス設定</a>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item text-right">
+              <button type="button" class="btn btn-outline-light theme-switch-light"
+                onclick="setColorTheme('theme-light');">
+                <i class="far fa-circle fa-fw"></i>
+              </button>
+              <button type="button" class="btn btn-outline-light theme-switch-dark"
+                onclick="setColorTheme('theme-dark');">
+                <i class="fas fa-circle fa-fw"></i>
+              </button>
+              <button type="button" class="btn btn-outline-light theme-switch-lightblue"
+                onclick="setColorTheme('theme-lightblue');">
+                <i class="fas fa-circle fa-fw"></i>
+              </button>
+              <button type="button" class="btn btn-outline-light theme-switch-teal"
+                onclick="setColorTheme('theme-teal');">
+                <i class="fas fa-circle fa-fw"></i>
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main role="main" class="container">
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="my-page.html">マイページ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">勤怠編集</li>
+      </ol>
+    </nav>
+
+    <h1>1 Hello, world!<i class="fas fa-dove"></i></h1>
+    <h1>2 Hello, world!<i class="fas fa-feather-alt"></i></h1>
+    <h1>3 Hello, world!<i class="fas fa-crow"></i></h1>
+    <h1>4 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
+    <h1>5 Hello, world!<i class="fas fa-feather"></i></h1>
+    <h1>6 Hello, world!<i class="fas fa-dove"></i></h1>
+    <h1>7 Hello, world!<i class="fas fa-feather-alt"></i></h1>
+    <h1>8 Hello, world!<i class="fas fa-crow"></i></h1>
+    <h1>9 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
+    <h1>10 Hello, world!<i class="fas fa-feather"></i></h1>
+    <h1>11 Hello, world!<i class="fas fa-dove"></i></h1>
+    <h1>12 Hello, world!<i class="fas fa-feather-alt"></i></h1>
+    <h1>13 Hello, world!<i class="fas fa-crow"></i></h1>
+    <h1>14 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
+    <h1>15 Hello, world!<i class="fas fa-feather"></i></h1>
+    <h1>16 Hello, world!<i class="fas fa-dove"></i></h1>
+    <h1>17 Hello, world!<i class="fas fa-feather-alt"></i></h1>
+    <h1>18 Hello, world!<i class="fas fa-crow"></i></h1>
+    <h1>19 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
+    <h1>20 Hello, world!<i class="fas fa-feather"></i></h1>
+    <h1>21 Hello, world!<i class="fas fa-dove"></i></h1>
+    <h1>22 Hello, world!<i class="fas fa-feather-alt"></i></h1>
+    <h1>23 Hello, world!<i class="fas fa-crow"></i></h1>
+    <h1>24 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
+    <h1>25 Hello, world!<i class="fas fa-feather"></i></h1>
+
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+      <div class="row">
+        <div class="col-12">
+          <img class="mb-2" src="icon50x50.png" alt="" width="24" height="24">
+          Taskal 勤怠管理
+          <small class="d-block mb-3 text-muted">© 2019-2020</small>
+        </div>
+      </div>
+    </footer>
+
+    <div id="modal-new-application" class="modal fade" data-backdrop="static" tabindex="-1">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">新規申請</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            マイページ、申請一覧や勤怠編集の「新規申請」から遷移する場所です。<br />
+            画面のレイアウトや入力項目は未決定です。
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-with-icon btn-sm btn-block btn-secondary btn-click-to-disable" data-dismiss="modal">
+              <i class="fas fa-times fa-fw border-right"></i> キャンセル
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTE: スマホで操作する際、 backdrop = クローズ だと誤クローズになるかと重い static にしています。 -->
+    <!-- TODO: 欄を増やしたり取り除いたりする処理は未実装。 -->
+    <div id="modal-mail-config" class="modal fade" data-backdrop="static" tabindex="-1">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">メールアドレス設定</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="mail-addresses">
+              <div class="form-group">
+                <label>メールアドレス</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-danger" type="button">
+                      <i class="fas fa-times fa-fw"></i>
+                    </button>
+                  </div>
+                  <input type="email" class="form-control" aria-describedby="emailHelp">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-danger" type="button">
+                      <i class="fas fa-times fa-fw"></i>
+                    </button>
+                  </div>
+                  <input type="email" class="form-control" aria-describedby="emailHelp">
+                </div>
+              </div>
+            </form>
+            <div class="text-right">
+              <button class="btn btn-outline-success" type="button">
+                <i class="fas fa-plus fa-fw"></i>
+              </button>
+            </div>
+            <div class="card mt-3">
+              <div class="card-body">
+                <p class="card-text">メールアドレスを入力したら[テスト送信]ボタンをクリックして、メールが受信できることを確認してください。</p>
+                <p class="card-text">迷惑メール設定により受信できない場合は、メールアドレス「bkanrika@city.hekinan.lg.jp」からのメールを受信できるよう設定してください。</p>
+                <p class="card-text">受信設定しても受信できない場合は、管理課へお問い合わせください。</p>
+                <p class="card-text">迷惑メールの受信フォルダに振り分けられてしまう場合は、ご使用のメールサービスの設定方法に従い、迷惑メールとならないように設定してください。</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-with-icon btn-sm btn-block btn-warning btn-click-to-disable">
+              <i class="fas fa-paper-plane fa-fw border-right"></i> テスト送信
+            </button>
+            <button class="btn btn-with-icon btn-sm btn-block btn-success btn-click-to-disable">
+              <i class="fas fa-save fa-fw border-right"></i> 保存
+            </button>
+            <button class="btn btn-with-icon btn-sm btn-block btn-secondary btn-click-to-disable" data-dismiss="modal">
+              <i class="fas fa-times fa-fw border-right"></i> キャンセル
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"
+    integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"
+    crossorigin="anonymous"></script>
+
+  <!-- js-cookie -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+  <!-- bootstrap-datepicker -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+    integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ja.min.js"
+    integrity="sha512-zI0UB5DgB1Bvvrob7MyykjmbEI4e6Qkf5Aq+VJow4nwRZrL2hYKGqRf6zgH3oBQUpxPLcF2IH5PlKrW6O3y3Qw=="
+    crossorigin="anonymous"></script>
+
+  <script>
+    // body 要素にカラーテーマのクラスをセットします。
+    // NOTE: file:/// 環境ではテスト不可。
+    const setColorTheme = function (themeName) {
+      const body = document.getElementById('body');
+      for (const className of body.classList) {
+        if (className.startsWith('theme-')) {
+          body.classList.remove(className);
+        }
+      }
+      body.classList.add(themeName);
+      Cookies.set('color-theme', themeName);
+    };
+    // 保存されているカラーテーマを優先してセットします。
+    const savedColorTheme = Cookies.get('color-theme');
+    console.info({ savedColorTheme });
+    setColorTheme(savedColorTheme ? savedColorTheme : 'theme-light');
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+
+      // 多重送信を防ぐための、 disabling buttons です。
+      $('.btn-click-to-disable').on('click', function() {
+        // NOTE: モックなので、1秒くるくるしたあと disabled 解除とします。
+        $(this).addClass('disabled');
+        $(this).prop('disabled', true);
+        const originalIcon = $(this).children('i')[0];
+        originalIcon.remove();
+        $(this).prepend('<i class="fas fa-circle-notch fa-spin"></i>');
+        setTimeout(() => {
+          $(this).removeClass('disabled');
+          $(this).prop('disabled', false);
+          const spinIcon = $(this).children('i')[0];
+          spinIcon.remove();
+          $(this).prepend(originalIcon);
+        }, 1000);
+      });
+
+      // datepicker 初期化です。
+      $('.my-datepicker').datepicker({
+        format: 'yyyy-mm',
+        language: 'ja',
+        autoclose: true,
+        todayHighlight: true,
+        minViewMode: 1,  // これで月選択になります。
+        orientation: 'bottom auto',  // NOTE: top に表示されると、 nav に隠される可能性があるため bottom にしています。
+      });
+    });
+  </script>
+</body>
+
+</html>
