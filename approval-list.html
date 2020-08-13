@@ -310,6 +310,99 @@
   </nav>
 
   <main role="main" class="container">
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="my-page.html">マイページ</a></li>
+        <li class="breadcrumb-item active" aria-current="page">承認依頼</li>
+      </ol>
+    </nav>
+
+    <div class="card mb-3">
+      <div class="card-header font-weight-bold text-center" data-toggle="collapse" data-target="#search-form-body"
+        aria-expanded="true">
+        <i class="fas fa-filter fa-fw"></i>
+        絞り込み
+      </div>
+      <div id="search-form-body" class="collapse show card-body">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>月度(～から)</label>
+              <div class="input-group input-group-sm mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-calendar-alt fa-fw"></i>
+                  </div>
+                </div>
+                <input type="text" class="form-control my-datepicker">
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label>月度(～まで)</label>
+              <div class="input-group input-group-sm mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-calendar-alt fa-fw"></i>
+                  </div>
+                </div>
+                <input type="text" class="form-control my-datepicker">
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>申請種別</label>
+              <div class="input-group input-group-sm mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-calendar-alt fa-fw"></i>
+                  </div>
+                </div>
+                <select class="form-control">
+                  <option>すべて表示</option>
+                  <option>休暇申請</option>
+                  <option>時間外申請</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label>承認状態</label>
+              <div class="input-group input-group-sm mb-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-calendar-alt fa-fw"></i>
+                  </div>
+                </div>
+                <select class="form-control">
+                  <option>すべて表示</option>
+                  <option>承認待ち</option>
+                  <option>承認</option>
+                  <option>却下</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12">
+              <button class="btn btn-with-icon btn-sm btn-block btn-primary btn-click-to-disable">
+                <i class="fas fa-search fa-fw border-right"></i> 検索
+              </button>
+            </div>
+          </div>
+          <div class="form-row mt-3">
+            <div class="col-md-9">
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-with-icon btn-sm btn-block btn-danger btn-click-to-disable">
+                <i class="fas fa-times fa-fw border-right"></i> リセット
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <h1>1 Hello, world!<i class="fas fa-dove"></i></h1>
     <h1>2 Hello, world!<i class="fas fa-feather-alt"></i></h1>
     <h1>3 Hello, world!<i class="fas fa-crow"></i></h1>
