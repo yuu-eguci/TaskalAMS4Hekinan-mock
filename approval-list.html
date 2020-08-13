@@ -409,17 +409,20 @@
           選択 3 件 / 6 件
         </div>
 
-        <div class="btn-group btn-block mt-3">
-          <button class="btn btn-with-icon btn-sm btn-success btn-click-to-disable">
-            <i class="fas fa-check fa-fw border-right"></i> 選択した項目を<br />一括承認
-          </button>
-          <button class="btn btn-with-icon btn-sm btn-danger btn-click-to-disable">
-            <i class="fas fa-times fa-fw border-right"></i> 選択した項目を<br />一括却下
-          </button>
-        </div>
-
+        <!-- order-lg: 縦並びのときはボタンを上にします。横並びのときはボタンを右にします。 -->
         <div class="row mt-3">
-          <div class="col-lg-3">
+          <div class="col-lg-8 order-lg-2">
+            <div class="btn-group btn-block">
+              <button class="btn btn-with-icon btn-sm btn-success btn-click-to-disable">
+                <i class="fas fa-check fa-fw border-right"></i> 選択項目を一括承認
+              </button>
+              <button class="btn btn-with-icon btn-sm btn-danger btn-click-to-disable">
+                <i class="fas fa-times fa-fw border-right"></i> 選択項目を一括却下
+              </button>
+            </div>
+          </div>
+          <!-- mt: 横並びのときは mt 不要です。縦並びのときは mt をつけます。 -->
+          <div class="col-lg-4 order-lg-1 mt-3 mt-lg-0">
             <div class="card bg-light border-light mb-1">
               <div class="card-body p-1">
                 <div class="custom-control custom-checkbox bg-light">
