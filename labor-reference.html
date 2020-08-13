@@ -799,6 +799,66 @@
           </div>
         </div>
 
+        <div class="card mb-1">
+          <div class="card-header font-weight-bold p-0">
+            合計
+          </div>
+          <div class="card-body p-1">
+            <div class="row">
+              <div class="col-lg-4">
+                <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr>
+                      <th class="bg-light w-50">基準内</th>
+                      <td class="p-0"></td>
+                    </tr>
+                    <tr>
+                      <th class="bg-light w-50">時間外</th>
+                      <td class="p-0"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-lg-4">
+                <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr>
+                      <th class="bg-light w-50">深夜</th>
+                      <td class="p-0"></td>
+                    </tr>
+                    <tr>
+                      <th class="bg-light w-50">法定休日</th>
+                      <td class="p-0"></td>
+                    </tr>
+                    <tr>
+                      <th class="bg-light w-50">法休深夜</th>
+                      <td class="p-0"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-lg-4">
+                <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr>
+                      <th class="bg-light w-50">食券手当</th>
+                      <td class="p-0"></td>
+                    </tr>
+                    <tr>
+                      <th class="bg-light w-50">緊呼手当</th>
+                      <td class="p-0"></td>
+                    </tr>
+                    <tr>
+                      <th class="bg-light w-50">送迎手当</th>
+                      <td class="p-0"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -898,7 +958,8 @@
 
   </main>
 
-  <nav class="navbar fixed-bottom navbar-expand-sm p-0">
+  <!-- NOTE: navbar-top dropdown の z-index:1000 に重ならないよう 999 を設定しています。 -->
+  <nav class="navbar fixed-bottom navbar-expand-sm p-0" style="z-index: 999;">
     <div class="card w-100">
       <div class="card-header font-weight-bold text-center p-0">
         <button type="button" class="btn btn-sm btn-block" data-toggle="collapse" data-target="#navbar-bottom"
@@ -906,8 +967,46 @@
           <i class="fas fa-bars fa-fw"></i>
         </button>
       </div>
-      <div id="navbar-bottom" class="collapse card-body p-1">
-        navbar
+      <div id="navbar-bottom" class="collapse card-body">
+        <div class="row">
+          <div class="col-lg-4">
+            <table class="table table-sm table-bordered text-center mb-1" style="font-size: small;">
+              <tbody>
+                <tr>
+                  <th class="bg-light w-50">年月</th>
+                  <td class="p-0">2020年08月</td>
+                </tr>
+                <tr>
+                  <th class="bg-light">締め状態</th>
+                  <td class="p-0">-</td>
+                </tr>
+                <tr>
+                  <th class="bg-light">最終更新日時</th>
+                  <td class="p-0">2020-08-13 12:00:00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-lg-4">
+            ジャンプ
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> 今日</a>
+              <a href="#" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> 昨日</a>
+              <a href="#" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> 合計</a>
+              <a href="#" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> すべて最小化</a>
+            </div>
+          </div>
+          <div class="col-lg-4">
+          </div>
+        </div>
+        <div class="btn-group btn-block mt-3">
+          <button class="btn btn-with-icon btn-sm btn-secondary btn-click-to-disable">
+            <i class="fas fa-print fa-fw border-right"></i> 印刷
+          </button>
+          <button class="btn btn-with-icon btn-sm btn-primary btn-click-to-disable">
+            <i class="fas fa-save fa-fw border-right"></i> 保存
+          </button>
+        </div>
       </div>
     </div>
 
