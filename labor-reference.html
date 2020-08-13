@@ -109,6 +109,11 @@
       border-color: #343a40;
     }
 
+    body.theme-light .card .card-header button {
+      color: #343a40;
+      border-color: #343a40;
+    }
+
     .theme-switch-light {
       color: #343a40 !important;
     }
@@ -135,6 +140,11 @@
     body.theme-dark .card .card-header {
       color: #c2c7d0;
       background-color: #343a40;
+    }
+
+    body.theme-dark .card .card-header button {
+      color: #c2c7d0;
+      border-color: #c2c7d0;
     }
 
     body.theme-dark .modal-dialog {
@@ -174,6 +184,11 @@
       background-color: #3c8dbc;
     }
 
+    body.theme-lightblue .card .card-header button {
+      color: #fff;
+      border-color: #fff;
+    }
+
     body.theme-lightblue .modal-dialog {
       border-color: #3c8dbc;
     }
@@ -209,6 +224,11 @@
     body.theme-teal .card .card-header {
       color: #fff;
       background-color: #20c997;
+    }
+
+    body.theme-teal .card .card-header button {
+      color: #fff;
+      border-color: #fff;
     }
 
     body.theme-teal .modal-dialog {
@@ -877,6 +897,21 @@
     </div>
 
   </main>
+
+  <nav class="navbar fixed-bottom navbar-expand-sm p-0">
+    <div class="card w-100">
+      <div class="card-header font-weight-bold text-center p-0">
+        <button type="button" class="btn btn-sm btn-block" data-toggle="collapse" data-target="#navbar-bottom"
+          aria-expanded="false">
+          <i class="fas fa-bars fa-fw"></i>
+        </button>
+      </div>
+      <div id="navbar-bottom" class="collapse card-body p-1">
+        navbar
+      </div>
+    </div>
+
+  </nav>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
