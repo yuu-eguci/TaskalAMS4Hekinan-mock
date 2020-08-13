@@ -403,31 +403,208 @@
       </div>
     </div>
 
-    <h1>1 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>2 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>3 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>4 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>5 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>6 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>7 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>8 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>9 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>10 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>11 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>12 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>13 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>14 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>15 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>16 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>17 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>18 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>19 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>20 Hello, world!<i class="fas fa-feather"></i></h1>
-    <h1>21 Hello, world!<i class="fas fa-dove"></i></h1>
-    <h1>22 Hello, world!<i class="fas fa-feather-alt"></i></h1>
-    <h1>23 Hello, world!<i class="fas fa-crow"></i></h1>
-    <h1>24 Hello, world!<i class="fas fa-kiwi-bird"></i></h1>
-    <h1>25 Hello, world!<i class="fas fa-feather"></i></h1>
+    <div class="card">
+      <div class="card-body p-1">
+        <div class="btn-group btn-block">
+          <button class="btn btn-with-icon btn-sm btn-success btn-click-to-disable">
+            <i class="fas fa-check fa-fw border-right"></i> 一括承認
+          </button>
+          <button class="btn btn-with-icon btn-sm btn-danger btn-click-to-disable">
+            <i class="fas fa-times fa-fw border-right"></i> 一括却下
+          </button>
+        </div>
+
+        <div class="card-text mt-3">
+          選択 3 件 / 6 件
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-lg-3">
+            <div class="card bg-light border-light mb-1">
+              <div class="card-body p-1">
+                <div class="custom-control custom-checkbox bg-light">
+                  <input type="checkbox" class="custom-control-input" id="itemCheckBox0">
+                  <label class="custom-control-label d-block" for="itemCheckBox0">一括選択</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <div class="custom-control custom-checkbox bg-light">
+                  <input type="checkbox" class="custom-control-input" id="itemCheckBox1" checked>
+                  <label class="custom-control-label d-block" for="itemCheckBox1">選択</label>
+                </div>
+              </div>
+              <div class="card-body p-1">
+                <p class="card-text mb-1 d-flex justify-content-between">
+                  <span class="badge badge-pill badge-info"><i class="far fa-clock fa-fw"></i> 承認待ち</span>
+                  <small class="text-muted text-right">申請: 2020-08-12</small>
+                </p>
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>休暇申請</td></tr>
+                    <tr><th class="bg-light">申請所属</th><td>○○部</td></tr>
+                    <tr><th class="bg-light">申請者</th><td>真田</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者</th><td>佐藤</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <div class="custom-control custom-checkbox bg-light">
+                  <input type="checkbox" class="custom-control-input" id="itemCheckBox2" checked>
+                  <label class="custom-control-label d-block" for="itemCheckBox2">選択</label>
+                </div>
+              </div>
+              <div class="card-body p-1">
+                <p class="card-text mb-1 d-flex justify-content-between">
+                  <span class="badge badge-pill badge-success"><i class="fas fa-check fa-fw"></i> 承認</span>
+                  <small class="text-muted text-right">申請: 2020-08-12</small>
+                </p>
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>休暇申請</td></tr>
+                    <tr><th class="bg-light">申請所属</th><td>○○部</td></tr>
+                    <tr><th class="bg-light">申請者</th><td>真田</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者</th><td>佐藤</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <div class="custom-control custom-checkbox bg-light">
+                  <input type="checkbox" class="custom-control-input" id="itemCheckBox3" checked>
+                  <label class="custom-control-label d-block" for="itemCheckBox3">選択</label>
+                </div>
+              </div>
+              <div class="card-body p-1">
+                <p class="card-text mb-1 d-flex justify-content-between">
+                  <span class="badge badge-pill badge-info"><i class="far fa-clock fa-fw"></i> 承認待ち</span>
+                  <small class="text-muted text-right">申請: 2020-08-12</small>
+                </p>
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>休暇申請</td></tr>
+                    <tr><th class="bg-light">申請所属</th><td>○○部</td></tr>
+                    <tr><th class="bg-light">申請者</th><td>真田</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者</th><td>佐藤</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <div class="custom-control custom-checkbox bg-light">
+                  <input type="checkbox" class="custom-control-input" id="itemCheckBox4">
+                  <label class="custom-control-label d-block" for="itemCheckBox4">選択</label>
+                </div>
+              </div>
+              <div class="card-body p-1">
+                <p class="card-text mb-1 d-flex justify-content-between">
+                  <span class="badge badge-pill badge-success"><i class="fas fa-check fa-fw"></i> 承認</span>
+                  <small class="text-muted text-right">申請: 2020-08-12</small>
+                </p>
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>休暇申請</td></tr>
+                    <tr><th class="bg-light">申請所属</th><td>○○部</td></tr>
+                    <tr><th class="bg-light">申請者</th><td>真田</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者</th><td>佐藤</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <div class="custom-control custom-checkbox bg-light">
+                  <input type="checkbox" class="custom-control-input" id="itemCheckBox5">
+                  <label class="custom-control-label d-block" for="itemCheckBox5">選択</label>
+                </div>
+              </div>
+              <div class="card-body p-1">
+                <p class="card-text mb-1 d-flex justify-content-between">
+                  <span class="badge badge-pill badge-danger"><i class="fas fa-times fa-fw"></i> 却下</span>
+                  <small class="text-muted text-right">申請: 2020-08-12</small>
+                </p>
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>休暇申請</td></tr>
+                    <tr><th class="bg-light">申請所属</th><td>○○部</td></tr>
+                    <tr><th class="bg-light">申請者</th><td>真田</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者</th><td>佐藤</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="card border-secondary mb-1">
+              <div class="card-body p-1">
+                <div class="custom-control custom-checkbox bg-light">
+                  <input type="checkbox" class="custom-control-input" id="itemCheckBox6">
+                  <label class="custom-control-label d-block" for="itemCheckBox6">選択</label>
+                </div>
+              </div>
+              <div class="card-body p-1">
+                <p class="card-text mb-1 d-flex justify-content-between">
+                  <span class="badge badge-pill badge-danger"><i class="fas fa-times fa-fw"></i> 却下</span>
+                  <small class="text-muted text-right">申請: 2020-08-12</small>
+                </p>
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr><th class="bg-light">申請 No.</th><td>9,571</td></tr>
+                    <tr><th class="bg-light">申請種別</th><td>休暇申請</td></tr>
+                    <tr><th class="bg-light">申請所属</th><td>○○部</td></tr>
+                    <tr><th class="bg-light">申請者</th><td>真田</td></tr>
+                    <tr><th class="bg-light">日時</th><td>2020-10-31</td></tr>
+                    <tr><th class="bg-light">内容</th><td>-</td></tr>
+                    <tr><th class="bg-light">承認者</th><td>佐藤</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
       <div class="row">
