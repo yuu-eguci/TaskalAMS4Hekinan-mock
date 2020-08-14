@@ -359,9 +359,10 @@
 
       <div class="card-body p-1">
 
-        <div class="card border-light mb-1"><div class="card-header text-dark font-weight-bold p-0" style="background-color: #a0beda;" data-toggle="collapse" data-target="#card-01" aria-expanded="false">2020-08-01 土</div><div id="card-01" class="collapse card-body p-1">表示サンプルのため。</div></div>
+        <div id="anchor-previous-day" class="card border-light mb-1"><div class="card-header text-dark font-weight-bold p-0" style="background-color: #a0beda;" data-toggle="collapse" data-target="#card-01" aria-expanded="false">2020-08-01 土</div><div id="card-01" class="collapse card-body p-1">表示サンプルのため。</div></div>
 
-        <div class="card border-light mb-1">
+        <!-- 当日の日付には anchor-today を付与して下さい。 -->
+        <div id="anchor-today" class="card border-light mb-1">
           <div class="card-header text-dark font-weight-bold p-0" style="background-color: #ffa7a7;" data-toggle="collapse" data-target="#card-02" aria-expanded="true">
             2020-08-02 日
           </div>
@@ -555,7 +556,7 @@
         <div class="card border-light mb-1"><div class="card-header text-dark font-weight-bold p-0" style="background-color: #ffa7a7;" data-toggle="collapse" data-target="#card-30" aria-expanded="false">2020-08-30 日</div><div id="card-30" class="collapse card-body p-1">表示サンプルのため。</div></div>
         <div class="card border-light mb-1"><div class="card-header bg-light text-dark font-weight-bold p-0" data-toggle="collapse" data-target="#card-31" aria-expanded="false">2020-08-31 月</div><div id="card-31" class="collapse card-body p-1">表示サンプルのため。</div></div>
 
-        <div class="card border-light mb-1">
+        <div id="anchor-sum" class="card border-light mb-1">
           <div class="card-header bg-light text-dark font-weight-bold p-0">
             合計
           </div>
@@ -746,10 +747,11 @@
           <div class="col-lg-4">
             ジャンプ
             <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> 今日</a>
-              <a href="#" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> 昨日</a>
-              <a href="#" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> 合計</a>
+              <a href="#anchor-today" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> 当日</a>
+              <a href="#anchor-previous-day" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> 前日</a>
+              <a href="#anchor-sum" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> 合計</a>
               <a href="#" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> すべて最小化</a>
+              <a href="#" class="list-group-item list-group-item-action p-1"><i class="fas fa-chevron-right fa-fw"></i> すべて最大化</a>
             </div>
           </div>
           <div class="col-lg-4">
