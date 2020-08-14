@@ -342,9 +342,11 @@
         <a class="btn btn-light btn-click-to-disable">
           <i class="fas fa-chevron-left fa-fw"></i>
         </a>
-        <a class="btn btn-light my-monthpicker">
-          2020年08月
+        <a id="month-only" class="btn btn-light datetimepicker-month-only" data-toggle="datetimepicker"
+          data-target="#month-only" data-target-input="#month-only-input">
+          <i class="fas fa-calendar-alt fa-fw"></i> 2020年08月
         </a>
+        <input id="month-only-input" type="hidden" class="datetimepicker-input" data-target="#month-only" data-toggle="datetimepicker" />
         <a class="btn btn-light btn-click-to-disable">
           <i class="fas fa-chevron-right fa-fw"></i>
         </a>
@@ -352,153 +354,7 @@
 
       <div class="card-body p-1">
 
-        <div class="card mb-1">
-          <div class="card-header font-weight-bold p-0" data-toggle="collapse" data-target="#card-01" aria-expanded="false">
-            2020-08-01 土
-          </div>
-          <div id="card-01" class="collapse card-body p-1">
-            <div class="row">
-              <div class="col-lg-4">
-                <button class="btn btn-outline-light btn-block text-left">
-                  <span class="badge badge-pill" style="background-color: #3A7311; color: #fff;">出</span>
-                  <span class="badge badge-pill" style="background-color: #B65F24; color: #fff;">退</span>
-                  <span class="badge badge-pill" style="background-color: #1B1C64; color: #fff;">外</span>
-                  <span class="badge badge-pill" style="background-color: #DC25FC; color: #fff;">離</span>
-                </button>
-                <div class="form-row">
-                  <div class="form-group col-6">
-                    <label class="small">勤務番:予定</label>
-                    <select class="form-control form-control-sm">
-                      <option selected="selected" value="1">常</option>
-                      <option value="2">T</option>
-                      <option value="3">ﾋ</option>
-                      <option value="4">ﾁ</option>
-                      <option value="5">●</option>
-                      <option value="7">甲</option>
-                      <option value="8">短</option>
-                      <option value="12">昼</option>
-                      <option value="13">夜</option>
-                      <option value="14">日</option>
-                      <option value="15">1</option>
-                      <option value="16">2</option>
-                      <option value="17">3</option>
-                      <option value="18">A</option>
-                      <option value="20">✔</option>
-                      <option value="21">×</option>
-                      <option value="-1">休</option>
-                      <option value="-2">法</option>
-                      <option value="-3">有</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-6">
-                    <label class="small">勤務番:実績</label>
-                    <select class="form-control form-control-sm">
-                      <option selected="selected" value="1">常</option>
-                      <option value="2">T</option>
-                      <option value="3">ﾋ</option>
-                      <option value="4">ﾁ</option>
-                      <option value="5">●</option>
-                      <option value="7">甲</option>
-                      <option value="8">短</option>
-                      <option value="12">昼</option>
-                      <option value="13">夜</option>
-                      <option value="14">日</option>
-                      <option value="15">1</option>
-                      <option value="16">2</option>
-                      <option value="17">3</option>
-                      <option value="18">A</option>
-                      <option value="20">✔</option>
-                      <option value="21">×</option>
-                      <option value="-1">休</option>
-                      <option value="-2">法</option>
-                      <option value="-3">有</option>
-                    </select>
-                  </div>
-                </div>
-                <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
-                  <tbody>
-                    <tr>
-                      <th class="bg-light w-50">出勤時刻</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">退勤時刻</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-lg-4">
-                <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
-                  <tbody>
-                    <tr>
-                      <th class="bg-light w-50">基準内</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">時間外</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">深夜</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">法定休日</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">法休深夜</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">勤怠区分</th>
-                      <td class="p-0">
-                        <select class="form-control form-control-sm">
-                          <option value="1">遅刻</option>
-                          <option value="2">早退</option>
-                          <option value="3">有休</option>
-                          <option value="4">午前休</option>
-                          <option value="5">午後休</option>
-                          <option value="6">積立有休</option>
-                          <option value="7">慶弔休暇</option>
-                          <option value="8">欠勤</option>
-                          <option value="9">病欠</option>
-                          <option value="10">公傷</option>
-                          <option value="11">他休</option>
-                          <option value="12">臨時休業</option>
-                          <option value="13">代休</option>
-                        </select>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-lg-4">
-                <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
-                  <tbody>
-                    <tr>
-                      <th class="bg-light w-50">備考</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">食券手当</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">緊呼手当</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">送迎手当</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="card mb-1"><div class="card-header font-weight-bold p-0" data-toggle="collapse" data-target="#card-01" aria-expanded="false">2020-08-01 土</div><div id="card-01" class="collapse card-body p-1">表示サンプルのため。</div></div>
 
         <div class="card mb-1">
           <div class="card-header font-weight-bold p-0" data-toggle="collapse" data-target="#card-02" aria-expanded="true">
@@ -567,11 +423,26 @@
                   <tbody>
                     <tr>
                       <th class="bg-light w-50">出勤時刻</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                      <td class="p-0">
+                        <div id="time-only-1" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
+                          <div class="input-group-prepend" data-target="#time-only-1" data-toggle="datetimepicker">
+                            <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control datetimepicker-input" data-target="#time-only-1" data-toggle="datetimepicker" />
+                        </div>
+                      </td>
                     </tr>
                     <tr>
                       <th class="bg-light w-50">退勤時刻</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                      <td class="p-0">
+                        <div id="time-only-2" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
+                          <div class="input-group-prepend" data-target="#time-only-2" data-toggle="datetimepicker">
+                            <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control datetimepicker-input" data-target="#time-only-2"
+                            data-toggle="datetimepicker" />
+                        </div>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -581,28 +452,29 @@
                   <tbody>
                     <tr>
                       <th class="bg-light w-50">基準内</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
                     </tr>
                     <tr>
                       <th class="bg-light w-50">時間外</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
                     </tr>
                     <tr>
                       <th class="bg-light w-50">深夜</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
                     </tr>
                     <tr>
                       <th class="bg-light w-50">法定休日</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
                     </tr>
                     <tr>
                       <th class="bg-light w-50">法休深夜</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
                     </tr>
                     <tr>
                       <th class="bg-light w-50">勤怠区分</th>
                       <td class="p-0">
                         <select class="form-control form-control-sm">
+                          <option value="0"></option>
                           <option value="1">遅刻</option>
                           <option value="2">早退</option>
                           <option value="3">有休</option>
@@ -631,15 +503,15 @@
                     </tr>
                     <tr>
                       <th class="bg-light w-50">食券手当</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0"></td>
                     </tr>
                     <tr>
                       <th class="bg-light w-50">緊呼手当</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0"></td>
                     </tr>
                     <tr>
                       <th class="bg-light w-50">送迎手当</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -648,154 +520,7 @@
           </div>
         </div>
 
-        <div class="card mb-1">
-          <div class="card-header font-weight-bold p-0" data-toggle="collapse" data-target="#card-03" aria-expanded="false">
-            2020-08-03 月
-          </div>
-          <div id="card-03" class="collapse card-body p-1">
-            <div class="row">
-              <div class="col-lg-4">
-                <button class="btn btn-outline-light btn-block text-left">
-                  <span class="badge badge-pill" style="background-color: #3A7311; color: #fff;">出</span>
-                  <span class="badge badge-pill" style="background-color: #B65F24; color: #fff;">退</span>
-                  <span class="badge badge-pill" style="background-color: #1B1C64; color: #fff;">外</span>
-                  <span class="badge badge-pill" style="background-color: #DC25FC; color: #fff;">離</span>
-                </button>
-                <div class="form-row">
-                  <div class="form-group col-6">
-                    <label class="small">勤務番:予定</label>
-                    <select class="form-control form-control-sm">
-                      <option selected="selected" value="1">常</option>
-                      <option value="2">T</option>
-                      <option value="3">ﾋ</option>
-                      <option value="4">ﾁ</option>
-                      <option value="5">●</option>
-                      <option value="7">甲</option>
-                      <option value="8">短</option>
-                      <option value="12">昼</option>
-                      <option value="13">夜</option>
-                      <option value="14">日</option>
-                      <option value="15">1</option>
-                      <option value="16">2</option>
-                      <option value="17">3</option>
-                      <option value="18">A</option>
-                      <option value="20">✔</option>
-                      <option value="21">×</option>
-                      <option value="-1">休</option>
-                      <option value="-2">法</option>
-                      <option value="-3">有</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-6">
-                    <label class="small">勤務番:実績</label>
-                    <select class="form-control form-control-sm">
-                      <option selected="selected" value="1">常</option>
-                      <option value="2">T</option>
-                      <option value="3">ﾋ</option>
-                      <option value="4">ﾁ</option>
-                      <option value="5">●</option>
-                      <option value="7">甲</option>
-                      <option value="8">短</option>
-                      <option value="12">昼</option>
-                      <option value="13">夜</option>
-                      <option value="14">日</option>
-                      <option value="15">1</option>
-                      <option value="16">2</option>
-                      <option value="17">3</option>
-                      <option value="18">A</option>
-                      <option value="20">✔</option>
-                      <option value="21">×</option>
-                      <option value="-1">休</option>
-                      <option value="-2">法</option>
-                      <option value="-3">有</option>
-                    </select>
-                  </div>
-                </div>
-                <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
-                  <tbody>
-                    <tr>
-                      <th class="bg-light w-50">出勤時刻</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">退勤時刻</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-lg-4">
-                <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
-                  <tbody>
-                    <tr>
-                      <th class="bg-light w-50">基準内</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">時間外</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">深夜</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">法定休日</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">法休深夜</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">勤怠区分</th>
-                      <td class="p-0">
-                        <select class="form-control form-control-sm">
-                          <option value="1">遅刻</option>
-                          <option value="2">早退</option>
-                          <option value="3">有休</option>
-                          <option value="4">午前休</option>
-                          <option value="5">午後休</option>
-                          <option value="6">積立有休</option>
-                          <option value="7">慶弔休暇</option>
-                          <option value="8">欠勤</option>
-                          <option value="9">病欠</option>
-                          <option value="10">公傷</option>
-                          <option value="11">他休</option>
-                          <option value="12">臨時休業</option>
-                          <option value="13">代休</option>
-                        </select>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="col-lg-4">
-                <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
-                  <tbody>
-                    <tr>
-                      <th class="bg-light w-50">備考</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">食券手当</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">緊呼手当</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">送迎手当</th>
-                      <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <div class="card mb-1"><div class="card-header font-weight-bold p-0" data-toggle="collapse" data-target="#card-03" aria-expanded="false">2020-08-03 月</div><div id="card-03" class="collapse card-body p-1">表示サンプルのため。</div></div>
         <div class="card mb-1"><div class="card-header font-weight-bold p-0" data-toggle="collapse" data-target="#card-04" aria-expanded="false">2020-08-04 曜</div><div id="card-04" class="collapse card-body p-1">表示サンプルのため。</div></div>
         <div class="card mb-1"><div class="card-header font-weight-bold p-0" data-toggle="collapse" data-target="#card-05" aria-expanded="false">2020-08-05 曜</div><div id="card-05" class="collapse card-body p-1">表示サンプルのため。</div></div>
         <div class="card mb-1"><div class="card-header font-weight-bold p-0" data-toggle="collapse" data-target="#card-06" aria-expanded="false">2020-08-06 曜</div><div id="card-06" class="collapse card-body p-1">表示サンプルのため。</div></div>
@@ -1098,14 +823,27 @@
         }, 1000);
       });
 
-      // datepicker 初期化です。
-      $('.my-monthpicker').datepicker({
-        format: 'yyyy-mm',
-        language: 'ja',
-        autoclose: true,
-        todayHighlight: true,
-        minViewMode: 1,  // これで月選択になります。
-        orientation: 'bottom auto',  // NOTE: top に表示されると、 nav に隠される可能性があるため bottom にしています。
+      // datetimepicker 初期化を行います。
+      $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+        locale: 'ja',
+        icons: {
+          time: 'far fa-clock',
+          date: 'far fa-calendar',
+          up: 'fas fa-arrow-up',
+          down: 'fas fa-arrow-down',
+          previous: 'fas fa-chevron-left',
+          next: 'fas fa-chevron-right',
+          today: 'fas fa-calendar-check-o',
+          clear: 'fas fa-trash',
+          close: 'fas fa-times'
+        }
+      });
+      $('.datetimepicker-month-only').datetimepicker({
+        format: 'YYYY-MM',
+        maxDate: $.now(),
+      });
+      $('.datetimepicker-time-only').datetimepicker({
+        format: 'LT',
       });
 
       // navbar-bottom オープン時、 backdrop を出します。
