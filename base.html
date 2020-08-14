@@ -490,14 +490,27 @@
         }, 1000);
       });
 
-      // datepicker 初期化です。
-      $('.my-monthpicker').datepicker({
-        format: 'yyyy-mm',
-        language: 'ja',
-        autoclose: true,
-        todayHighlight: true,
-        minViewMode: 1,  // これで月選択になります。
-        orientation: 'bottom auto',  // NOTE: top に表示されると、 nav に隠される可能性があるため bottom にしています。
+      // datetimepicker 初期化を行います。
+      $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+        locale: 'ja',
+        icons: {
+          time: 'far fa-clock',
+          date: 'far fa-calendar',
+          up: 'fas fa-arrow-up',
+          down: 'fas fa-arrow-down',
+          previous: 'fas fa-chevron-left',
+          next: 'fas fa-chevron-right',
+          today: 'fas fa-calendar-check-o',
+          clear: 'fas fa-trash',
+          close: 'fas fa-times'
+        }
+      });
+      $('.datetimepicker-month-only').datetimepicker({
+        format: 'YYYY-MM',
+        maxDate: $.now(),
+      });
+      $('.datetimepicker-time-only').datetimepicker({
+        format: 'LT',
       });
 
       // navbar-bottom オープン時、 backdrop を出します。

@@ -327,24 +327,24 @@
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>月度(～から)</label>
-              <div class="input-group input-group-sm mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <i class="fas fa-calendar-alt fa-fw"></i>
-                  </div>
+              <div id="month-only-1" class="input-group input-group-sm mb-2 datetimepicker-month-only"
+                data-target-input="nearest">
+                <div class="input-group-prepend" data-target="#month-only-1" data-toggle="datetimepicker">
+                  <span class="input-group-text"><i class="fas fa-calendar-alt fa-fw"></i></span>
                 </div>
-                <input type="text" class="form-control my-monthpicker">
+                <input type="text" class="form-control datetimepicker-input" data-target="#month-only-1"
+                  data-toggle="datetimepicker" />
               </div>
             </div>
             <div class="form-group col-md-4">
               <label>月度(～まで)</label>
-              <div class="input-group input-group-sm mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <i class="fas fa-calendar-alt fa-fw"></i>
-                  </div>
+              <div id="month-only-2" class="input-group input-group-sm mb-2 datetimepicker-month-only"
+                data-target-input="nearest">
+                <div class="input-group-prepend" data-target="#month-only-2" data-toggle="datetimepicker">
+                  <span class="input-group-text"><i class="fas fa-calendar-alt fa-fw"></i></span>
                 </div>
-                <input type="text" class="form-control my-monthpicker">
+                <input type="text" class="form-control datetimepicker-input" data-target="#month-only-2"
+                  data-toggle="datetimepicker" />
               </div>
             </div>
           </div>
@@ -352,11 +352,6 @@
             <div class="form-group col-md-4">
               <label>申請種別</label>
               <div class="input-group input-group-sm mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <i class="fas fa-calendar-alt fa-fw"></i>
-                  </div>
-                </div>
                 <select class="form-control">
                   <option>すべて表示</option>
                   <option>休暇申請</option>
@@ -367,11 +362,6 @@
             <div class="form-group col-md-4">
               <label>承認状態</label>
               <div class="input-group input-group-sm mb-2">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <i class="fas fa-calendar-alt fa-fw"></i>
-                  </div>
-                </div>
                 <select class="form-control">
                   <option>すべて表示</option>
                   <option>承認待ち</option>
@@ -763,14 +753,27 @@
         }, 1000);
       });
 
-      // datepicker 初期化です。
-      $('.my-monthpicker').datepicker({
-        format: 'yyyy-mm',
-        language: 'ja',
-        autoclose: true,
-        todayHighlight: true,
-        minViewMode: 1,  // これで月選択になります。
-        orientation: 'bottom auto',  // NOTE: top に表示されると、 nav に隠される可能性があるため bottom にしています。
+      // datetimepicker 初期化を行います。
+      $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+        locale: 'ja',
+        icons: {
+          time: 'far fa-clock',
+          date: 'far fa-calendar',
+          up: 'fas fa-arrow-up',
+          down: 'fas fa-arrow-down',
+          previous: 'fas fa-chevron-left',
+          next: 'fas fa-chevron-right',
+          today: 'fas fa-calendar-check-o',
+          clear: 'fas fa-trash',
+          close: 'fas fa-times'
+        }
+      });
+      $('.datetimepicker-month-only').datetimepicker({
+        format: 'YYYY-MM',
+        maxDate: $.now(),
+      });
+      $('.datetimepicker-time-only').datetimepicker({
+        format: 'LT',
       });
 
       // navbar-bottom オープン時、 backdrop を出します。
