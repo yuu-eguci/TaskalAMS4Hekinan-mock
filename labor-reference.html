@@ -1082,8 +1082,6 @@
     console.info({ savedColorTheme });
     setColorTheme(savedColorTheme ? savedColorTheme : 'theme-light');
 
-    // 
-
     $(function () {
       $('[data-toggle="tooltip"]').tooltip();
 
@@ -1112,6 +1110,18 @@
         todayHighlight: true,
         minViewMode: 1,  // これで月選択になります。
         orientation: 'bottom auto',  // NOTE: top に表示されると、 nav に隠される可能性があるため bottom にしています。
+      });
+
+      // navbar-bottom オープン時、 backdrop を出します。
+      $('#navbar-bottom').on('show.bs.collapse', function () {
+        // backdrop は navbar-bottom の下(998)に配置し、 onclick で navbar-bottom を閉じます。
+        // HACK: この backdrop は modal 用なので、汎用的に使える backdrop があればそれを使用。
+        $('body').append(`<div id="backdrop-for-navbar-bottom" class="modal-backdrop fade show" style="z-index: 998;" onclick="$('#navbar-bottom').collapse('hide');"></div>`);
+      });
+
+      // navbar-bottom クローズ時、 backdrop を消します。
+      $('#navbar-bottom').on('hide.bs.collapse', function () {
+        $('#backdrop-for-navbar-bottom').remove();
       });
     });
   </script>
