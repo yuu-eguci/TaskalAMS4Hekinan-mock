@@ -240,12 +240,17 @@
     .theme-switch-teal {
       color: #20c997 !important;
     }
+
+    /* アンカーリンクの遷移先が固定ヘッダに隠れる問題に対応しています。値は .container の padding-top に対応させています。 */
+    html {
+      scroll-padding-top: 4.5rem;
+    }
   </style>
 
   <title>Hello, world!</title>
 </head>
 
-<body id="body" class="theme-light" style="padding-top: 4.5rem;">
+<body id="body" class="theme-light">
   <!-- navbar-expand によりつねに collapse のメニューを開きます。 -->
   <nav class="navbar fixed-top navbar-expand">
     <a class="navbar-brand" href="#">
@@ -327,7 +332,7 @@
     </div>
   </nav>
 
-  <main role="main" class="container">
+  <main role="main" class="container" style="padding-top: 4.5rem;">
 
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
