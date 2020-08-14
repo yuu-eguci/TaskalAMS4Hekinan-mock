@@ -279,6 +279,7 @@
                 <div class="card-text"><i class="fas fa-user-tie fa-fw"></i></div>
                 <div class="card-text">榊原よし子</div>
                 <div class="card-text text-muted"><small>yoshiko-sakakibara@example.com</small></div>
+                <div class="card-text text-muted"><small>No. 123, システム開発部</small></div>
               </div>
             </div>
             <div class="dropdown-divider"></div>
@@ -483,7 +484,7 @@
         $(this).prop('disabled', true);
         const originalIcon = $(this).children('i')[0];
         originalIcon.remove();
-        $(this).prepend('<i class="fas fa-circle-notch fa-spin"></i>');
+        $(this).prepend('<i class="fas fa-circle-notch fa-spin fa-fw"></i>');
         setTimeout(() => {
           $(this).removeClass('disabled');
           $(this).prop('disabled', false);
@@ -494,13 +495,25 @@
       });
 
       // datepicker 初期化です。
-      $('.my-datepicker').datepicker({
+      $('.my-monthpicker').datepicker({
         format: 'yyyy-mm',
         language: 'ja',
         autoclose: true,
         todayHighlight: true,
         minViewMode: 1,  // これで月選択になります。
         orientation: 'bottom auto',  // NOTE: top に表示されると、 nav に隠される可能性があるため bottom にしています。
+      });
+
+      // navbar-bottom オープン時、 backdrop を出します。
+      $('#navbar-bottom').on('show.bs.collapse', function () {
+        // backdrop は navbar-bottom の下(998)に配置し、 onclick で navbar-bottom を閉じます。
+        // HACK: この backdrop は modal 用なので、汎用的に使える backdrop があればそれを使用。
+        $('body').append(`<div id="backdrop-for-navbar-bottom" class="modal-backdrop fade show" style="z-index: 998;" onclick="$('#navbar-bottom').collapse('hide');"></div>`);
+      });
+
+      // navbar-bottom クローズ時、 backdrop を消します。
+      $('#navbar-bottom').on('hide.bs.collapse', function () {
+        $('#backdrop-for-navbar-bottom').remove();
       });
     });
   </script>
