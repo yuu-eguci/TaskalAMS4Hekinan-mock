@@ -225,6 +225,11 @@
     html {
       scroll-padding-top: 4.5rem;
     }
+
+    /* 一画面に表示される情報量を増やすため、カード内のフォントサイズを小さくしています。 */
+    .card-body {
+      font-size: 14px;
+    }
   </style>
 
   <title>Hello, world!</title>
@@ -315,33 +320,27 @@
   <main role="main" class="container" style="padding-top: 4.5rem;">
 
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-7">
         <div class="card text-center mb-3">
           <div class="card-header font-weight-bold">
             今月の勤怠
             <small>()内は前月</small>
           </div>
           <div class="card-body p-1">
-            <div class="row" style="margin-bottom: 16px;">
-              <div class="col-sm-4">
-                <div class="alert alert-secondary mb-1 p-0">
-                  <p class="mb-0">出勤日数</p>
-                  <h5 class="alert-heading">13日 <small class="text-muted">(20 日)</small></h5>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="alert alert-secondary mb-1 p-0">
-                  <p class="mb-0">時間外</p>
-                  <h5 class="alert-heading">10.00 <small class="text-muted">(20.00)</small></h5>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="alert alert-secondary mb-1 p-0">
-                  <p class="mb-0">休暇時間</p>
-                  <h5 class="alert-heading">18 h <small class="text-muted">(4 h)</small></h5>
-                </div>
-              </div>
-            </div>
+            <ul class="list-group list-group-horizontal-sm mb-3">
+              <li class="list-group-item list-group-item-secondary flex-fill p-1">
+                <p class="mb-0">出勤日数</p>
+                <p class="font-weight-bold mb-0">13日<br /><small class="text-muted">(20 日)</small></p>
+              </li>
+              <li class="list-group-item list-group-item-secondary flex-fill p-1">
+                <p class="mb-0">時間外</p>
+                <p class="font-weight-bold mb-0">10.00<br /><small class="text-muted">(20.00)</small></p>
+              </li>
+              <li class="list-group-item list-group-item-secondary flex-fill p-1">
+                <p class="mb-0">休暇時間</p>
+                <p class="font-weight-bold mb-0">18 h<br /><small class="text-muted">(4 h)</small></p>
+              </li>
+            </ul>
             <a class="btn btn-with-icon btn-sm btn-block btn-success btn-click-to-disable" href="labor-reference.html">
               <i class="fas fa-edit fa-fw border-right"></i> 今月の勤怠を編集する
             </a>
@@ -385,34 +384,28 @@
         <div class="card text-center mb-3">
           <div class="card-header font-weight-bold">年休取得状況</small></div>
           <div class="card-body p-1">
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="alert alert-secondary mb-1 p-0">
-                  <p class="mb-0">付与</p>
-                  <h5 class="alert-heading">320 h <small class="text-muted">(40 日)</small></h5>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="alert alert-secondary mb-1 p-0">
-                  <p class="mb-0">取得</p>
-                  <h5 class="alert-heading">18 h <small class="text-muted">(2 日 2 h)</small></h5>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="alert alert-secondary mb-1 p-0">
-                  <p class="mb-0">残</p>
-                  <h5 class="alert-heading">302 h <small class="text-muted">(37 日 6 h)</small></h5>
-                </div>
-              </div>
-            </div>
+            <ul class="list-group list-group-horizontal-sm">
+              <li class="list-group-item list-group-item-secondary flex-fill p-1">
+                <p class="mb-0">付与</p>
+                <p class="font-weight-bold mb-0">320 h<br /><small class="text-muted">(40 日)</small></p>
+              </li>
+              <li class="list-group-item list-group-item-secondary flex-fill p-1">
+                <p class="mb-0">取得</p>
+                <p class="font-weight-bold mb-0">18 h<br /><small class="text-muted">(2 日 2 h)</small></p>
+              </li>
+              <li class="list-group-item list-group-item-secondary flex-fill p-1">
+                <p class="mb-0">残</p>
+                <p class="font-weight-bold mb-0">302 h<br /><small class="text-muted">(37 日 6 h)</small></p>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-5">
         <div class="card text-center mb-3">
           <div class="card-header font-weight-bold">
             申請一覧
-            <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="承認待ちと未承認の違いがわかりません。"></i>
+            <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="「未承認」は管理者画面でのみ表示されます。"></i>
           </div>
           <div class="card-body p-1">
             <table class="table table-sm table-bordered">
