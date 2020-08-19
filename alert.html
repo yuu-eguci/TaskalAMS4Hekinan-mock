@@ -481,7 +481,7 @@
     </footer>
 
     <div id="modal-new-application" class="modal fade" data-backdrop="static" tabindex="-1">
-      <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">新規申請</h5>
@@ -490,10 +490,182 @@
             </button>
           </div>
           <div class="modal-body">
-            マイページ、申請一覧や勤怠編集の「新規申請」から遷移する場所です。<br />
-            画面のレイアウトや入力項目は未決定です。
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="card border-secondary mb-1">
+                  <div class="row no-gutters">
+                    <div class="col-10">
+                      <div class="card-body p-1">
+                        <p class="card-text mb-1 d-flex justify-content-between">
+                          <span class="badge badge-pill badge-success"><i class="fas fa-check fa-fw"></i> 承認</span>
+                        </p>
+                        <div class="form-group mb-1">
+                          <label>承認者</label>
+                          <div class="input-group input-group-sm mb-2">
+                            <select class="form-control">
+                              <option>システム全体管理者</option>
+                              <option>榊原よし子</option>
+                              <option>榊原まさ子</option>
+                              <option>田中栄一</option>
+                              <option>田中角栄</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group mb-1">
+                          <label>コメント</label>
+                          <div class="card border-secondary">
+                            <div class="card-body p-1">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2 p-1 text-right">
+                      <button class="btn btn-sm btn-outline-danger" type="button">
+                        <i class="fas fa-times fa-fw"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="card border-secondary mb-1">
+                  <div class="row no-gutters">
+                    <div class="col-10">
+                      <div class="card-body p-1">
+                        <p class="card-text mb-1 d-flex justify-content-between">
+                          <span class="badge badge-pill badge-danger"><i class="fas fa-times fa-fw"></i> 却下</span>
+                        </p>
+                        <div class="form-group mb-1">
+                          <label>承認者</label>
+                          <div class="input-group input-group-sm mb-2">
+                            <select class="form-control">
+                              <option>システム全体管理者</option>
+                              <option>榊原よし子</option>
+                              <option>榊原まさ子</option>
+                              <option>田中栄一</option>
+                              <option>田中角栄</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group mb-1">
+                          <label>コメント</label>
+                          <div class="card border-secondary">
+                            <div class="card-body p-1">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2 p-1 text-right">
+                      <button class="btn btn-sm btn-outline-danger" type="button">
+                        <i class="fas fa-times fa-fw"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <button class="btn btn-outline-success" type="button">
+                <i class="fas fa-plus fa-fw"></i>
+              </button>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>申請種別</label>
+                <div class="input-group input-group-sm mb-2">
+                  <select class="form-control">
+                    <option>休暇申請</option>
+                    <option>時間外申請</option>
+                    <option>自己研鑽</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                <label>日付</label>
+                <div id="date-only" class="input-group input-group-sm mb-2 datetimepicker-date-only" data-target-input="nearest">
+                  <div class="input-group-prepend" data-target="#date-only" data-toggle="datetimepicker">
+                    <span class="input-group-text"><i class="fas fa-calendar-alt fa-fw"></i></span>
+                  </div>
+                  <input type="text" class="form-control datetimepicker-input" data-target="#date-only"
+                    data-toggle="datetimepicker" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <table class="table table-sm table-bordered mb-lg-0" style="font-size: small;">
+                  <thead>
+                    <tr><th class="bg-light" colspan="2">勤怠</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><th class="bg-light w-50">予定</th><td></td></tr>
+                    <tr><th class="bg-light">実績</th><td></td></tr>
+                    <tr><th class="bg-light">出勤時刻</th><td></td></tr>
+                    <tr><th class="bg-light">退勤時刻</th><td></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-lg-6">
+                <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                  <thead>
+                    <tr><th class="bg-light" colspan="2">休暇</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="bg-light w-50">休暇区分</th>
+                      <td class="p-0">
+                        <select class="form-control form-control-sm">
+                          <option value="0"></option>
+                          <option value="1">一日年休</option>
+                          <option value="4">午前年休</option>
+                          <option value="5">午後年休</option>
+                          <option value="6">時間単位年休</option>
+                          <option value="7">特別休暇</option>
+                          <option value="8">夏季休暇</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="bg-light">開始時刻</th>
+                      <td class="p-0">
+                        <div id="time-only-1" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
+                          <div class="input-group-prepend" data-target="#time-only-1" data-toggle="datetimepicker">
+                            <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control datetimepicker-input" data-target="#time-only-1"
+                            data-toggle="datetimepicker" />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="bg-light">終了時刻</th>
+                      <td class="p-0">
+                        <div id="time-only-2" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
+                          <div class="input-group-prepend" data-target="#time-only-2" data-toggle="datetimepicker">
+                            <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                          </div>
+                          <input type="text" class="form-control datetimepicker-input" data-target="#time-only-2"
+                            data-toggle="datetimepicker" />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th class="bg-light">休憩時間</th>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
+            <button class="btn btn-with-icon btn-sm btn-block btn-success btn-click-to-disable">
+              <i class="fas fa-save fa-fw border-right"></i> 申請
+            </button>
             <button class="btn btn-with-icon btn-sm btn-block btn-secondary" data-dismiss="modal">
               <i class="fas fa-times fa-fw border-right"></i> キャンセル
             </button>
@@ -502,7 +674,7 @@
       </div>
     </div>
 
-    <!-- NOTE: スマホで操作する際、 backdrop = クローズ だと誤クローズになるかと重い static にしています。 -->
+    <!-- NOTE: スマホで操作する際、 backdrop = クローズ だと誤クローズになるかと思い static(backdrop != クローズ)にしています。 -->
     <!-- TODO: 欄を増やしたり取り除いたりする処理は未実装。 -->
     <div id="modal-mail-config" class="modal fade" data-backdrop="static" tabindex="-1">
       <div class="modal-dialog modal-dialog-scrollable">
@@ -647,6 +819,9 @@
       });
       $('.datetimepicker-time-only').datetimepicker({
         format: 'LT',
+      });
+      $('.datetimepicker-date-only').datetimepicker({
+        format: 'YYYY-MM-DD',
       });
 
       // navbar-bottom オープン時、 backdrop を出します。
