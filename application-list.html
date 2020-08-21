@@ -842,23 +842,35 @@
     console.info({ savedColorTheme });
     setColorTheme(savedColorTheme ? savedColorTheme : 'theme-light');
 
+    // 多重送信を防ぐための、 disabling buttons です。 button にも a にも対応しています。
+    const disableButton = function (buttonElement) {
+      $(buttonElement).addClass('disabled');
+      $(buttonElement).prop('disabled', true);
+      const originalIcon = $(buttonElement).children('i');
+      originalIcon.hide();
+      const spinIcon = $.parseHTML('<i class="fas fa-circle-notch fa-spin fa-fw additional-spin-icon"></i>');
+      $(buttonElement).prepend(spinIcon);
+    };
+
+    // ↑ disableButton で無効化したボタンを復活させます。
+    const enableButton = function (buttonElement) {
+      $(buttonElement).removeClass('disabled');
+      $(buttonElement).prop('disabled', false);
+      const spinIcon = $(buttonElement).children('i.additional-spin-icon');
+      spinIcon.remove();
+      const originalIcon = $(buttonElement).children('i');
+      originalIcon.show();
+    };
+
     $(function () {
       $('[data-toggle="tooltip"]').tooltip();
 
       // 多重送信を防ぐための、 disabling buttons です。
       $('.btn-click-to-disable').on('click', function() {
         // NOTE: モックなので、1秒くるくるしたあと disabled 解除とします。
-        $(this).addClass('disabled');
-        $(this).prop('disabled', true);
-        const originalIcon = $(this).children('i')[0];
-        originalIcon.remove();
-        $(this).prepend('<i class="fas fa-circle-notch fa-spin fa-fw"></i>');
+        disableButton(this);
         setTimeout(() => {
-          $(this).removeClass('disabled');
-          $(this).prop('disabled', false);
-          const spinIcon = $(this).children('i')[0];
-          spinIcon.remove();
-          $(this).prepend(originalIcon);
+          enableButton(this);
         }, 1000);
       });
 
