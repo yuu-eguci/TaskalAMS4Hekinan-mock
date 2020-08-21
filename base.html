@@ -608,6 +608,28 @@
     </div>
   </div>
 
+  <div id="modal-information" class="modal fade" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">情報</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-secondary mb-0" role="alert">
+            A simple secondary alert—check it out!
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -668,6 +690,12 @@
       originalIcon.show();
     };
 
+    // モーダルよりもさらに前面にダイアログモーダルを表示します。
+    const openDialogModal = function (message, response) {
+      $('#modal-information').modal('show');
+      $('#modal-information .alert').html(message);
+    };
+
     $(function () {
       $('[data-toggle="tooltip"]').tooltip();
 
@@ -717,6 +745,25 @@
       $('#navbar-bottom').on('hide.bs.collapse', function () {
         $('#backdrop-for-navbar-bottom').remove();
       });
+
+      // 多重モーダルを実現する処理です。
+      $('body').on({
+        'show.bs.modal': function () {
+          const zIndex = 1040 + (10 * $('.modal:visible').length);
+          $(this).css('z-index', zIndex);
+          setTimeout(() => {
+            $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+          }, 0);
+        },
+        'hidden.bs.modal': function () {
+          if ($('.modal:visible').length) {
+            setTimeout(() => {
+              $('body').addClass('modal-open');
+            }, 0);
+          }
+        }
+      }, '.modal');
+
     });
   </script>
 </body>
