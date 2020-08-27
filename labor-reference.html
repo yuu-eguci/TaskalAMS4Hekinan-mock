@@ -367,7 +367,8 @@
           <div class="card-header text-dark font-weight-bold p-0" style="background-color: #ffa7a7;" data-toggle="collapse" data-target="#card-02" aria-expanded="true">
             08/02 日
           </div>
-          <div id="card-02" class="collapse show card-body p-1">
+          <div class="card-body p-1">
+            <!-- トグルが閉じた状態でも表示しておく情報です。 -->
             <div class="row">
               <div class="col-lg-4">
                 <button class="btn btn-outline-light btn-block text-left">
@@ -377,8 +378,8 @@
                   <span class="badge badge-pill" style="background-color: #DC25FC; color: #fff;">離</span>
                 </button>
                 <div class="form-row">
-                  <div class="form-group col-6">
-                    <label class="small">勤務番:予定</label>
+                  <div class="form-group col-6 mb-1">
+                    <label class="small mb-0">勤務番:予定</label>
                     <select class="form-control form-control-sm">
                       <option selected="selected" value="1">常</option>
                       <option value="2">T</option>
@@ -401,8 +402,8 @@
                       <option value="-3">有</option>
                     </select>
                   </div>
-                  <div class="form-group col-6">
-                    <label class="small">勤務番:実績</label>
+                  <div class="form-group col-6 mb-1">
+                    <label class="small mb-0">勤務番:実績</label>
                     <select class="form-control form-control-sm">
                       <option selected="selected" value="1">常</option>
                       <option value="2">T</option>
@@ -426,6 +427,8 @@
                     </select>
                   </div>
                 </div>
+              </div>
+              <div class="col-lg-4">
                 <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
                   <tbody>
                     <tr>
@@ -435,7 +438,8 @@
                           <div class="input-group-prepend" data-target="#time-only-1" data-toggle="datetimepicker">
                             <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
                           </div>
-                          <input type="text" class="form-control datetimepicker-input" data-target="#time-only-1" data-toggle="datetimepicker" />
+                          <input type="text" class="form-control datetimepicker-input" data-target="#time-only-1"
+                            data-toggle="datetimepicker" />
                         </div>
                       </td>
                     </tr>
@@ -457,26 +461,6 @@
               <div class="col-lg-4">
                 <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
                   <tbody>
-                    <tr>
-                      <th class="bg-light w-50">基準内</th>
-                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">時間外</th>
-                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">深夜</th>
-                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">法定休日</th>
-                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
-                    </tr>
-                    <tr>
-                      <th class="bg-light w-50">法休深夜</th>
-                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
-                    </tr>
                     <tr>
                       <th class="bg-light w-50">勤怠区分</th>
                       <td class="p-0">
@@ -501,13 +485,48 @@
                   </tbody>
                 </table>
               </div>
+            </div>
+            <!-- トグルにより open/close を選べる部分です。 -->
+            <div id="card-02" class="row collapse show">
               <div class="col-lg-4">
                 <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
                   <tbody>
                     <tr>
+                      <th class="bg-light w-50">基準内</th>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
+                    </tr>
+                    <tr>
+                      <th class="bg-light w-50">時間外</th>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
+                    </tr>
+                    <tr>
+                      <th class="bg-light w-50">深夜</th>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-lg-4">
+                <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
+                  <tbody>
+                    <tr>
+                      <th class="bg-light w-50">法定休日</th>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
+                    </tr>
+                    <tr>
+                      <th class="bg-light w-50">法休深夜</th>
+                      <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
+                    </tr>
+                    <tr>
                       <th class="bg-light w-50">備考</th>
                       <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
                     </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-lg-4">
+                <table class="table table-sm table-bordered text-center mb-0" style="font-size: small;">
+                  <tbody>
                     <tr>
                       <th class="bg-light w-50">食券手当</th>
                       <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0"></td>
