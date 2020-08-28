@@ -245,6 +245,11 @@
     html {
       scroll-padding-top: 4.5rem;
     }
+
+    /* 一画面に表示される情報量を増やすため、カード内のフォントサイズを小さくしています。 */
+    .card-body {
+      font-size: 14px;
+    }
   </style>
 
   <title>Hello, world!</title>
@@ -343,7 +348,7 @@
     </nav>
 
     <style>
-      .toggle-header:before {
+      .btn-toggle-fontawesome:before {
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
         content: "\f078";  /* chevron-down */
@@ -351,8 +356,8 @@
         padding-right: 4px;
       }
 
-      .toggle-header.collapsed:before {
-        content: "\f054";  /* chevron-right */
+      .btn-toggle-fontawesome.collapsed:before {
+        content: "\f054";   /* chevron-right */
       }
     </style>
 
@@ -375,7 +380,7 @@
       <div class="card-body p-1">
 
         <div id="anchor-previous-day" class="card border-secondary mb-1">
-          <div class="card-header toggle-header collapsed text-dark font-weight-bold p-0" style="background-color: #a0beda;" data-toggle="collapse"
+          <div class="btn-toggle-fontawesome card-header collapsed text-dark font-weight-bold p-0" style="background-color: #a0beda;" data-toggle="collapse"
             data-target="#card-01" aria-expanded="false">08/01 土</div>
           <div class="card-body p-1">
             <div class="row">
@@ -453,7 +458,7 @@
         <!-- 当日の日付には anchor-today を付与して下さい。 -->
         <div id="anchor-today" class="card border-secondary mb-1">
           <div class="card-header toggle-header text-dark font-weight-bold p-0" style="background-color: #ffa7a7;" data-toggle="collapse" data-target="#card-02" aria-expanded="true">
-            08/02 日
+            08/02 日 <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="タップすることでこの日の詳細情報を閲覧できます。"></i>
           </div>
           <div class="card-body p-1">
             <!-- トグルが閉じた状態でも表示しておく情報です。 -->
@@ -731,9 +736,9 @@
     <nav class="navbar fixed-bottom navbar-expand-sm p-0" style="z-index: 999;">
       <div class="card w-100">
         <div class="card-header font-weight-bold text-center p-0">
-          <button type="button" class="btn btn-sm btn-block" data-toggle="collapse" data-target="#navbar-bottom"
+          <button type="button" class="btn-toggle-fontawesome btn btn-sm btn-block collapsed" data-toggle="collapse" data-target="#navbar-bottom"
             aria-expanded="false">
-            <i class="fas fa-chevron-up fa-fw"></i> ジャンプボタン・処理決定
+            ジャンプボタン・処理決定
           </button>
         </div>
         <div id="navbar-bottom" class="collapse card-body">
