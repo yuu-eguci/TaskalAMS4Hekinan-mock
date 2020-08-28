@@ -1192,10 +1192,10 @@
       $('.datetimepicker-date-only').datetimepicker({
         format: 'YYYY-MM-DD',
       });
-      // $('.datetimepicker-month-only').datetimepicker({
-      //   format: 'YYYY-MM',
-      //   maxDate: $.now(),
-      // });
+      $('.datetimepicker-month-only').datetimepicker({
+        format: 'YYYY-MM',
+        maxDate: $.now(),
+      });
 
       // navbar-bottom オープン時、 backdrop を出します。
       $('#navbar-bottom').on('show.bs.collapse', function () {
