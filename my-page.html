@@ -629,6 +629,8 @@
                 </tbody>
               </table>
             </div>
+
+            <!-- セレクトボックスが「休暇申請」のときのエリアです。このエリアは日付を選択するまで有効化されません。 -->
             <div class="col-lg-6">
               <table class="table table-sm table-bordered mb-0" style="font-size: small;">
                 <thead>
@@ -652,6 +654,7 @@
                   <tr>
                     <th class="bg-light">開始時刻</th>
                     <td class="p-0">
+                      <!-- NOTE: 実装の際は useCurrent:false がいい。 -->
                       <div id="time-only-1" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
                         <div class="input-group-prepend" data-target="#time-only-1" data-toggle="datetimepicker">
                           <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
@@ -677,9 +680,149 @@
                     <th class="bg-light">休憩時間</th>
                     <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
                   </tr>
+                  <tr>
+                    <th class="bg-light">備考 ※</th>
+                    <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="2">
+                      ※「職免」の場合は日付、「その他特別休暇」の場合は休暇理由を入力してください。
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+
+            <!-- セレクトボックスが「時間外申請」のときのエリアです。このエリアは日付を選択するまで有効化されません。 -->
+            <div class="col-lg-6">
+              <table class="table table-sm table-bordered mb-3" style="font-size: small;">
+                <thead>
+                  <tr>
+                    <th class="bg-light" colspan="2">時間外</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th class="bg-light w-50">開始時刻</th>
+                    <td class="p-0">
+                      <!-- NOTE: 実装の際は useCurrent:false がいい。 -->
+                      <div id="time-only-3" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
+                        <div class="input-group-prepend" data-target="#time-only-3" data-toggle="datetimepicker">
+                          <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                        </div>
+                        <input type="text" class="form-control datetimepicker-input" data-target="#time-only-3"
+                          data-toggle="datetimepicker" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="bg-light">終了時刻</th>
+                    <td class="p-0">
+                      <div id="time-only-4" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
+                        <div class="input-group-prepend" data-target="#time-only-4" data-toggle="datetimepicker">
+                          <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                        </div>
+                        <input type="text" class="form-control datetimepicker-input" data-target="#time-only-4"
+                          data-toggle="datetimepicker" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="bg-light">休憩時間(分)</th>
+                    <td class="p-0"><input type="number" class="form-control form-control-sm p-0 pr-3 text-right" placeholder="0.00"></td>
+                  </tr>
+                  <tr>
+                    <th class="bg-light">時間外時間</th>
+                    <td class="p-0"></td>
+                  </tr>
+                  <tr>
+                    <th class="bg-light">内容</th>
+                    <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                <thead>
+                  <tr>
+                    <th class="bg-light" colspan="2">時間外</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th class="bg-light w-50">振替日付</th>
+                    <td class="p-0">
+                      <div id="date-only-2" class="input-group input-group-sm datetimepicker-date-only" data-target-input="nearest">
+                        <div class="input-group-prepend" data-target="#date-only-2" data-toggle="datetimepicker">
+                          <span class="input-group-text"><i class="fas fa-calendar-alt fa-fw"></i></span>
+                        </div>
+                        <input type="text" class="form-control datetimepicker-input" data-target="#date-only-2"
+                          data-toggle="datetimepicker" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="bg-light">振替時間</th>
+                    <td class="p-0">
+                      <select class="form-control form-control-sm">
+                        <option value="0"></option>
+                        <option value="1">一日振替</option>
+                        <option value="4">午前振替</option>
+                        <option value="5">午後振替</option>
+                      </select>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
+
+            <!-- セレクトボックスが「自己研鑽」のときのエリアです。このエリアは日付を選択するまで有効化されません。 -->
+            <div class="col-lg-6">
+              <table class="table table-sm table-bordered mb-0" style="font-size: small;">
+                <thead>
+                  <tr>
+                    <th class="bg-light" colspan="2">自己研鑽</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th class="bg-light w-50">開始時刻</th>
+                    <td class="p-0">
+                      <!-- NOTE: 実装の際は useCurrent:false がいい。 -->
+                      <div id="time-only-5" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
+                        <div class="input-group-prepend" data-target="#time-only-5" data-toggle="datetimepicker">
+                          <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                        </div>
+                        <input type="text" class="form-control datetimepicker-input" data-target="#time-only-5"
+                          data-toggle="datetimepicker" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="bg-light">終了時刻</th>
+                    <td class="p-0">
+                      <div id="time-only-6" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
+                        <div class="input-group-prepend" data-target="#time-only-6" data-toggle="datetimepicker">
+                          <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                        </div>
+                        <input type="text" class="form-control datetimepicker-input" data-target="#time-only-6"
+                          data-toggle="datetimepicker" />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="bg-light">自己研鑽時間</th>
+                    <td class="p-0"></td>
+                  </tr>
+                  <tr>
+                    <th class="bg-light">内容</th>
+                    <td class="p-0"><input type="text" class="form-control form-control-sm p-0"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
         <div class="modal-footer">
