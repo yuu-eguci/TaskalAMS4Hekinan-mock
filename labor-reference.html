@@ -921,12 +921,39 @@
             </div>
             <div class="form-group col-md-6">
               <label>日付</label>
-              <div id="date-only" class="input-group input-group-sm mb-2 datetimepicker-date-only" data-target-input="nearest">
-                <div class="input-group-prepend" data-target="#date-only" data-toggle="datetimepicker">
-                  <span class="input-group-text"><i class="fas fa-calendar-alt fa-fw"></i></span>
+              <!-- .auto-fill-date-only はセレクトボックスに変更があると自動で hidden input を埋めるクラスです。 -->
+              <div class="form-row auto-fill-date-only">
+                <div class="col-4 pr-0">
+                  <div class="input-group input-group-sm mb-2">
+                    <!-- .auto-fill-year は .auto-fill... に対応し year を特定するクラスです。 -->
+                    <select class="form-control form-control-sm auto-fill-year">
+                    </select>
+                    <div class="input-group-append">
+                      <span class="input-group-text">年</span>
+                    </div>
+                  </div>
                 </div>
-                <input type="text" class="form-control datetimepicker-input" data-target="#date-only"
-                  data-toggle="datetimepicker" />
+                <div class="col-4 pl-0 pr-0">
+                  <div class="input-group input-group-sm mb-2">
+                    <!-- .auto-fill-month は .auto-fill... に対応し month を特定するクラスです。 -->
+                    <select class="form-control form-control-sm auto-fill-month">
+                    </select>
+                    <div class="input-group-append">
+                      <span class="input-group-text">月</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4 pl-0">
+                  <div class="input-group input-group-sm mb-2">
+                    <!-- .auto-fill-date は .auto-fill... に対応し date を特定するクラスです。 -->
+                    <select class="form-control form-control-sm auto-fill-date">
+                    </select>
+                    <div class="input-group-append">
+                      <span class="input-group-text">日</span>
+                    </div>
+                  </div>
+                </div>
+                <input type="text"><!-- TODO: hidden に。 -->
               </div>
             </div>
           </div>
@@ -969,25 +996,58 @@
                   <tr>
                     <th class="bg-light">開始時刻</th>
                     <td class="p-0">
-                      <!-- NOTE: 実装の際は useCurrent:false がいい。 -->
-                      <div id="time-only-1" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
-                        <div class="input-group-prepend" data-target="#time-only-1" data-toggle="datetimepicker">
-                          <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                      <!-- .auto-fill-time-only はセレクトボックスに変更があると自動で hidden input を埋めるクラスです。 -->
+                      <div class="form-row auto-fill-time-only">
+                        <div class="col-6 pr-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-hour は .auto-fill... に対応し hour を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-hour">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">時</span>
+                            </div>
+                          </div>
                         </div>
-                        <input type="text" class="form-control datetimepicker-input" data-target="#time-only-1"
-                          data-toggle="datetimepicker" />
+                        <div class="col-6 pl-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-minute は .auto-fill... に対応し minute を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-minute">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">分</span>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="text"><!-- TODO: hidden に。 -->
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <th class="bg-light">終了時刻</th>
                     <td class="p-0">
-                      <div id="time-only-2" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
-                        <div class="input-group-prepend" data-target="#time-only-2" data-toggle="datetimepicker">
-                          <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                      <!-- .auto-fill-time-only はセレクトボックスに変更があると自動で hidden input を埋めるクラスです。 -->
+                      <div class="form-row auto-fill-time-only">
+                        <div class="col-6 pr-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-hour は .auto-fill... に対応し hour を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-hour">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">時</span>
+                            </div>
+                          </div>
                         </div>
-                        <input type="text" class="form-control datetimepicker-input" data-target="#time-only-2"
-                          data-toggle="datetimepicker" />
+                        <div class="col-6 pl-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-minute は .auto-fill... に対応し minute を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-minute">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">分</span>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="text"><!-- TODO: hidden に。 -->
                       </div>
                     </td>
                   </tr>
@@ -1022,25 +1082,58 @@
                   <tr>
                     <th class="bg-light w-50">開始時刻</th>
                     <td class="p-0">
-                      <!-- NOTE: 実装の際は useCurrent:false がいい。 -->
-                      <div id="time-only-3" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
-                        <div class="input-group-prepend" data-target="#time-only-3" data-toggle="datetimepicker">
-                          <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                      <!-- .auto-fill-time-only はセレクトボックスに変更があると自動で hidden input を埋めるクラスです。 -->
+                      <div class="form-row auto-fill-time-only">
+                        <div class="col-6 pr-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-hour は .auto-fill... に対応し hour を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-hour">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">時</span>
+                            </div>
+                          </div>
                         </div>
-                        <input type="text" class="form-control datetimepicker-input" data-target="#time-only-3"
-                          data-toggle="datetimepicker" />
+                        <div class="col-6 pl-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-minute は .auto-fill... に対応し minute を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-minute">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">分</span>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="text"><!-- TODO: hidden に。 -->
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <th class="bg-light">終了時刻</th>
                     <td class="p-0">
-                      <div id="time-only-4" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
-                        <div class="input-group-prepend" data-target="#time-only-4" data-toggle="datetimepicker">
-                          <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                      <!-- .auto-fill-time-only はセレクトボックスに変更があると自動で hidden input を埋めるクラスです。 -->
+                      <div class="form-row auto-fill-time-only">
+                        <div class="col-6 pr-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-hour は .auto-fill... に対応し hour を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-hour">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">時</span>
+                            </div>
+                          </div>
                         </div>
-                        <input type="text" class="form-control datetimepicker-input" data-target="#time-only-4"
-                          data-toggle="datetimepicker" />
+                        <div class="col-6 pl-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-minute は .auto-fill... に対応し minute を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-minute">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">分</span>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="text"><!-- TODO: hidden に。 -->
                       </div>
                     </td>
                   </tr>
@@ -1068,12 +1161,39 @@
                   <tr>
                     <th class="bg-light w-50">振替日付</th>
                     <td class="p-0">
-                      <div id="date-only-2" class="input-group input-group-sm datetimepicker-date-only" data-target-input="nearest">
-                        <div class="input-group-prepend" data-target="#date-only-2" data-toggle="datetimepicker">
-                          <span class="input-group-text"><i class="fas fa-calendar-alt fa-fw"></i></span>
+                      <!-- .auto-fill-date-only はセレクトボックスに変更があると自動で hidden input を埋めるクラスです。 -->
+                      <div class="form-row auto-fill-date-only">
+                        <div class="col-4 pr-0">
+                          <div class="input-group input-group-sm mb-2">
+                            <!-- .auto-fill-year は .auto-fill... に対応し year を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-year">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">年</span>
+                            </div>
+                          </div>
                         </div>
-                        <input type="text" class="form-control datetimepicker-input" data-target="#date-only-2"
-                          data-toggle="datetimepicker" />
+                        <div class="col-4 pl-0 pr-0">
+                          <div class="input-group input-group-sm mb-2">
+                            <!-- .auto-fill-month は .auto-fill... に対応し month を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-month">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">月</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-4 pl-0">
+                          <div class="input-group input-group-sm mb-2">
+                            <!-- .auto-fill-date は .auto-fill... に対応し date を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-date">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">日</span>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="text"><!-- TODO: hidden に。 -->
                       </div>
                     </td>
                   </tr>
@@ -1104,25 +1224,58 @@
                   <tr>
                     <th class="bg-light w-50">開始時刻</th>
                     <td class="p-0">
-                      <!-- NOTE: 実装の際は useCurrent:false がいい。 -->
-                      <div id="time-only-5" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
-                        <div class="input-group-prepend" data-target="#time-only-5" data-toggle="datetimepicker">
-                          <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                      <!-- .auto-fill-time-only はセレクトボックスに変更があると自動で hidden input を埋めるクラスです。 -->
+                      <div class="form-row auto-fill-time-only">
+                        <div class="col-6 pr-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-hour は .auto-fill... に対応し hour を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-hour">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">時</span>
+                            </div>
+                          </div>
                         </div>
-                        <input type="text" class="form-control datetimepicker-input" data-target="#time-only-5"
-                          data-toggle="datetimepicker" />
+                        <div class="col-6 pl-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-minute は .auto-fill... に対応し minute を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-minute">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">分</span>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="text"><!-- TODO: hidden に。 -->
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <th class="bg-light">終了時刻</th>
                     <td class="p-0">
-                      <div id="time-only-6" class="input-group input-group-sm datetimepicker-time-only" data-target-input="nearest">
-                        <div class="input-group-prepend" data-target="#time-only-6" data-toggle="datetimepicker">
-                          <span class="input-group-text"><i class="fas fa-clock fa-fw"></i></span>
+                      <!-- .auto-fill-time-only はセレクトボックスに変更があると自動で hidden input を埋めるクラスです。 -->
+                      <div class="form-row auto-fill-time-only">
+                        <div class="col-6 pr-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-hour は .auto-fill... に対応し hour を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-hour">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">時</span>
+                            </div>
+                          </div>
                         </div>
-                        <input type="text" class="form-control datetimepicker-input" data-target="#time-only-6"
-                          data-toggle="datetimepicker" />
+                        <div class="col-6 pl-0">
+                          <div class="input-group input-group-sm">
+                            <!-- .auto-fill-minute は .auto-fill... に対応し minute を特定するクラスです。 -->
+                            <select class="form-control form-control-sm auto-fill-minute">
+                            </select>
+                            <div class="input-group-append">
+                              <span class="input-group-text">分</span>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="text"><!-- TODO: hidden に。 -->
                       </div>
                     </td>
                   </tr>
