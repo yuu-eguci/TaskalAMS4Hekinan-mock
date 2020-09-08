@@ -1190,28 +1190,62 @@
       // ↑これらの selectbox が最初にクリックされたときは、現地時刻に合わせます。
       $(document).on('click', '.auto-fill-options-year', function () {
         if ($(this).val() === '') {
-          $(this).val(dateNow.getFullYear());
+          $(this).val(dateNow.getFullYear()).change();
         }
       });
       $(document).on('click', '.auto-fill-options-month', function () {
         if ($(this).val() === '') {
-          $(this).val(dateNow.getMonth() + 1);
+          $(this).val(dateNow.getMonth() + 1).change();
         }
       });
       $(document).on('click', '.auto-fill-options-date', function () {
         if ($(this).val() === '') {
-          $(this).val(dateNow.getDate());
+          $(this).val(dateNow.getDate()).change();
         }
       });
       $(document).on('click', '.auto-fill-options-hour', function () {
         if ($(this).val() === '') {
-          $(this).val(dateNow.getHours());
+          $(this).val(dateNow.getHours()).change();
         }
       });
       $(document).on('click', '.auto-fill-options-minute', function () {
         if ($(this).val() === '') {
-          $(this).val(dateNow.getMinutes());
+          $(this).val(dateNow.getMinutes()).change();
         }
+      });
+
+      // ↑これらの selectbox はただの selectbox です。サーバに値は送られません。
+      // 以下イベントにより hidden input 要素に入力されて初めてサーバに送られます。
+      // TODO: Impl.
+      $(document).on('change', '.auto-fill-options-year', function () {
+        if ($(this).val() === '') {
+          return;
+        }
+        console.info('入力値', $(this).val());
+      });
+      $(document).on('change', '.auto-fill-options-month', function () {
+        if ($(this).val() === '') {
+          return;
+        }
+        console.info('入力値', $(this).val());
+      });
+      $(document).on('change', '.auto-fill-options-date', function () {
+        if ($(this).val() === '') {
+          return;
+        }
+        console.info('入力値', $(this).val());
+      });
+      $(document).on('change', '.auto-fill-options-hour', function () {
+        if ($(this).val() === '') {
+          return;
+        }
+        console.info('入力値', $(this).val());
+      });
+      $(document).on('change', '.auto-fill-options-minute', function () {
+        if ($(this).val() === '') {
+          return;
+        }
+        console.info('入力値', $(this).val());
       });
 
       // navbar-bottom オープン時、 backdrop を出します。
