@@ -1295,6 +1295,150 @@
       $('#modal-information .alert').html(message);
     };
 
+    // Selectbox を初期化します。
+    // NOTE: 日付や時刻の auto fill のために用意した関数です。表示と val が異なる option には対応していません。
+    const _initializeSelectbox = function (selectIdentifier, optionValues) {
+      // 先頭の option は空欄にしています。
+      $(selectIdentifier).append($('<option>').html('').val(''));
+      for (const option of optionValues) {
+        $(selectIdentifier).append($('<option>').html(option).val(option));
+      }
+      // NOTE: 下記2点の機能をセレクトボックスに与えるため、用意した data 属性です。
+      // - セレクトボックス未選択時、最初のクリックでは現在日時をセットしたい。
+      // - その後に未選択を選択することも可能にしたい。
+      // この data 属性なしでは、空欄を意図的に選択することができません。
+      $(selectIdentifier).data('is-clicked-after-loaded', true);
+    };
+
+    // 何かと使う Date オブジェクトを初期化しておきます。
+    const dateNow = new Date();
+
+    // ゼロ埋め2桁です。
+    const zeroPadding2 = function (obj) {
+      return obj.toString().padStart(2, '0');
+    };
+
+    const initializeAutoFillYear = function (selectIdentifier) {
+      // NOTE: 年の候補は3年前～3年後にしてみます。
+      let threeYearsAgoYear = dateNow.getFullYear() - 4;
+      _initializeSelectbox(selectIdentifier, [...Array(7).keys()].map(i => ++threeYearsAgoYear));
+    };
+
+    const initializeAutoFillMonth = function (selectIdentifier) {
+      _initializeSelectbox(selectIdentifier, [...Array(12).keys()].map(i => zeroPadding2(++i)));
+    };
+
+    const initializeAutoFillDate = function (selectIdentifier) {
+      _initializeSelectbox(selectIdentifier, [...Array(31).keys()].map(i => zeroPadding2(++i)));
+    };
+
+    const initializeAutoFillHour = function (selectIdentifier) {
+      _initializeSelectbox(selectIdentifier, [...Array(24).keys()].map(i => zeroPadding2(i)));
+    };
+
+    const initializeAutoFillMinute = function (selectIdentifier) {
+      _initializeSelectbox(selectIdentifier, [...Array(60).keys()].map(i => zeroPadding2(i)));
+    };
+
+    // 日付、時刻選択のセレクトボックスの初期化、イベント登録を行います。
+    // NOTE: Jquery の初期化コードが長いので分離しています。
+    const initializeSelectboxesForDateTime = function () {
+
+      // select.auto-fill-year, -month, -date, -hour, -minute を初期化します。 Option 埋めと、 data 属性の付与です。
+      initializeAutoFillYear('.auto-fill-year');
+      initializeAutoFillMonth('.auto-fill-month');
+      initializeAutoFillDate('.auto-fill-date');
+      initializeAutoFillHour('.auto-fill-hour');
+      initializeAutoFillMinute('.auto-fill-minute');
+
+      // ↑これらの selectbox が最初に選択されるときは、現地時刻に合わせます。
+      // 最初の選択かどうかは「画面が開かれてから最初のクリックである」「現在の値が空欄である」で判断します。
+      const _isFirstClick = function (clickedElement) {
+        const ret = $(clickedElement).data('is-clicked-after-loaded') && $(clickedElement).val() === '';
+        $(clickedElement).data('is-clicked-after-loaded', false);
+        return ret;
+      };
+      $(document).on('click', '.auto-fill-year', function () {
+        if (_isFirstClick(this)) {
+          $(this).val(zeroPadding2(dateNow.getFullYear())).change();
+        }
+      });
+      $(document).on('click', '.auto-fill-month', function () {
+        if (_isFirstClick(this)) {
+          $(this).val(zeroPadding2(dateNow.getMonth() + 1)).change();
+        }
+      });
+      $(document).on('click', '.auto-fill-date', function () {
+        if (_isFirstClick(this)) {
+          $(this).val(zeroPadding2(dateNow.getDate())).change();
+        }
+      });
+      $(document).on('click', '.auto-fill-hour', function () {
+        if (_isFirstClick(this)) {
+          $(this).val(zeroPadding2(dateNow.getHours())).change();
+        }
+      });
+      $(document).on('click', '.auto-fill-minute', function () {
+        if (_isFirstClick(this)) {
+          $(this).val(zeroPadding2(dateNow.getMinutes())).change();
+        }
+      });
+
+      // ↑これらの selectbox はただの selectbox です。サーバに値は送られません。
+      // 以下イベントにより hidden input 要素に入力されて初めてサーバに送られます。
+      $(document).on('change', '.auto-fill-date-only select', function () {
+        // 親 form-row です。この中に年月日が含まれます。
+        const p = $(this).closest('.auto-fill-date-only');
+        if ($(this).val()) {
+          // 各値です。
+          const yyyy = p.find('.auto-fill-year').val() || dateNow.getFullYear();
+          const mm = p.find('.auto-fill-month').val() || '01';
+          const dd = p.find('.auto-fill-date').val() || '01';
+          // hidden input を埋めます。
+          p.find('input').val(`${yyyy}/${mm}/${dd}`);
+          return;
+        }
+        // 空値が選ばれたときは hidden input も空欄にしたいと判断します。
+        p.find('.auto-fill-year').val('');
+        p.find('.auto-fill-month').val('');
+        p.find('.auto-fill-date').val('');
+        p.find('input').val('');
+      });
+      $(document).on('change', '.auto-fill-time-only select', function () {
+        // 親 form-row です。この中に時刻が含まれます。
+        const p = $(this).closest('.auto-fill-time-only');
+        if ($(this).val()) {
+          // 各値です。
+          const hh = p.find('.auto-fill-hour').val() || '00';
+          const mm = p.find('.auto-fill-minute').val() || '00';
+          // hidden input を埋めます。
+          p.find('input').val(`${hh}:${mm}`);
+          return;
+        }
+        // 空値が選ばれたときは hidden input も空欄にしたいと判断します。
+        p.find('.auto-fill-hour').val('');
+        p.find('.auto-fill-minute').val('');
+        p.find('input').val('');
+      });
+      $(document).on('change', '.auto-fill-month-only select', function () {
+        // 親 form-row です。この中に時刻が含まれます。
+        const p = $(this).closest('.auto-fill-month-only');
+        if ($(this).val()) {
+          // 各値です。
+          const yyyy = p.find('.auto-fill-year').val() || dateNow.getFullYear();
+          const mm = p.find('.auto-fill-month').val() || '01';
+          // hidden input を埋めます。
+          p.find('input').val(`${yyyy}/${mm}`);
+          return;
+        }
+        // 空値が選ばれたときは hidden input も空欄にしたいと判断します。
+        p.find('.auto-fill-year').val('');
+        p.find('.auto-fill-month').val('');
+        p.find('input').val('');
+      });
+
+    };
+
     $(function () {
       $('[data-toggle="tooltip"]').tooltip();
 
@@ -1306,6 +1450,9 @@
           enableButton(this);
         }, 1000);
       });
+
+      // 日付、時刻選択のセレクトボックスの初期化、イベント登録を行います。
+      initializeSelectboxesForDateTime();
 
       // navbar-bottom オープン時、 backdrop を出します。
       $('#navbar-bottom').on('show.bs.collapse', function () {
