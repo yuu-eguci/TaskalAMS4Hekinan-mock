@@ -1221,36 +1221,68 @@
 
       // ↑これらの selectbox はただの selectbox です。サーバに値は送られません。
       // 以下イベントにより hidden input 要素に入力されて初めてサーバに送られます。
-      // TODO: Impl.
       $(document).on('change', '.auto-fill-options-year', function () {
         if (!$(this).val()) {
           return;
         }
-        console.info('入力値', $(this).val());
+        // 親 form-row です。この中に年月日が含まれます。
+        const parentFormRow = $(this).closest('.form-row');
+        // 各値です。
+        const selectYearValue = $(this).val();
+        const selectMonthValue = parentFormRow.find('.auto-fill-options-month').val() || '01';
+        const selectDateValue = parentFormRow.find('.auto-fill-options-date').val() || '01';
+        // hidden input を埋めます。
+        parentFormRow.find('input').val(`${selectYearValue}/${selectMonthValue}/${selectDateValue}`);
       });
       $(document).on('change', '.auto-fill-options-month', function () {
         if (!$(this).val()) {
           return;
         }
-        console.info('入力値', $(this).val());
+        // 親 form-row です。この中に年月日が含まれます。
+        const parentFormRow = $(this).closest('.form-row');
+        // 各値です。
+        const selectYearValue = parentFormRow.find('.auto-fill-options-year').val() || dateNow.getFullYear();
+        const selectMonthValue = $(this).val();
+        const selectDateValue = parentFormRow.find('.auto-fill-options-date').val() || '01';
+        // hidden input を埋めます。
+        parentFormRow.find('input').val(`${selectYearValue}/${selectMonthValue}/${selectDateValue}`);
       });
       $(document).on('change', '.auto-fill-options-date', function () {
         if (!$(this).val()) {
           return;
         }
-        console.info('入力値', $(this).val());
+        // 親 form-row です。この中に年月日が含まれます。
+        const parentFormRow = $(this).closest('.form-row');
+        // 各値です。
+        const selectYearValue = parentFormRow.find('.auto-fill-options-year').val() || dateNow.getFullYear();
+        const selectMonthValue = parentFormRow.find('.auto-fill-options-month').val() || '01';
+        const selectDateValue = $(this).val();
+        // hidden input を埋めます。
+        parentFormRow.find('input').val(`${selectYearValue}/${selectMonthValue}/${selectDateValue}`);
       });
       $(document).on('change', '.auto-fill-options-hour', function () {
         if (!$(this).val()) {
           return;
         }
-        console.info('入力値', $(this).val());
+        // 親 form-row です。この中に年月日が含まれます。
+        const parentFormRow = $(this).closest('.form-row');
+        // 各値です。
+        const selectHourValue = $(this).val();
+        const selectMinuteValue = parentFormRow.find('.auto-fill-options-minute').val() || '00';
+        // hidden input を埋めます。
+        parentFormRow.find('input').val(`${selectHourValue}:${selectMinuteValue}`);
       });
       $(document).on('change', '.auto-fill-options-minute', function () {
         if (!$(this).val()) {
           return;
         }
-        console.info('入力値', $(this).val());
+        // 親 form-row です。この中に年月日が含まれます。
+        const parentFormRow = $(this).closest('.form-row');
+        // 各値です。
+        const selectHourValue = parentFormRow.find('.auto-fill-options-hour').val() || '00';
+        const selectMinuteValue = $(this).val();
+        // hidden input を埋めます。
+        parentFormRow.find('input').val(`${selectHourValue}:${selectMinuteValue}`);
       });
 
       // navbar-bottom オープン時、 backdrop を出します。
