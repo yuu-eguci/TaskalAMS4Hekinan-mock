@@ -1213,55 +1213,29 @@
 
       // ↑これらの selectbox はただの selectbox です。サーバに値は送られません。
       // 以下イベントにより hidden input 要素に入力されて初めてサーバに送られます。
-      $(document).on('change', '.auto-fill-year', function () {
+      $(document).on('change', '.auto-fill-date-only select', function () {
         if (!$(this).val()) {
           return;
         }
         // 親 form-row です。この中に年月日が含まれます。
-        const p = $(this).closest('.form-row');
+        const p = $(this).closest('.auto-fill-date-only');
         // 各値です。
-        const yyyy = $(this).val();
+        const yyyy = p.find('.auto-fill-year').val() || dateNow.getFullYear();
         const mm = p.find('.auto-fill-month').val() || '01';
         const dd = p.find('.auto-fill-date').val() || '01';
         // hidden input を埋めます。
         p.find('input').val(`${yyyy}/${mm}/${dd}`);
       });
-      $(document).on('change', '.auto-fill-month', function () {
+      $(document).on('change', '.auto-fill-time-only select', function () {
         if (!$(this).val()) {
           return;
         }
-        const p = $(this).closest('.form-row');
-        const yyyy = p.find('.auto-fill-year').val() || dateNow.getFullYear();
-        const mm = $(this).val();
-        const dd = p.find('.auto-fill-date').val() || '01';
-        p.find('input').val(`${yyyy}/${mm}/${dd}`);
-      });
-      $(document).on('change', '.auto-fill-date', function () {
-        if (!$(this).val()) {
-          return;
-        }
-        const p = $(this).closest('.form-row');
-        const yyyy = p.find('.auto-fill-year').val() || dateNow.getFullYear();
-        const mm = p.find('.auto-fill-month').val() || '01';
-        const dd = $(this).val();
-        p.find('input').val(`${yyyy}/${mm}/${dd}`);
-      });
-      $(document).on('change', '.auto-fill-hour', function () {
-        if (!$(this).val()) {
-          return;
-        }
-        const p = $(this).closest('.form-row');
-        const hh = $(this).val();
-        const mm = p.find('.auto-fill-minute').val() || '00';
-        p.find('input').val(`${hh}:${mm}`);
-      });
-      $(document).on('change', '.auto-fill-minute', function () {
-        if (!$(this).val()) {
-          return;
-        }
-        const p = $(this).closest('.form-row');
+        // 親 form-row です。この中に時刻が含まれます。
+        const p = $(this).closest('.auto-fill-time-only');
+        // 各値です。
         const hh = p.find('.auto-fill-hour').val() || '00';
-        const mm = $(this).val();
+        const mm = p.find('.auto-fill-minute').val() || '00';
+        // hidden input を埋めます。
         p.find('input').val(`${hh}:${mm}`);
       });
 
