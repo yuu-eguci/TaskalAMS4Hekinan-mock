@@ -1173,17 +1173,9 @@
       _fillSelectOptions(selectIdentifier, [...Array(60).keys()].map(i => zeroPadding2(i)));
     };
 
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip();
-
-      // 多重送信を防ぐための、 disabling buttons です。
-      $('.btn-click-to-disable').on('click', function() {
-        // NOTE: モックなので、1秒くるくるしたあと disabled 解除とします。
-        disableButton(this);
-        setTimeout(() => {
-          enableButton(this);
-        }, 1000);
-      });
+    // 日付、時刻選択のセレクトボックスの初期化、イベント登録を行います。
+    // NOTE: Jquery の初期化コードが長いので分離しています。
+    const initializeSelectboxesForDateTime = function () {
 
       // select.auto-fill-options-year, -month, -date, -hour, -minute の option を auto fill します。
       fillOptionsYear('.auto-fill-options-year');
@@ -1284,6 +1276,23 @@
         // hidden input を埋めます。
         parentFormRow.find('input').val(`${selectHourValue}:${selectMinuteValue}`);
       });
+
+    };
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+
+      // 多重送信を防ぐための、 disabling buttons です。
+      $('.btn-click-to-disable').on('click', function() {
+        // NOTE: モックなので、1秒くるくるしたあと disabled 解除とします。
+        disableButton(this);
+        setTimeout(() => {
+          enableButton(this);
+        }, 1000);
+      });
+
+      // 日付、時刻選択のセレクトボックスの初期化、イベント登録を行います。
+      initializeSelectboxesForDateTime();
 
       // navbar-bottom オープン時、 backdrop を出します。
       $('#navbar-bottom').on('show.bs.collapse', function () {
