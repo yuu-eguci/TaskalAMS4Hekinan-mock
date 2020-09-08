@@ -363,24 +363,56 @@
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>月度(～から)</label>
-              <div id="month-only-1" class="input-group input-group-sm mb-2 datetimepicker-month-only"
-                data-target-input="nearest">
-                <div class="input-group-prepend" data-target="#month-only-1" data-toggle="datetimepicker">
-                  <span class="input-group-text"><i class="fas fa-calendar-alt fa-fw"></i></span>
+              <!-- .auto-fill-month-only はセレクトボックスに変更があると自動で hidden input を埋めるクラスです。 -->
+              <div class="form-row auto-fill-month-only">
+                <div class="col-6 pr-0">
+                  <div class="input-group input-group-sm mb-2">
+                    <!-- .auto-fill-year は .auto-fill... に対応し year を特定するクラスです。 -->
+                    <select class="form-control form-control-sm auto-fill-year">
+                    </select>
+                    <div class="input-group-append">
+                      <span class="input-group-text">年</span>
+                    </div>
+                  </div>
                 </div>
-                <input type="text" class="form-control datetimepicker-input" data-target="#month-only-1"
-                  data-toggle="datetimepicker" />
+                <div class="col-6 pl-0 pr-0">
+                  <div class="input-group input-group-sm mb-2">
+                    <!-- .auto-fill-month は .auto-fill... に対応し month を特定するクラスです。 -->
+                    <select class="form-control form-control-sm auto-fill-month">
+                    </select>
+                    <div class="input-group-append">
+                      <span class="input-group-text">月</span>
+                    </div>
+                  </div>
+                </div>
+                <input type="text"><!-- TODO: hidden に。 -->
               </div>
             </div>
             <div class="form-group col-md-4">
               <label>月度(～まで)</label>
-              <div id="month-only-2" class="input-group input-group-sm mb-2 datetimepicker-month-only"
-                data-target-input="nearest">
-                <div class="input-group-prepend" data-target="#month-only-2" data-toggle="datetimepicker">
-                  <span class="input-group-text"><i class="fas fa-calendar-alt fa-fw"></i></span>
+              <!-- .auto-fill-month-only はセレクトボックスに変更があると自動で hidden input を埋めるクラスです。 -->
+              <div class="form-row auto-fill-month-only">
+                <div class="col-6 pr-0">
+                  <div class="input-group input-group-sm mb-2">
+                    <!-- .auto-fill-year は .auto-fill... に対応し year を特定するクラスです。 -->
+                    <select class="form-control form-control-sm auto-fill-year">
+                    </select>
+                    <div class="input-group-append">
+                      <span class="input-group-text">年</span>
+                    </div>
+                  </div>
                 </div>
-                <input type="text" class="form-control datetimepicker-input" data-target="#month-only-2"
-                  data-toggle="datetimepicker" />
+                <div class="col-6 pl-0 pr-0">
+                  <div class="input-group input-group-sm mb-2">
+                    <!-- .auto-fill-month は .auto-fill... に対応し month を特定するクラスです。 -->
+                    <select class="form-control form-control-sm auto-fill-month">
+                    </select>
+                    <div class="input-group-append">
+                      <span class="input-group-text">月</span>
+                    </div>
+                  </div>
+                </div>
+                <input type="text"><!-- TODO: hidden に。 -->
               </div>
             </div>
           </div>
@@ -1327,6 +1359,22 @@
         // 空値が選ばれたときは hidden input も空欄にしたいと判断します。
         p.find('.auto-fill-hour').val('');
         p.find('.auto-fill-minute').val('');
+        p.find('input').val('');
+      });
+      $(document).on('change', '.auto-fill-month-only select', function () {
+        // 親 form-row です。この中に時刻が含まれます。
+        const p = $(this).closest('.auto-fill-month-only');
+        if ($(this).val()) {
+          // 各値です。
+          const yyyy = p.find('.auto-fill-year').val() || dateNow.getFullYear();
+          const mm = p.find('.auto-fill-month').val() || '01';
+          // hidden input を埋めます。
+          p.find('input').val(`${yyyy}/${mm}`);
+          return;
+        }
+        // 空値が選ばれたときは hidden input も空欄にしたいと判断します。
+        p.find('.auto-fill-year').val('');
+        p.find('.auto-fill-month').val('');
         p.find('input').val('');
       });
 
