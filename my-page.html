@@ -1146,6 +1146,11 @@
     // 何かと使う Date オブジェクトを初期化しておきます。
     const dateNow = new Date();
 
+    // ゼロ埋め2桁です。
+    const zeroPadding2 = function (obj) {
+      return obj.toString().padStart(2, '0');
+    };
+
     const fillOptionsYear = function (selectIdentifier) {
       // NOTE: 年の候補は3年前～3年後にしてみます。
       let threeYearsAgoYear = dateNow.getFullYear() - 4;
@@ -1153,19 +1158,19 @@
     };
 
     const fillOptionsMonth = function (selectIdentifier) {
-      _fillSelectOptions(selectIdentifier, [...Array(12).keys()].map(i => ++i));
+      _fillSelectOptions(selectIdentifier, [...Array(12).keys()].map(i => zeroPadding2(++i)));
     };
 
     const fillOptionsDate = function (selectIdentifier) {
-      _fillSelectOptions(selectIdentifier, [...Array(31).keys()].map(i => ++i));
+      _fillSelectOptions(selectIdentifier, [...Array(31).keys()].map(i => zeroPadding2(++i)));
     };
 
     const fillOptionsHour = function (selectIdentifier) {
-      _fillSelectOptions(selectIdentifier, [...Array(24).keys()]);
+      _fillSelectOptions(selectIdentifier, [...Array(24).keys()].map(i => zeroPadding2(i)));
     };
 
     const fillOptionsMinute = function (selectIdentifier) {
-      _fillSelectOptions(selectIdentifier, [...Array(60).keys()]);
+      _fillSelectOptions(selectIdentifier, [...Array(60).keys()].map(i => zeroPadding2(i)));
     };
 
     $(function () {
@@ -1189,28 +1194,28 @@
 
       // ↑これらの selectbox が最初にクリックされたときは、現地時刻に合わせます。
       $(document).on('click', '.auto-fill-options-year', function () {
-        if ($(this).val() === '') {
-          $(this).val(dateNow.getFullYear()).change();
+        if (!$(this).val()) {
+          $(this).val(zeroPadding2(dateNow.getFullYear())).change();
         }
       });
       $(document).on('click', '.auto-fill-options-month', function () {
-        if ($(this).val() === '') {
-          $(this).val(dateNow.getMonth() + 1).change();
+        if (!$(this).val()) {
+          $(this).val(zeroPadding2(dateNow.getMonth() + 1)).change();
         }
       });
       $(document).on('click', '.auto-fill-options-date', function () {
-        if ($(this).val() === '') {
-          $(this).val(dateNow.getDate()).change();
+        if (!$(this).val()) {
+          $(this).val(zeroPadding2(dateNow.getDate())).change();
         }
       });
       $(document).on('click', '.auto-fill-options-hour', function () {
-        if ($(this).val() === '') {
-          $(this).val(dateNow.getHours()).change();
+        if (!$(this).val()) {
+          $(this).val(zeroPadding2(dateNow.getHours())).change();
         }
       });
       $(document).on('click', '.auto-fill-options-minute', function () {
-        if ($(this).val() === '') {
-          $(this).val(dateNow.getMinutes()).change();
+        if (!$(this).val()) {
+          $(this).val(zeroPadding2(dateNow.getMinutes())).change();
         }
       });
 
@@ -1218,31 +1223,31 @@
       // 以下イベントにより hidden input 要素に入力されて初めてサーバに送られます。
       // TODO: Impl.
       $(document).on('change', '.auto-fill-options-year', function () {
-        if ($(this).val() === '') {
+        if (!$(this).val()) {
           return;
         }
         console.info('入力値', $(this).val());
       });
       $(document).on('change', '.auto-fill-options-month', function () {
-        if ($(this).val() === '') {
+        if (!$(this).val()) {
           return;
         }
         console.info('入力値', $(this).val());
       });
       $(document).on('change', '.auto-fill-options-date', function () {
-        if ($(this).val() === '') {
+        if (!$(this).val()) {
           return;
         }
         console.info('入力値', $(this).val());
       });
       $(document).on('change', '.auto-fill-options-hour', function () {
-        if ($(this).val() === '') {
+        if (!$(this).val()) {
           return;
         }
         console.info('入力値', $(this).val());
       });
       $(document).on('change', '.auto-fill-options-minute', function () {
-        if ($(this).val() === '') {
+        if (!$(this).val()) {
           return;
         }
         console.info('入力値', $(this).val());
