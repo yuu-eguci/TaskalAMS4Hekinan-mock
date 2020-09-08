@@ -1218,63 +1218,51 @@
           return;
         }
         // 親 form-row です。この中に年月日が含まれます。
-        const parentFormRow = $(this).closest('.form-row');
+        const p = $(this).closest('.form-row');
         // 各値です。
-        const selectYearValue = $(this).val();
-        const selectMonthValue = parentFormRow.find('.auto-fill-options-month').val() || '01';
-        const selectDateValue = parentFormRow.find('.auto-fill-options-date').val() || '01';
+        const yyyy = $(this).val();
+        const mm = p.find('.auto-fill-options-month').val() || '01';
+        const dd = p.find('.auto-fill-options-date').val() || '01';
         // hidden input を埋めます。
-        parentFormRow.find('input').val(`${selectYearValue}/${selectMonthValue}/${selectDateValue}`);
+        p.find('input').val(`${yyyy}/${mm}/${dd}`);
       });
       $(document).on('change', '.auto-fill-options-month', function () {
         if (!$(this).val()) {
           return;
         }
-        // 親 form-row です。この中に年月日が含まれます。
-        const parentFormRow = $(this).closest('.form-row');
-        // 各値です。
-        const selectYearValue = parentFormRow.find('.auto-fill-options-year').val() || dateNow.getFullYear();
-        const selectMonthValue = $(this).val();
-        const selectDateValue = parentFormRow.find('.auto-fill-options-date').val() || '01';
-        // hidden input を埋めます。
-        parentFormRow.find('input').val(`${selectYearValue}/${selectMonthValue}/${selectDateValue}`);
+        const p = $(this).closest('.form-row');
+        const yyyy = p.find('.auto-fill-options-year').val() || dateNow.getFullYear();
+        const mm = $(this).val();
+        const dd = p.find('.auto-fill-options-date').val() || '01';
+        p.find('input').val(`${yyyy}/${mm}/${dd}`);
       });
       $(document).on('change', '.auto-fill-options-date', function () {
         if (!$(this).val()) {
           return;
         }
-        // 親 form-row です。この中に年月日が含まれます。
-        const parentFormRow = $(this).closest('.form-row');
-        // 各値です。
-        const selectYearValue = parentFormRow.find('.auto-fill-options-year').val() || dateNow.getFullYear();
-        const selectMonthValue = parentFormRow.find('.auto-fill-options-month').val() || '01';
-        const selectDateValue = $(this).val();
-        // hidden input を埋めます。
-        parentFormRow.find('input').val(`${selectYearValue}/${selectMonthValue}/${selectDateValue}`);
+        const p = $(this).closest('.form-row');
+        const yyyy = p.find('.auto-fill-options-year').val() || dateNow.getFullYear();
+        const mm = p.find('.auto-fill-options-month').val() || '01';
+        const dd = $(this).val();
+        p.find('input').val(`${yyyy}/${mm}/${dd}`);
       });
       $(document).on('change', '.auto-fill-options-hour', function () {
         if (!$(this).val()) {
           return;
         }
-        // 親 form-row です。この中に年月日が含まれます。
-        const parentFormRow = $(this).closest('.form-row');
-        // 各値です。
-        const selectHourValue = $(this).val();
-        const selectMinuteValue = parentFormRow.find('.auto-fill-options-minute').val() || '00';
-        // hidden input を埋めます。
-        parentFormRow.find('input').val(`${selectHourValue}:${selectMinuteValue}`);
+        const p = $(this).closest('.form-row');
+        const hh = $(this).val();
+        const mm = p.find('.auto-fill-options-minute').val() || '00';
+        p.find('input').val(`${hh}:${mm}`);
       });
       $(document).on('change', '.auto-fill-options-minute', function () {
         if (!$(this).val()) {
           return;
         }
-        // 親 form-row です。この中に年月日が含まれます。
-        const parentFormRow = $(this).closest('.form-row');
-        // 各値です。
-        const selectHourValue = parentFormRow.find('.auto-fill-options-hour').val() || '00';
-        const selectMinuteValue = $(this).val();
-        // hidden input を埋めます。
-        parentFormRow.find('input').val(`${selectHourValue}:${selectMinuteValue}`);
+        const p = $(this).closest('.form-row');
+        const hh = p.find('.auto-fill-options-hour').val() || '00';
+        const mm = $(this).val();
+        p.find('input').val(`${hh}:${mm}`);
       });
 
     };
