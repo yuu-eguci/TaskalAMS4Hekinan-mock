@@ -1143,9 +1143,11 @@
       }
     };
 
+    // 何かと使う Date オブジェクトを初期化しておきます。
+    const dateNow = new Date();
+
     const fillOptionsYear = function (selectIdentifier) {
       // NOTE: 年の候補は3年前～3年後にしてみます。
-      const dateNow = new Date();
       let threeYearsAgoYear = dateNow.getFullYear() - 4;
       _fillSelectOptions(selectIdentifier, [...Array(7).keys()].map(i => ++threeYearsAgoYear));
     };
@@ -1184,6 +1186,33 @@
       fillOptionsDate('.auto-fill-options-date');
       fillOptionsHour('.auto-fill-options-hour');
       fillOptionsMinute('.auto-fill-options-minute');
+
+      // ↑これらの selectbox が最初にクリックされたときは、現地時刻に合わせます。
+      $(document).on('click', '.auto-fill-options-year', function () {
+        if ($(this).val() === '') {
+          $(this).val(dateNow.getFullYear());
+        }
+      });
+      $(document).on('click', '.auto-fill-options-month', function () {
+        if ($(this).val() === '') {
+          $(this).val(dateNow.getMonth() + 1);
+        }
+      });
+      $(document).on('click', '.auto-fill-options-date', function () {
+        if ($(this).val() === '') {
+          $(this).val(dateNow.getDate());
+        }
+      });
+      $(document).on('click', '.auto-fill-options-hour', function () {
+        if ($(this).val() === '') {
+          $(this).val(dateNow.getHours());
+        }
+      });
+      $(document).on('click', '.auto-fill-options-minute', function () {
+        if ($(this).val() === '') {
+          $(this).val(dateNow.getMinutes());
+        }
+      });
 
       // navbar-bottom オープン時、 backdrop を出します。
       $('#navbar-bottom').on('show.bs.collapse', function () {
