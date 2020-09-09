@@ -1171,43 +1171,48 @@
     };
 
     const initializeAutoFillDate = function (selectIdentifier) {
-      // NOTE: 選択されている month に存在しない date が削除される可能性があるため、 let 宣言です。
-      let optionValues = [...Array(31).keys()].map(i => zeroPadding2(++i));
+      const optionValues = [...Array(31).keys()].map(i => zeroPadding2(++i));
+      // NOTE: 年月が選択されていないときは曜日を表示しようがありません。
+      _initializeSelectbox(selectIdentifier, optionValues, optionValues);
+    };
 
-      // UX 向上のため、曜日も表示します。もちろん年月が選択されているときに限ります。
-      const p = $(selectIdentifier).closest('.auto-fill-date-only');
+    // UX 向上のため、曜日も表示します。もちろん年月が選択されているときに限ります。
+    const initializeAutoFillDateWithDayOfTheWeek = function (clickedSelectbox) {
+      const p = $(clickedSelectbox).closest('.auto-fill-date-only');
       const yyyy = p.find('.auto-fill-year').val();
       const mm = p.find('.auto-fill-month').val();
       if (yyyy && mm) {
-        // すでにこの年月の options が作成されている場合、再度作成する必要はありません。
-        // NOTE: このチェックがないと、「date 選択のためクリック」->「options 初期化」->「選択がリセット」されてしまいます。
-        if ($(selectIdentifier).data('year') + $(selectIdentifier).data('month') === yyyy + mm) {
-          return;
-        }
-
-        // NOTE: Date において month は 0 スタートです。
-        const dateOfSpecificYearMonth = new Date(Number(yyyy), Number(mm) - 1, 1);
-        const optionTexts = [];
-        for (const optionValue of optionValues) {
-          dateOfSpecificYearMonth.setDate(Number(optionValue));
-          // NOTE: 月を跨いだら終了します。 30, 31日のない月への対応です。
-          if (dateOfSpecificYearMonth.getMonth() + 1 !== Number(mm)) {
-            // この month に不要な date を optionValues から削除します。
-            optionValues = optionValues.filter(function (x) { return Number(x) < Number(optionValue); });
-            break;
-          }
-          optionTexts.push(`${optionValue} (${'日月火水木金土'[dateOfSpecificYearMonth.getDay()]})`);
-        }
-        _initializeSelectbox(selectIdentifier, optionValues, optionTexts);
-
-        // data-year, data-month を付与し、このセレクトボックスだけ見れば「何年何月の date 一覧なのか」わかるようにします。
-        $(selectIdentifier).data('year', yyyy);
-        $(selectIdentifier).data('month', mm);
+        // OK.
+      } else {
+        // 年月選択のないときは何もしません。
+        // NOTE: ここで何もしない場合、「年月が空なのに曜日が表示されている」という状況がありえます。
+        // NOTE: 再び「年月を選択」->「日付セレクトボックスをクリック」すれば曜日が正しくなるので、それでよいことにします。
+        return;
+      }
+      // すでにこの年月の options が作成されている場合、再度作成する必要はありません。
+      // NOTE: このチェックがないと、「date 選択のためクリック」->「options 初期化」->「選択がリセット」されてしまいます。
+      if ($(clickedSelectbox).data('year') + $(clickedSelectbox).data('month') === yyyy + mm) {
         return;
       }
 
-      // NOTE: 年月が選択されていないときは曜日を表示しようがありません。
-      _initializeSelectbox(selectIdentifier, optionValues, optionValues);
+      const optionValues = [];
+      const optionTextsWithDayOfTheWeek = [];
+      // NOTE: Date において month は 0 スタートです。
+      const dateOfSpecificYearMonth = new Date(Number(yyyy), Number(mm) - 1, 1);
+      for (let i = 1; i < 32; i++) {
+        const optionValue = zeroPadding2(i);
+        dateOfSpecificYearMonth.setDate(Number(optionValue));
+        // NOTE: 月を跨いだら終了します。 30, 31日のない月への対応です。 2020/02 が閏月です。(確認用メモ)
+        if (dateOfSpecificYearMonth.getMonth() + 1 !== Number(mm)) {
+          break;
+        }
+        optionValues.push(optionValue);
+        optionTextsWithDayOfTheWeek.push(`${optionValue} (${'日月火水木金土'[dateOfSpecificYearMonth.getDay()]})`);
+      }
+      // data-year, data-month を付与し、このセレクトボックスだけ見れば「何年何月の date 一覧なのか」わかるようにします。
+      $(clickedSelectbox).data('year', yyyy);
+      $(clickedSelectbox).data('month', mm);
+      _initializeSelectbox(clickedSelectbox, optionValues, optionTextsWithDayOfTheWeek);
     };
 
     const initializeAutoFillHour = function (selectIdentifier) {
@@ -1250,8 +1255,9 @@
       });
       $(document).on('click', '.auto-fill-date', function () {
         // initializeAutoFillDate() によってすでに選択肢は埋まっているはずです。
-        // ただし条件が揃っていれば曜日も表示したいので、クリックごとに選択肢を生成します。
-        initializeAutoFillDate('.auto-fill-date');
+        // ただし条件が揃っていれば曜日も表示したいので、クリック時に曜日付き選択肢を生成します。
+        initializeAutoFillDateWithDayOfTheWeek(this);
+
         if (_isFirstClick(this)) {
           $(this).val(zeroPadding2(dateNow.getDate())).change();
         }
