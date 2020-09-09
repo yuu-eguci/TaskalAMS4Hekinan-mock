@@ -1496,12 +1496,14 @@
     };
 
     // Selectbox を初期化します。
-    // NOTE: 日付や時刻の auto fill のために用意した関数です。表示と val が異なる option には対応していません。
-    const _initializeSelectbox = function (selectIdentifier, optionValues) {
+    // NOTE: 日付や時刻の auto fill のために用意した関数です。
+    const _initializeSelectbox = function (selectIdentifier, optionValues, optionTexts) {
+      // 何度も呼び出される可能性を考慮し、 empty() します。
+      $(selectIdentifier).empty();
       // 先頭の option は空欄にしています。
       $(selectIdentifier).append($('<option>').html('').val(''));
-      for (const option of optionValues) {
-        $(selectIdentifier).append($('<option>').html(option).val(option));
+      for (let i = 0; i < optionValues.length; i++) {
+        $(selectIdentifier).append($('<option>').html(optionTexts[i]).val(optionValues[i]));
       }
       // NOTE: 下記2点の機能をセレクトボックスに与えるため、用意した data 属性です。
       // - セレクトボックス未選択時、最初のクリックでは現在日時をセットしたい。
@@ -1521,23 +1523,68 @@
     const initializeAutoFillYear = function (selectIdentifier) {
       // NOTE: 年の候補は3年前～3年後にしてみます。
       let threeYearsAgoYear = dateNow.getFullYear() - 4;
-      _initializeSelectbox(selectIdentifier, [...Array(7).keys()].map(i => ++threeYearsAgoYear));
+      const optionValues = [...Array(7).keys()].map(i => ++threeYearsAgoYear);
+      _initializeSelectbox(selectIdentifier, optionValues, optionValues);
     };
 
     const initializeAutoFillMonth = function (selectIdentifier) {
-      _initializeSelectbox(selectIdentifier, [...Array(12).keys()].map(i => zeroPadding2(++i)));
+      const optionValues = [...Array(12).keys()].map(i => zeroPadding2(++i));
+      _initializeSelectbox(selectIdentifier, optionValues, optionValues);
     };
 
     const initializeAutoFillDate = function (selectIdentifier) {
-      _initializeSelectbox(selectIdentifier, [...Array(31).keys()].map(i => zeroPadding2(++i)));
+      const optionValues = [...Array(31).keys()].map(i => zeroPadding2(++i));
+      // NOTE: 年月が選択されていないときは曜日を表示しようがありません。
+      _initializeSelectbox(selectIdentifier, optionValues, optionValues);
+    };
+
+    // UX 向上のため、曜日も表示します。もちろん年月が選択されているときに限ります。
+    const initializeAutoFillDateWithDayOfTheWeek = function (clickedSelectbox) {
+      const p = $(clickedSelectbox).closest('.auto-fill-date-only');
+      const yyyy = p.find('.auto-fill-year').val();
+      const mm = p.find('.auto-fill-month').val();
+      if (yyyy && mm) {
+        // OK.
+      } else {
+        // 年月選択のないときは何もしません。
+        // NOTE: ここで何もしない場合、「年月が空なのに曜日が表示されている」という状況がありえます。
+        // NOTE: 再び「年月を選択」->「日付セレクトボックスをクリック」すれば曜日が正しくなるので、それでよいことにします。
+        return;
+      }
+      // すでにこの年月の options が作成されている場合、再度作成する必要はありません。
+      // NOTE: このチェックがないと、「date 選択のためクリック」->「options 初期化」->「選択がリセット」されてしまいます。
+      if ($(clickedSelectbox).data('year') + $(clickedSelectbox).data('month') === yyyy + mm) {
+        return;
+      }
+
+      const optionValues = [];
+      const optionTextsWithDayOfTheWeek = [];
+      // NOTE: Date において month は 0 スタートです。
+      const dateOfSpecificYearMonth = new Date(Number(yyyy), Number(mm) - 1, 1);
+      for (let i = 1; i < 32; i++) {
+        const optionValue = zeroPadding2(i);
+        dateOfSpecificYearMonth.setDate(Number(optionValue));
+        // NOTE: 月を跨いだら終了します。 30, 31日のない月への対応です。 2020/02 が閏月です。(確認用メモ)
+        if (dateOfSpecificYearMonth.getMonth() + 1 !== Number(mm)) {
+          break;
+        }
+        optionValues.push(optionValue);
+        optionTextsWithDayOfTheWeek.push(`${optionValue} (${'日月火水木金土'[dateOfSpecificYearMonth.getDay()]})`);
+      }
+      // data-year, data-month を付与し、このセレクトボックスだけ見れば「何年何月の date 一覧なのか」わかるようにします。
+      $(clickedSelectbox).data('year', yyyy);
+      $(clickedSelectbox).data('month', mm);
+      _initializeSelectbox(clickedSelectbox, optionValues, optionTextsWithDayOfTheWeek);
     };
 
     const initializeAutoFillHour = function (selectIdentifier) {
-      _initializeSelectbox(selectIdentifier, [...Array(24).keys()].map(i => zeroPadding2(i)));
+      const optionValues = [...Array(24).keys()].map(i => zeroPadding2(i));
+      _initializeSelectbox(selectIdentifier, optionValues, optionValues);
     };
 
     const initializeAutoFillMinute = function (selectIdentifier) {
-      _initializeSelectbox(selectIdentifier, [...Array(60).keys()].map(i => zeroPadding2(i)));
+      const optionValues = [...Array(60).keys()].map(i => zeroPadding2(i));
+      _initializeSelectbox(selectIdentifier, optionValues, optionValues);
     };
 
     // 日付、時刻選択のセレクトボックスの初期化、イベント登録を行います。
@@ -1569,6 +1616,10 @@
         }
       });
       $(document).on('click', '.auto-fill-date', function () {
+        // initializeAutoFillDate() によってすでに選択肢は埋まっているはずです。
+        // ただし条件が揃っていれば曜日も表示したいので、クリック時に曜日付き選択肢を生成します。
+        initializeAutoFillDateWithDayOfTheWeek(this);
+
         if (_isFirstClick(this)) {
           $(this).val(zeroPadding2(dateNow.getDate())).change();
         }
