@@ -964,17 +964,17 @@
         $(clickedElement).data('is-clicked-after-loaded', false);
         return ret;
       };
-      $(document).on('click', '.auto-fill-year', function () {
+      $('.auto-fill-year').on('click', function () {
         if (_isFirstClick(this)) {
           $(this).val(zeroPadding2(dateNow.getFullYear())).change();
         }
       });
-      $(document).on('click', '.auto-fill-month', function () {
+      $('.auto-fill-month').on('click', function () {
         if (_isFirstClick(this)) {
           $(this).val(zeroPadding2(dateNow.getMonth() + 1)).change();
         }
       });
-      $(document).on('click', '.auto-fill-date', function () {
+      $('.auto-fill-date').on('click', function () {
         // initializeAutoFillDate() によってすでに選択肢は埋まっているはずです。
         // ただし条件が揃っていれば曜日も表示したいので、クリック時に曜日付き選択肢を生成します。
         initializeAutoFillDateWithDayOfTheWeek(this);
@@ -983,12 +983,12 @@
           $(this).val(zeroPadding2(dateNow.getDate())).change();
         }
       });
-      $(document).on('click', '.auto-fill-hour', function () {
+      $('.auto-fill-hour').on('click', function () {
         if (_isFirstClick(this)) {
           $(this).val(zeroPadding2(dateNow.getHours())).change();
         }
       });
-      $(document).on('click', '.auto-fill-minute', function () {
+      $('.auto-fill-minute').on('click', function () {
         if (_isFirstClick(this)) {
           $(this).val(zeroPadding2(dateNow.getMinutes())).change();
         }
@@ -996,7 +996,7 @@
 
       // ↑これらの selectbox はただの selectbox です。サーバに値は送られません。
       // 以下イベントにより hidden input 要素に入力されて初めてサーバに送られます。
-      $(document).on('change', '.auto-fill-date-only select', function () {
+      $('.auto-fill-date-only select').on('change', function () {
         // 親 form-row です。この中に年月日が含まれます。
         const p = $(this).closest('.auto-fill-date-only');
         if ($(this).val()) {
@@ -1014,7 +1014,7 @@
         p.find('.auto-fill-date').val('');
         p.find('input').val('');
       });
-      $(document).on('change', '.auto-fill-time-only select', function () {
+      $('.auto-fill-time-only select').on('change', function () {
         // 親 form-row です。この中に時刻が含まれます。
         const p = $(this).closest('.auto-fill-time-only');
         if ($(this).val()) {
@@ -1030,7 +1030,7 @@
         p.find('.auto-fill-minute').val('');
         p.find('input').val('');
       });
-      $(document).on('change', '.auto-fill-month-only select', function () {
+      $('.auto-fill-month-only select').on('change', function () {
         // 親 form-row です。この中に時刻が含まれます。
         const p = $(this).closest('.auto-fill-month-only');
         if ($(this).val()) {
