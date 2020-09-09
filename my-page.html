@@ -1136,6 +1136,8 @@
     // Selectbox を初期化します。
     // NOTE: 日付や時刻の auto fill のために用意した関数です。表示と val が異なる option には対応していません。
     const _initializeSelectbox = function (selectIdentifier, optionValues) {
+      // 何度も呼び出される可能性を考慮し、 empty() します。
+      $(selectIdentifier).empty();
       // 先頭の option は空欄にしています。
       $(selectIdentifier).append($('<option>').html('').val(''));
       for (const option of optionValues) {
@@ -1167,6 +1169,21 @@
     };
 
     const initializeAutoFillDate = function (selectIdentifier) {
+      // UX 向上のため、曜日も表示します。もちろん年月が選択されているときに限りますが。
+      // 親 form-row です。この中に年月日が含まれます。
+      const p = $(selectIdentifier).closest('.auto-fill-date-only');
+      const yyyy = p.find('.auto-fill-year').val();
+      const mm = p.find('.auto-fill-month').val();
+      if (yyyy && mm) {
+        const dateOfSpecificYearMonth = new Date(Number(yyyy), Number(mm), 1);
+        const optionStrings = [`${zeroPadding2(dateOfSpecificYearMonth.getDate())}(${'日月火水木金土'[dateOfSpecificYearMonth.getDay()]})`];
+        for (let i = 2; i < 32; i++) {
+          dateOfSpecificYearMonth.setDate(i);
+          optionStrings.push(`${zeroPadding2(dateOfSpecificYearMonth.getDate())}(${'日月火水木金土'[dateOfSpecificYearMonth.getDay()]})`);
+        }
+        _initializeSelectbox(selectIdentifier, optionStrings);
+        return;
+      }
       _initializeSelectbox(selectIdentifier, [...Array(31).keys()].map(i => zeroPadding2(++i)));
     };
 
@@ -1210,6 +1227,9 @@
         if (_isFirstClick(this)) {
           $(this).val(zeroPadding2(dateNow.getDate())).change();
         }
+        // initializeAutoFillDate() によってすでに選択肢は埋まっているはずです。
+        // ただし条件が揃っていれば曜日も表示したいので、クリックごとに選択肢を生成します。
+        initializeAutoFillDate('.auto-fill-date');
       });
       $(document).on('click', '.auto-fill-hour', function () {
         if (_isFirstClick(this)) {
