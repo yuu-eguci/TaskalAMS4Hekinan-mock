@@ -1179,6 +1179,12 @@
       const yyyy = p.find('.auto-fill-year').val();
       const mm = p.find('.auto-fill-month').val();
       if (yyyy && mm) {
+        // すでにこの年月の options が作成されている場合、再度作成する必要はありません。
+        // NOTE: このチェックがないと、「date 選択のためクリック」->「options 初期化」->「選択がリセット」されてしまいます。
+        if ($(selectIdentifier).data('year') + $(selectIdentifier).data('month') === yyyy + mm) {
+          return;
+        }
+
         // NOTE: Date において month は 0 スタートです。
         const dateOfSpecificYearMonth = new Date(Number(yyyy), Number(mm) - 1, 1);
         const optionTexts = [];
@@ -1193,6 +1199,10 @@
           optionTexts.push(`${optionValue} (${'日月火水木金土'[dateOfSpecificYearMonth.getDay()]})`);
         }
         _initializeSelectbox(selectIdentifier, optionValues, optionTexts);
+
+        // data-year, data-month を付与し、このセレクトボックスだけ見れば「何年何月の date 一覧なのか」わかるようにします。
+        $(selectIdentifier).data('year', yyyy);
+        $(selectIdentifier).data('month', mm);
         return;
       }
 
